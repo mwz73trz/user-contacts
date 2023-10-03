@@ -8,6 +8,7 @@ import java.util.List;
 public interface EmployeeDao {
     List<Employee> getAllEmployees();
     Employee getEmployeeByUser(String username);
+    void updateEmployeeInfo(Employee employee);
 
 
 }

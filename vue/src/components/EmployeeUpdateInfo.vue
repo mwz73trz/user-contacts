@@ -1,6 +1,8 @@
 <template>
   <div>
-      <h1>Personal Information</h1>
+      <h1>Update Personal Information</h1>
+
+     
   </div>
 </template>
 

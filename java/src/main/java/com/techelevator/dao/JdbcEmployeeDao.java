@@ -8,7 +8,6 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +58,25 @@ public class JdbcEmployeeDao implements EmployeeDao {
         }
         return employee;
     }
+
+    @Override
+    public void updateEmployeeInfo(Employee employee) {
+        String sql = "UPDATE employee " +
+                     "JOIN office_details " +
+                         "ON employee.office_id = office_details.office_id " +
+                     "SET employee.user_id = ?, " +
+                        "employee.first_name = ?, " +
+                        "employee.last_name = ?, " +
+                        "employee.office_id = office_details.office_id " +
+                        "WHERE employee.employee_id = ?";
+
+        jdbcTemplate.update(sql,
+                employee.getUserId(),
+                employee.getFirstName(),
+                employee.getLastName(),
+                employee.getEmployeeId());
+    }
+
 
     private Employee mapRowToEmployee(SqlRowSet rs){
         Employee employee = new Employee();

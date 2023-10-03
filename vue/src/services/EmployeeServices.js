@@ -13,7 +13,9 @@ export default {
         return axios.get('/reviews', review)
     },
 
-    updateAvailability(){},
+    updateAvailability(id, information){
+        return axios.put(`/employee/user/${id}`, information)
+    },
 
     updatePersonalInfo(){},
 }
