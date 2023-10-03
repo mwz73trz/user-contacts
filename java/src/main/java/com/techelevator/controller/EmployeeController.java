@@ -23,7 +23,7 @@ public class EmployeeController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path= "/employee", method = RequestMethod.GET)
+    @RequestMapping(path= "/employees", method = RequestMethod.GET)
     public List<Employee> employeeList(){
         return employeeDao.getAllEmployees();
     }
