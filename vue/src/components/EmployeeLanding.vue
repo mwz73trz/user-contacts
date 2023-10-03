@@ -10,7 +10,7 @@
         <router-link 
         v-bind:to="{name: 'employee', params: {id: $route.params.id}}"
         >
-          View Personal Information
+          View Profile
           </router-link>
       </nav>
       <div class="agenda"><p>calendar placeholder</p></div>

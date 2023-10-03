@@ -55,7 +55,7 @@ const router = new Router({
       }
     },
     {
-      path: '/employee_information',
+      path: '/profile',
       name: 'employee',
       component: EmployeeInformation,
       meta: {
