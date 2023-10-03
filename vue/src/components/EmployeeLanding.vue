@@ -4,8 +4,14 @@
     <div>
       <nav>
         <input type="button" value="Review" />
-        <input type="button" value="Update Availability" />
-        <input type="button" value="Update Personal Information" />
+        |
+        <input type="button" value="Update Availability" /> 
+        |
+        <router-link 
+        v-bind:to="{name: 'employee', params: {id: $route.params.id}}"
+        >
+          View Personal Information
+          </router-link>
       </nav>
       <div class="agenda"><p>calendar placeholder</p></div>
     </div>
