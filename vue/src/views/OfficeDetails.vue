@@ -1,7 +1,17 @@
 <template>
 <div>
-  <h1>Office Details</h1>
-  <h1></h1>
+  <h1>{{ office.officeName }}</h1>
+  <p>Our office opens at {{ office.openTime }} and closes at {{ office.closeTime }}</p>
+  <p>For appointments call {{ office.phoneNumber }}</p>
+  <p>If this is a medical emergency call 911</p>
+  <p>Mailing address is: {{ office.address }}, {{ office.city }}, {{ office.state }} {{ office.zip }}</p>
+  <p>Office fee: ${{ office.serviceFee }}</p>
+  <div>
+      <h4>Select a Doctor:</h4>
+      <ul v-for="employee in office.employees" v-bind:key="employee.employeeId">
+          <li>{{ employee.lastName }}, {{ employee.firstName }}</li>
+      </ul>
+  </div>
   </div>
 </template>
 
@@ -28,7 +38,7 @@ export default {
     },
     created() {
         employeeServices.getOfficeById(this.$route.params.officeId).then(response => {
-            this.office = response;
+            this.office = response.data;
         })
     }
 }
