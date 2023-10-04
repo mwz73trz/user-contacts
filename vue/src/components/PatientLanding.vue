@@ -35,13 +35,24 @@ export default {
       id: 0
     }
   },
+  mounted(){
+    this.patientForm();
+  },
   methods: {
     officesRoute(e) {
       this.$router.push("/offices/" + e.target.value)
     },
     employeesRoute(e) {
       this.$router.push("/employees/" + e.target.value)
-    }
+    },
+
+    patientForm(){
+      if(this.patient.firstName == null && this.patient.lastName == null){
+          this.$router.push({
+          path: '/patient/form',
+          })
+        }
+    } 
   },
   created() {
   patientService.getOffices().then(response => {
