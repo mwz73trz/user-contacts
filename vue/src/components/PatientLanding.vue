@@ -12,8 +12,9 @@
 </div>
   <div class="employee-list">
     <label for="employee-list">Select a Doctor</label>
-    <select v-model="selectedDoctor">
-      <option v-for="employee in employeeList" v-bind:key="employee.employeeId">
+    <select name="employees" v-on:change="employeesRoute($event)">
+      <option value="0">Doctors</option>
+      <option v-for="employee in employeeList" :key="employee.employeeId" :value="employee.employeeId">
         {{ employee.lastName }}, {{ employee.firstName }}
       </option>
     </select>
@@ -31,13 +32,15 @@ export default {
     return{
       officeList: [],
       employeeList: [],
-      selectedDoctor: '',
       id: 0
     }
   },
   methods: {
     officesRoute(e) {
       this.$router.push("/offices/" + e.target.value)
+    },
+    employeesRoute(e) {
+      this.$router.push("/employees/" + e.target.value)
     }
   },
   created() {
