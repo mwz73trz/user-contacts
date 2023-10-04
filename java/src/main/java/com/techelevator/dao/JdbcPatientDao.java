@@ -42,13 +42,13 @@ public class JdbcPatientDao implements PatientDao {
     @Override
     public Patient createPatientInfo(Principal principal, Patient patient) {
         String sql = "INSERT INTO patient(\n" +
-                "\tfirst_name, last_name, user_id)\n" +
+                "\tpatient_id, first_name, last_name)\n" +
                 "\tVALUES (?, ?, ?) RETURNING patient_id;";
 
         User user = userDao.getUserByUsername(principal.getName());
         int userId = user.getId();
 
-        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, patient.getFirstName(), patient.getLastName(), userId);
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, userId, patient.getFirstName(), patient.getLastName());
         patient.setPatientId(newId);
 
         return patient;
