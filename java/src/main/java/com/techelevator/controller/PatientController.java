@@ -34,4 +34,11 @@ public class PatientController {
         }
     }
 
+    @PreAuthorize("permitAll")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/patient")
+    public Patient postPatient(@RequestBody Patient newPatient) {
+        return patientDao.createPatientInfo(newPatient, newPatient.getUserId());
+    }
+
 }
