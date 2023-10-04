@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Patient;
+import com.techelevator.model.User;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -9,12 +10,15 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.security.Principal;
+
 @Component
 public class JdbcPatientDao implements PatientDao {
     private final JdbcTemplate jdbcTemplate;
+    private final UserDao userDao;
 
-    public JdbcPatientDao(DataSource dataSource) {
+    public JdbcPatientDao(DataSource dataSource, UserDao userDao) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.userDao = userDao;
     }
 
     @Override
@@ -36,12 +40,15 @@ public class JdbcPatientDao implements PatientDao {
     }
 
     @Override
-    public Patient createPatientInfo(Patient patient, int userId) {
+    public Patient createPatientInfo(Principal principal, Patient patient) {
         String sql = "INSERT INTO patient(\n" +
                 "\tfirst_name, last_name, user_id)\n" +
                 "\tVALUES (?, ?, ?) RETURNING patient_id;";
 
-        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, patient.getFirstName(), patient.getLastName(), patient.getUserId());
+        User user = userDao.getUserByUsername(principal.getName());
+        int userId = user.getId();
+
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, patient.getFirstName(), patient.getLastName(), userId);
         patient.setPatientId(newId);
 
         return patient;
