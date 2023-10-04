@@ -25,14 +25,13 @@ public class Office {
 
     private BigDecimal serviceFee;
 
-    private int reviewId;
 
     private List<Employee> employees;
 
     public Office() {
     }
 
-    public Office(int officeId, String officeName, String phoneNumber, Time openTime, Time closeTime, String address, String city, String state, String zip, BigDecimal serviceFee, int reviewId) {
+    public Office(int officeId, String officeName, String phoneNumber, Time openTime, Time closeTime, String address, String city, String state, String zip, BigDecimal serviceFee) {
         this.officeId = officeId;
         this.officeName = officeName;
         PhoneNumber = phoneNumber;
@@ -43,7 +42,6 @@ public class Office {
         this.state = state;
         this.zip = zip;
         this.serviceFee = serviceFee;
-        this.reviewId = reviewId;
     }
     //Setters
 
@@ -86,10 +84,6 @@ public class Office {
 
     public void setServiceFee(BigDecimal serviceFee) {
         this.serviceFee = serviceFee;
-    }
-
-    public void setReviewId(int reviewId) {
-        this.reviewId = reviewId;
     }
 
     public void setEmployees(List<Employee> employees) {
@@ -136,10 +130,6 @@ public class Office {
 
     public BigDecimal getServiceFee() {
         return serviceFee;
-    }
-
-    public int getReviewId() {
-        return reviewId;
     }
 
     public List<Employee> getEmployees() {

@@ -7,16 +7,14 @@ public class Patient {
 
     private String lastName;
 
-    private int userId;
 
     public Patient() {
     }
 
-    public Patient(int patientId, String firstName, String lastName, int userId) {
+    public Patient(int patientId, String firstName, String lastName) {
         this.patientId = patientId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userId = userId;
     }
 
     //Setters
@@ -32,10 +30,6 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
     //Getters
 
     public int getPatientId() {
@@ -48,9 +42,5 @@ public class Patient {
 
     public String getLastName() {
         return lastName;
-    }
-
-    public int getUserId() {
-        return userId;
     }
 }

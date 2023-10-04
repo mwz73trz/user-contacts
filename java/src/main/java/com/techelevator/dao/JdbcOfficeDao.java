@@ -23,7 +23,7 @@ public class JdbcOfficeDao implements OfficeDao{
     @Override
     public List<Office> getAllOfficeDetails() {
         List<Office> offices = new ArrayList<>();
-        String sql = "SELECT office_id, office_name, phone_number, open_time, close_time, address, city, state, zip, service_fee, review_id\n" +
+        String sql = "SELECT office_id, office_name, phone_number, open_time, close_time, address, city, state, zip, service_fee\n" +
                 "\tFROM office_details;";
         try{
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -38,7 +38,7 @@ public class JdbcOfficeDao implements OfficeDao{
 
     @Override
     public Office getOfficeById(int officeId) {
-        String sql = "SELECT office_id, office_name, phone_number, open_time, close_time, address, city, state, zip, service_fee, review_id\n" +
+        String sql = "SELECT office_id, office_name, phone_number, open_time, close_time, address, city, state, zip, service_fee\n" +
                 "\tFROM office_details WHERE office_id = ? ";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, officeId);
         if (rowSet.next()) {
@@ -52,7 +52,7 @@ public class JdbcOfficeDao implements OfficeDao{
 
     public List<Employee> getEmployeesForOfficeId(int officeId){
         List<Employee> result = new ArrayList<>();
-        String sql="SELECT employee.employee_id, employee.user_id, employee.first_name, employee.last_name, employee.office_id\n" +
+        String sql="SELECT employee.employee_id, employee.first_name, employee.last_name, employee.office_id\n" +
                 "FROM office_details\n" +
                 "\tJOIN employee ON\n" +
                 "\temployee.office_id = office_details.office_id\n" +
@@ -77,8 +77,7 @@ public class JdbcOfficeDao implements OfficeDao{
                 rowSet.getString("city"),
                 rowSet.getString("state"),
                 rowSet.getString("zip"),
-                rowSet.getBigDecimal("service_fee"),
-                rowSet.getInt("review_id")
+                rowSet.getBigDecimal("service_fee")
         );
           return office;
     }
@@ -86,7 +85,6 @@ public class JdbcOfficeDao implements OfficeDao{
     private Employee mapRowToEmployee(SqlRowSet rowSet){
         Employee employee = new Employee(
         rowSet.getInt("employee_id"),
-        rowSet.getInt("user_id"),
         rowSet.getString("first_name"),
         rowSet.getString("last_name"),
         rowSet.getInt("office_id")
