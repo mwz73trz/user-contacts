@@ -8,6 +8,9 @@ export default {
     getOffices(){
         return axios.get('/offices')
     },
+    getOfficeById(officeId) {
+        return axios.get(`/offices/${officeId}`)
+    },
 
     getReviews(review) {
         return axios.get('/reviews', review)

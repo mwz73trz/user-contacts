@@ -1,8 +1,7 @@
 <template>
   <div class="home">
     <h1>
-      <img src="../assets/AppLogo.png" class="logo"> Home</h1>
-    <p>You must be authenticated to see this</p>
+      <img src="../assets/AppLogo.png" class="logo"> Welcome, {{ this.$store.state.user.username }}</h1>
     <p>{{ this.$store.state.user.authorities[0].name }}</p>
     <!-- <test-list> </test-list> -->
     <patient-landing v-if="this.$store.state.user.authorities[0].name === 'ROLE_USER'" />

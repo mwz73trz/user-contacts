@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import EmployeeInformation from '../views/EmployeeInformation'
+import OfficeDetails from '../views/OfficeDetails'
 
 Vue.use(Router)
 
@@ -62,6 +63,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: '/offices/:officeId',
+      name: 'office-details',
+      component: OfficeDetails,
+      meta: {
+        requiresAuth: true
+      }
+    }
   ]
 })
 
