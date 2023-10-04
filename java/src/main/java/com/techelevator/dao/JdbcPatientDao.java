@@ -24,9 +24,9 @@ public class JdbcPatientDao implements PatientDao {
     @Override
     public Patient getPatientByUser(String username) {
         Patient patient = null;
-        String sql = "SELECT patient.patient_id, patient.first_name, patient.last_name, patient.user_id\n" +
+        String sql = "SELECT patient.patient_id, patient.first_name, patient.last_name\n" +
                 "\tFROM patient \n" +
-                "\tJOIN users ON users.user_id = patient.user_id\n" +
+                "\tJOIN users ON users.user_id = patient.patient_id\n" +
                 "\tWHERE users.username = ? ;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
@@ -60,8 +60,7 @@ public class JdbcPatientDao implements PatientDao {
         Patient patient = new Patient(
                 rowSet.getInt("patient_id") ,
                 rowSet.getString("first_name"),
-                rowSet.getString("last_name"),
-                rowSet.getInt("user_id")
+                rowSet.getString("last_name")
                 );
                 return patient;
     }
