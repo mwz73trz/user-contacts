@@ -1,14 +1,19 @@
 <template>
   <div>
       <h1>Doctor: {{ employee.firstName }} {{ employee.lastName }}</h1>
+      <calendar-scheduler></calendar-scheduler>
   </div>
 </template>
 
 <script>
 import employeeServices from '../services/EmployeeServices'
+import CalendarScheduler from '../components/CalendarScheduler.vue'
 
 export default {
   name: 'doctor-details',
+  components: {
+    CalendarScheduler
+  },
   data() {
     return {
       employee: {
