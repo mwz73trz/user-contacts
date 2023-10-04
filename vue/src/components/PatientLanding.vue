@@ -3,8 +3,9 @@
   <div><h1>Patient</h1></div>
   <div class="office-list">
     <label for="office-list">Select an office</label>
-    <select name="offices" v-on:change="officesRoute">
-      <option v-for="office in officeList" v-bind:key="office.officeId">
+    <select name="offices" v-on:change="officesRoute($event)">
+      <option value="0">Offices</option>
+      <option v-for="office in officeList" :key="office.officeId" :value="office.officeId">
         {{ office.officeName }}
       </option>
     </select>
@@ -32,8 +33,8 @@ export default {
     }
   },
   methods: {
-    officesRoute() {
-      this.$router.push({ path: '/offices/' + this. })
+    officesRoute(e) {
+      this.$router.push("/offices/" + e.target.value)
     }
   },
   created() {
