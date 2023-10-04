@@ -8,6 +8,10 @@ export default {
 
     getOffices(){
         return axios.get('/offices')
+    },
+
+    getPatient(user){
+        return axios.get('patients/user', user)
     }
 
 }

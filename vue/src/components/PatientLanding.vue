@@ -18,10 +18,13 @@
       </option>
     </select>
   </div>
+  <nav class = "nav-buttons">
+    <router-link v-bind:to="{name: 'patient', params: {id: $route.params.id}}" tag = "button"> Personal Info </router-link>
+  </nav>
   </div>
 </template>
 <script>
-import patientService from '../services/patientService';
+import patientService from '../services/PatientService';
 
 export default {
   data(){

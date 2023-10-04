@@ -8,6 +8,7 @@ import store from '../store/index'
 import EmployeeInformation from '../views/EmployeeInformation'
 import OfficeDetails from '../views/OfficeDetails'
 import DoctorDetails from '../views/DoctorDetails'
+import PatientInformation from '../views/PatientInformation'
 
 Vue.use(Router)
 
@@ -76,6 +77,14 @@ const router = new Router({
       path: '/employees/:employeeId',
       name: 'doctor-details',
       component: DoctorDetails,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/patients/user',
+      name: 'patient',
+      component: PatientInformation,
       meta: {
         requiresAuth: true
       }
