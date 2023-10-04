@@ -22,22 +22,31 @@
   <nav class = "nav-buttons">
     <router-link v-bind:to="{name: 'patient', params: {id: $route.params.id}}" tag = "button"> Personal Info </router-link>
   </nav>
+  <patient-form v-if="isFormVisible"></patient-form>
   </div>
+  
 </template>
 <script>
 import patientService from '../services/PatientService';
+import PatientForm from './PatientForm.vue';
 
 export default {
+  components:{
+    PatientForm
+  },
   data(){
     return{
       officeList: [],
       employeeList: [],
-      id: 0
+      id: 0,
+      patient: {
+        id: 0,
+        firstName: "",
+        lastName: "",
+      },
     }
   },
-  mounted(){
-    this.patientForm();
-  },
+  
   methods: {
     officesRoute(e) {
       this.$router.push("/offices/" + e.target.value)
@@ -45,23 +54,25 @@ export default {
     employeesRoute(e) {
       this.$router.push("/employees/" + e.target.value)
     },
-
-    patientForm(){
-      if(this.patient.firstName == null && this.patient.lastName == null){
-          this.$router.push({
-          path: '/patient/form',
-          })
-        }
-    } 
   },
+
   created() {
   patientService.getOffices().then(response => {
     this.officeList = response.data;
   }),
   patientService.getEmployees().then(response => {
     this.employeeList = response.data;
-  })
-  }
+  }),
+  patientService.getPatient(this.$route.params.id, this.$route.params.id).then(response => {
+      this.patient = response.data;
+    })
+  },
+
+computed: {
+    isFormVisible() {
+      return !!(this.patient.firstName === "" && this.patient.lastName === "");
+    }
+  },
 
 }
 </script>
