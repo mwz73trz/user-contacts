@@ -1,7 +1,7 @@
 BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS review_reply CASCADE;
-DROP TABLE IF EXISTS review_details CASCADE;
+DROP TABLE IF EXISTS employee_office CASCADE;
 DROP TABLE IF EXISTS review CASCADE;
 DROP TABLE IF EXISTS appointment CASCADE;
 DROP TABLE IF EXISTS employee_schedule CASCADE;
@@ -19,21 +19,12 @@ CREATE TABLE users (
 );
 
 CREATE TABLE  patient (
-	patient_id SERIAL UNIQUE,
+	patient_id INT NOT NULL,
 	first_name VARCHAR(64) NOT NULL,
 	last_name VARCHAR(64) NOT NULL,
-	user_id INT NOT NULL,
 	
 	CONSTRAINT PK_patient PRIMARY KEY(patient_id),
-	CONSTRAINT FK_patient_users FOREIGN KEY(user_id) REFERENCES users(user_id)
-);
-
-CREATE TABLE review(
-	review_id SERIAL, 
-	patient_id INT NOT NULL,
-	
-	CONSTRAINT PK_review PRIMARY KEY (review_id),
-	CONSTRAINT FK_review_patient FOREIGN KEY (patient_id) REFERENCES patient (patient_id)
+	CONSTRAINT FK_patient_users FOREIGN KEY(patient_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE office_details(
@@ -47,50 +38,52 @@ CREATE TABLE office_details(
 	state VARCHAR(64) NOT NULL,
 	zip VARCHAR(64) NOT NULL,
 	service_fee DECIMAL(10, 2),
-	review_id INT,
 	
-	CONSTRAINT PK_office_details PRIMARY KEY(office_id),
-	CONSTRAINT FK_office_details_review FOREIGN KEY(review_id) REFERENCES review(review_id)
+	CONSTRAINT PK_office_details PRIMARY KEY(office_id)
 );
 
 CREATE TABLE employee (
-	employee_id SERIAL UNIQUE,
-	user_id INT NOT NULL,
+	employee_id INT NOT NULL,
 	first_name VARCHAR (64) NOT NULL,
 	last_name VARCHAR (64) NOT NULL,
 	office_id INT NOT NULL,
 	
 	CONSTRAINT PK_employee_id PRIMARY KEY (employee_id),
-	CONSTRAINT FK_employee_users FOREIGN KEY(user_id) REFERENCES users(user_id),
+	CONSTRAINT FK_employee_users FOREIGN KEY(employee_id) REFERENCES users(user_id),
 	CONSTRAINT FK_employee_office_details FOREIGN KEY(office_id) REFERENCES office_details(office_id)
 );
 
-CREATE TABLE review_details(
-	review_id INT NOT NULL,
-	employee_id INT,
-	patient_id INT,
-	office_id INT NOT NULL, 
-	review TEXT NOT NULL,
+CREATE TABLE employee_office(
+	employee_id INT NOT NULL, 
+	office_id INT NOT NULL,
 	
-	CONSTRAINT FK_review_details_review FOREIGN KEY (review_id) REFERENCES review(review_id),
-	CONSTRAINT FK_review_details_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id),
-	CONSTRAINT FK_review_details_patient FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
-	CONSTRAINT FK_review_details_office_details FOREIGN KEY(office_id) REFERENCES office_details(office_id)
+	CONSTRAINT FK_employee_office_employee FOREIGN KEY(employee_id) REFERENCES employee(employee_id),
+	CONSTRAINT FK_employee_office_office_details FOREIGN KEY(office_id) REFERENCES office_details(office_id)
+);
+
+CREATE TABLE review(
+	review_id SERIAL,
+	user_id INT, 
+	review_date DATE DEFAULT CURRENT_DATE,
+	review TEXT NOT NULL,
+	office_id INT NOT NULL,
+	
+	CONSTRAINT PK_review PRIMARY KEY (review_id),
+	CONSTRAINT FK_review_users FOREIGN KEY (user_id) REFERENCES users(user_id),
+	CONSTRAINT FK_review_office_details FOREIGN KEY(office_id) REFERENCES office_details(office_id)
 );
 
 CREATE TABLE review_reply(
+	review_reply_id SERIAL,
 	review_id INT,
-	employee_id INT,
-	patient_id INT,
-	office_id INT NOT NULL, 
+	user_id INT, 
+	review_date DATE DEFAULT now(),
 	review_reply TEXT NOT NULL,
 	
+	CONSTRAINT PK_review_reply PRIMARY KEY (review_reply_id),
 	CONSTRAINT FK_review_reply_review FOREIGN KEY (review_id) REFERENCES review(review_id),
-	CONSTRAINT FK_review_reply_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id),
-	CONSTRAINT FK_review_reply_patient FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
-	CONSTRAINT FK_review_reply_office_details FOREIGN KEY(office_id) REFERENCES office_details(office_id)
+	CONSTRAINT FK_review_reply_users FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
-
 
 CREATE TABLE employee_schedule(
 	schedule_id SERIAL,
