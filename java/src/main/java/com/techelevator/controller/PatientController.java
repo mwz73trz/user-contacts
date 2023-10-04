@@ -34,7 +34,6 @@ public class PatientController {
         }
     }
 
-    @PreAuthorize("permitAll")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/patient/form")
     public Patient postPatient(Principal principal, @RequestBody Patient newPatient) {

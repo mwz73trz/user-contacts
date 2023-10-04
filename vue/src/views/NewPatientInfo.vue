@@ -1,16 +1,16 @@
 <template>
   <div>
-     <patient-form/>
+     <!-- <patient-form/> -->
   </div>
 </template>
 
 <script>
-import PatientForm from '../components/PatientForm.vue'
+// import PatientForm from '../components/PatientForm.vue'
 
 
 export default {
-    name: 'newPatientForm',
-  components: { PatientForm },
+  //   name: 'newPatientForm',
+  // components: { PatientForm },
 
 }
 </script>
