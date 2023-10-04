@@ -22,4 +22,7 @@ export default {
     updatePersonalInfo(id, information){
         return axios.put(`/employee/${id}`, information)
     },
+    getEmployeeById(employeeId) {
+        return axios.get(`/employees/${employeeId}`)
+    }
 }

@@ -60,6 +60,23 @@ public class JdbcEmployeeDao implements EmployeeDao {
     }
 
     @Override
+    public Employee getEmployeeById(int employeeId) {
+        Employee employee = null;
+        String sql = "SELECT employee_id, user_id, first_name, last_name, office_id\n" +
+                        "\tFROM employee\n" +
+                        "\tWHERE employee_id = ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, employeeId);
+            if (results.next()) {
+                employee = mapRowToEmployee(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return employee;
+    }
+
+    @Override
     public void updateEmployeeInfo(Employee employee) {
         String sql = "UPDATE employee " +
                      "JOIN office_details " +

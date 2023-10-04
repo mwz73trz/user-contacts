@@ -9,7 +9,7 @@
   <div>
       <h4>Select a Doctor:</h4>
       <ul v-for="employee in office.employees" v-bind:key="employee.employeeId">
-          <li>{{ employee.lastName }}, {{ employee.firstName }}</li>
+          <li><router-link :to="{ name: 'doctor-details', params: { employeeId: employee.employeeId } }">{{ employee.lastName }}, {{ employee.firstName }}</router-link></li>
       </ul>
   </div>
   </div>

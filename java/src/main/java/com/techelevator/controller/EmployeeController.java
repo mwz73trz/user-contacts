@@ -29,6 +29,16 @@ public class EmployeeController {
     }
 
     @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/employees/{employeeId}")
+    public Employee getEmployeeById(@PathVariable int employeeId) {
+        Employee result = employeeDao.getEmployeeById(employeeId);
+        if (result == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found");
+        }
+        return result;
+    }
+
+    @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path= "/employee/user", method = RequestMethod.GET)
     public Employee getEmployee(Principal principal){
         Employee result = employeeDao.getEmployeeByUser(principal.getName());
