@@ -13,8 +13,8 @@ export default {
     getPatient(user){
         return axios.get('patients/user', user)
     },
-    createPersonalInfo(id, patient){
-        return axios.post(`/patient/${id}`, patient)
+    createPersonalInfo(patient){
+        return axios.post(`/patient/form`, patient)
     },
 
 }

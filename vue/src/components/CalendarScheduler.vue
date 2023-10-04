@@ -1,26 +1,17 @@
 <template>
 <div>
   <div>
-      <datepicker v-bind:format="customFormatter" :inline="true" :value="this.date"></datepicker>
+      <input type="date" name="date" v-model="date" v-on:change="selectedDate($event)">
+      <input type="time">
   </div>
-  <div><p>Selected Date: {{ this.date }}</p></div>
   </div>
 </template>
 
 <script>
-import Datepicker from 'vuejs-datepicker'
-import moment from 'moment'
+
 
 export default {
-    date: '2016/09/16',
-    components: {
-        Datepicker
-    },
-    methods: {
-        customFormatter(date) {
-            return moment(date).format('MMMM Do YYYY, h:mm:ss a')
-        }
-    }
+    
 }
 </script>
 
