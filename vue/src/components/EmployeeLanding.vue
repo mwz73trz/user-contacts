@@ -41,10 +41,10 @@ export default {
   },
 
   created() {
-  EmployeeServices.getEmployee(this.$route.params.id, this.$route.params.id).then(response => {
+    EmployeeServices.getEmployee(this.$route.params.id, this.$route.params.id).then(response => {
       this.employee = response.data;
     }),
-      EmployeeServices.getOffices().then(response => {
+    EmployeeServices.getOffices().then(response => {
        this.officeList = response.data;
    }) 
   },
