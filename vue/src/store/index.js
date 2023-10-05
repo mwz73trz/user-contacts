@@ -54,6 +54,9 @@ export default new Vuex.Store({
     },
     ADD_OFFICE_INFO(state, office){
       state.office = office
+    },
+    ADD_REVIEW(state, review) {
+      state.review = review
     }
   }
 })
