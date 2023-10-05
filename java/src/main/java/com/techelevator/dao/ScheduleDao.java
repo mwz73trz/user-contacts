@@ -4,5 +4,8 @@ import com.techelevator.model.Schedule;
 
 public interface ScheduleDao {
 
-    Schedule getScheduleByEmployeeId(int employeeId);
+    public Schedule getScheduleByEmployeeId(int employeeId);
+    public Schedule createSchedule(int employeeId, Schedule schedule);
+    public boolean updateSchedule(Schedule schedule);
+
 }
