@@ -7,6 +7,7 @@
 
     <patient-landing v-if="this.$store.state.user.authorities[0].name === 'ROLE_USER'" />
     <employee-landing v-else-if="this.$store.state.user.authorities[0].name === 'ROLE_ADMIN'" />
+    <review-list />
 
     
   </div>
@@ -18,11 +19,13 @@ import EmployeeLanding from '../components/EmployeeLanding.vue'
 import PatientLanding from '../components/PatientLanding.vue';
 
 // import TestList from "../components/TestList.vue"
+import ReviewList from '../components/ReviewList.vue'
 
 export default 
   {
   name: "home",
   components:{
+    ReviewList,
     // TestList,
     PatientLanding,
     EmployeeLanding,
