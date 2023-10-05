@@ -18,14 +18,33 @@ export default {
         startTime: "",
         endTime: "",
         },
-      schedule: [],
+      schedule: {
+        id: '',
+        startTime: '',
+        endTime: ''
+      },
 
       //how will the calendar display
       config: {
       viewType: "Week",
       startDate: DayPilot.Date.today(),
-      },
-    }
+    //    onTimeRangeSelected: (args) => {
+    //     DayPilot.Modal.prompt('Create a new event:', 'Event 1').then((modal) => {
+    //       var dp = args.control;
+    //       dp.clearSelection();
+    //       if (modal.canceled) {
+    //         return;
+    //       }
+    //       dp.events.add({
+    //         start: args.start,
+    //         end: args.end,
+    //         id: DayPilot.guid(),
+    //         text: modal.result,
+    //       });
+    //     });
+    //   },
+       },
+     }
   },
   components: {
     DayPilotCalendar
@@ -35,7 +54,7 @@ export default {
     employeeServices.getEmployeeById(this.$route.params.employeeId).then(response => {
       this.employee = response.data;
     }),
-    employeeServices.getScheduleByEmployeeId(this.$store.state.user.id).then((response) => {
+    employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
       this.schedule = response.data;
     });
   },
@@ -45,12 +64,14 @@ export default {
       return this.$refs.scheduler.control;
   },
     calendarEvents(){
-      return this.schedule.map((event) => ({
-        id: event.schedule.id,
-        start: event.startTime,
-        end: event.endTime,
-        text: "Available"
-      }))
+     return [
+        {
+          id: this.schedule.scheduleId,
+          start: this.schedule.startTime,
+          end: this.schedule.endTime,
+          text: "Available",
+        },
+      ];
     }
   },
 
