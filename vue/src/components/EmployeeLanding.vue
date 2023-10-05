@@ -5,7 +5,9 @@
     <h1 class="employee">Employee</h1>
     </div>
     <div class="schedule-container">
-      <h1>Schedule</h1></div>
+      <h1>Schedule</h1>
+      <schedule />
+      </div>
     <div>
       <nav class = "nav-buttons">
         <input type="button" value="View Review" />
@@ -23,10 +25,12 @@
 <script>
 import EmployeeServices from '../services/EmployeeServices';
 import EmployeeInfoForm from './EmployeeInfoForm.vue';
+import Schedule from '../components/Schedule.vue'
 
 export default {
   components: { 
-    EmployeeInfoForm
+    EmployeeInfoForm,
+    Schedule
     },
 
   data(){
