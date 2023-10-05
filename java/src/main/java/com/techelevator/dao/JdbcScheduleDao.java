@@ -33,6 +33,25 @@ public class JdbcScheduleDao implements ScheduleDao{
         return schedule;
     }
 
+    @Override
+    public Schedule createSchedule(int employeeId, Schedule schedule) {
+        String sql = "INSERT INTO employee_schedule(\n" +
+                        "\temployee_id, start_time, end_time)\n" +
+                        "\tVALUES ( ?, ?, ?) RETURNING employee_id;";
+        int newId = jdbcTemplate.queryForObject(sql, Integer.class, employeeId, schedule.getStartTime(), schedule.getEndTime());
+        schedule.setScheduleId(newId);
+        return schedule;
+    }
+
+    @Override
+    public boolean updateSchedule(Schedule schedule) {
+        String sql = "UPDATE employee_schedule \n" +
+                        "\tSET start_time = ?, end_time = ?\n" +
+                        "\tWHERE schedule_id = ?;";
+        int count = jdbcTemplate.update(sql, schedule.getStartTime(), schedule.getEndTime(), schedule.getScheduleId());
+        return count == 1;
+    }
+
     private Schedule mapRowToSchedule(SqlRowSet rowSet) {
         Schedule schedule = new Schedule(
                 rowSet.getInt("schedule_id"),

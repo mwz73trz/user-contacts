@@ -28,4 +28,20 @@ public class ScheduleController {
         }
         return result;
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/schedules")
+    public Schedule createSchedule(@RequestBody Schedule newSchedule) {
+        return scheduleDao.createSchedule(newSchedule.getEmployeeId(), newSchedule);
+    }
+
+    @PutMapping("/schedules/{scheduleId}")
+    public Schedule updateSchedule(@PathVariable int scheduleId, @RequestBody Schedule updatedSchedule) {
+        updatedSchedule.setScheduleId(scheduleId);
+        if (scheduleDao.updateSchedule(updatedSchedule)) {
+            return updatedSchedule;
+        }else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Schedule not found to update");
+        }
+    }
 }
