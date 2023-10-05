@@ -50,6 +50,16 @@ public class JdbcOfficeDao implements OfficeDao{
         }
     }
 
+    @Override
+    public boolean updateOfficeInfo(Office office) {
+        String sql = "UPDATE office_details\n" +
+                "\tSET office_name=?, phone_number=?, open_time=?, close_time=?, address=?, city=?, state=?, zip=?, service_fee=?\n" +
+                "\tWHERE office_id = ? ;";
+        int count = jdbcTemplate.update(sql, office.getOfficeName(), office.getPhoneNumber(), office.getOpenTime(), office.getCloseTime(),
+                        office.getAddress(),office.getCity(),office.getState(),office.getZip(),office.getServiceFee(),office.getOfficeId());
+        return count == 1;
+    }
+
     public List<Employee> getEmployeesForOfficeId(int officeId){
         List<Employee> result = new ArrayList<>();
         String sql="SELECT employee.employee_id, employee.first_name, employee.last_name\n" +

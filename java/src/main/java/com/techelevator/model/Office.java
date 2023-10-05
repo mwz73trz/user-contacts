@@ -25,8 +25,9 @@ public class Office {
 
     private BigDecimal serviceFee;
 
-
     private List<Employee> employees;
+
+
 
     public Office() {
     }

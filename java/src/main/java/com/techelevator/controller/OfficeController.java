@@ -36,4 +36,15 @@ public class OfficeController {
             return result;
         }
     }
+
+    @PutMapping("offices/{officeId}")
+    public Office putOffice(@PathVariable int officeId, @RequestBody Office updatedOffice){
+        updatedOffice.setOfficeId(officeId);
+        if(officeDao.updateOfficeInfo(updatedOffice)){
+            return updatedOffice;
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Office not found to update");
+        }
+    }
+
 }
