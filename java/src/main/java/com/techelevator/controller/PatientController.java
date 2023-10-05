@@ -35,7 +35,7 @@ public class PatientController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/patient")
+    @PostMapping("/patient/form")
     public Patient postPatient(Principal principal, @RequestBody Patient newPatient) {
         return patientDao.createPatientInfo(principal, newPatient);
     }

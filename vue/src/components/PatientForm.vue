@@ -24,30 +24,26 @@ import PatientService from '../services/PatientService'
 
 export default {
 name: "patient-form",
-data(){
-    return{
-        patient:{
-            id: 0,
-            firstName: "",
-            lastName: "",
-        },
-    };
-
-},
-
-methods:{
-    updateNewPatientInfo(){
-    PatientService.createPersonalInfo(this.patient)
-    .then(response => {
-        if(response.status === 201){
-            this.$store.commit("ADD_PATIENT_INFO", response.data)            
-        }
-    });
+    data(){
+        return{
+            patient:{
+                id: 0,
+                firstName: "",
+                lastName: "",
+            },
+        };
     },
 
-}
-
-
+    methods:{
+        updateNewPatientInfo(){
+        PatientService.createPersonalInfo(this.patient)
+        .then(response => {
+            if(response.status === 201){
+                this.$store.commit("ADD_PATIENT_INFO", response.data);
+            }
+        });
+        },
+    }
 };
 </script>
 
