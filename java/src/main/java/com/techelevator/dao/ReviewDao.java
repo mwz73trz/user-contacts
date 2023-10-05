@@ -7,4 +7,6 @@ import java.util.List;
 public interface ReviewDao {
     List<Review> getAllReviews();
 
+    public Review createReview(Review review);
+
 }

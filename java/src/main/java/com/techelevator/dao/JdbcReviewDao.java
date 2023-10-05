@@ -35,6 +35,16 @@ public class JdbcReviewDao implements  ReviewDao{
         return reviews;
     }
 
+    @Override
+    public Review createReview(Review review) {
+        String sql ="INSERT INTO review(\n" +
+                "\t user_id, review, office_id)\n" +
+                "\tVALUES ( ?, ?, ?) RETURNING review_id;";
+        int newReviewId = jdbcTemplate.queryForObject(sql,Integer.class,review.getUserId(),review.getReview(), review.getOfficeId());
+        review.setReviewId(newReviewId);
+        return review;
+    }
+
     private Review mapRowToReview(SqlRowSet rowSet) {
         Review review = new Review(
                 rowSet.getInt("review_id"),

@@ -1,13 +1,13 @@
 <template>
   <div class="reviews">
+      <h2>Reviews</h2>
     <div
       class="review"
-      v-for="review in this.$store.state.reviews"
+      v-for="review in reviewList"
       v-bind:key="review.id"
     >
-      <h2>Reviews</h2>
-      <p class="review-date">{{review.date}}</p>
-      <p>Hi{{review.review}}</p>
+      <p class="review-date">{{review.reviewDate}}</p>
+      <h4>{{review.review}}</h4>
     </div>
   </div>
 </template>
@@ -21,8 +21,8 @@ export default {
       reviewList: [],
       review: {
         id: 0,
-        userId: 0,
-        date: null,
+        userId: "",
+        reviewDate: "",
         review: "",
         officeId: 0,
       },
