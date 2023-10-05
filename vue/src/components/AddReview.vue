@@ -3,7 +3,6 @@
     <div class="form-element">
       <label for="review">Review:</label>
       <textarea id="review" v-model="newReview.review"></textarea>
-
       <button >Submit Review</button>
     </div>
   </form>
@@ -18,10 +17,10 @@ export default {
     return {
       newReview: {
         id: "",
-        userId: "",
+        userId: this.$store.state.user.id,
         date: null,
         review: "",
-        officeId: "",
+        officeId: this.$store.state.office.id,
       },
     };
   },
