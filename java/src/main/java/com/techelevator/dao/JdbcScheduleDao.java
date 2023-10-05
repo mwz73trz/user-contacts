@@ -19,9 +19,6 @@ public class JdbcScheduleDao implements ScheduleDao{
     @Override
     public Schedule getScheduleByEmployeeId(int employeeId) {
         Schedule schedule = null;
-<<<<<<< HEAD
-        String sql = "";
-=======
         String sql = "SELECT schedule_id, employee_id, start_time, end_time\n" +
                         "\tFROM employee_schedule\n" +
                         "\tWHERE employee_id = ?;";
@@ -43,7 +40,6 @@ public class JdbcScheduleDao implements ScheduleDao{
                 rowSet.getTime("start_time"),
                 rowSet.getTime("end_time")
         );
->>>>>>> e1e4b0bbc26dd047e16b118f8d0a027ecb2230a1
         return schedule;
     }
 }
