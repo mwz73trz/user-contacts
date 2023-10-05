@@ -28,6 +28,9 @@ export default {
     createPersonalInfo(employee){
         return axios.post(`/employee`, employee)
     },
+    getScheduleByEmployeeId(employeeId) {
+        return axios.get(`/schedules/${employeeId}`)
+    }
 
     
 

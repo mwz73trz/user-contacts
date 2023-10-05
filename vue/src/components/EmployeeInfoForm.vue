@@ -11,22 +11,19 @@
           <label for="name">Last Name:</label>
           <input id="lastName" type="text" v-model="employee.lastName" />
       </div>
-      <!-- <div class="form-element">
-          <label for="office">Primaty Office Name:</label>
-          <input id="officeName" type="text" v-model="officeList.officeName" />
-      </div> -->
       <div class="form-element" > Primaty Office Name:
           <select name="offices">
-      <option value="0">Offices</option>
-      <option v-for="office in officeList" :key="office.officeId" :value="office.officeId">
-        {{ office.officeName }}
-      </option> </select>
+            <option value="0">Offices</option>
+            <option v-for="office in officeList" :key="office.officeId" :value="office.officeId">
+                {{ office.officeName }}
+            </option> 
+          </select>
       </div>
       <div class="actions">
-        <button type="submit" >Update</button>
+        <button type="submit"> Update </button>
       </div>
       </form>
-  </div>
+     </div>
   </div>
 </template>
 
@@ -62,6 +59,10 @@ methods:{
             // this.$router.push({name:'Employee', params:{id: this.employee.id}});
         }
     });
+    },
+
+    updateEmployeeOfficeInfo(){
+        
     },
 
 }

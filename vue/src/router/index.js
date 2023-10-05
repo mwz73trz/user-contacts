@@ -9,6 +9,7 @@ import EmployeeInformation from '../views/EmployeeInformation'
 import OfficeDetails from '../views/OfficeDetails'
 import DoctorDetails from '../views/DoctorDetails'
 import PatientInformation from '../views/PatientInformation'
+import Schedule from '../components/Schedule'
 // import NewPatientInfo from '../views/NewPatientInfo'
 
 Vue.use(Router)
@@ -90,6 +91,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: '/schedules/:employeeId',
+      name: 'schedule',
+      component: Schedule,
+      meta: {
+        requiresAuth: true
+      }
+    }
     //{
     ///   path: '/patient/form',
     //   name: 'patient-form',

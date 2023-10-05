@@ -4,6 +4,8 @@
       <img src="../assets/doc.png" class="doc">
     <h1 class="employee">Employee</h1>
     </div>
+    <div class="schedule-container">
+      <h1>Schedule</h1></div>
     <div>
       <nav class = "nav-buttons">
         <input type="button" value="View Review" />
@@ -39,10 +41,10 @@ export default {
   },
 
   created() {
-  EmployeeServices.getEmployee(this.$route.params.id, this.$route.params.id).then(response => {
+    EmployeeServices.getEmployee(this.$route.params.id, this.$route.params.id).then(response => {
       this.employee = response.data;
     }),
-      EmployeeServices.getOffices().then(response => {
+    EmployeeServices.getOffices().then(response => {
        this.officeList = response.data;
    }) 
   },
@@ -86,5 +88,8 @@ h1.employee{
   display: flex;
   justify-content: center;
   justify-content: space-around;
+}
+.schedule-container {
+  justify-content: center;
 }
 </style>
