@@ -46,11 +46,9 @@ CREATE TABLE employee (
 	employee_id INT NOT NULL,
 	first_name VARCHAR (64) NOT NULL,
 	last_name VARCHAR (64) NOT NULL,
-	office_id INT NOT NULL,
 	
 	CONSTRAINT PK_employee_id PRIMARY KEY (employee_id),
-	CONSTRAINT FK_employee_users FOREIGN KEY(employee_id) REFERENCES users(user_id),
-	CONSTRAINT FK_employee_office_details FOREIGN KEY(office_id) REFERENCES office_details(office_id)
+	CONSTRAINT FK_employee_users FOREIGN KEY(employee_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE employee_office(

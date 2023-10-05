@@ -2,7 +2,7 @@
   <div class="form">
       <div class="patientForm"> 
           <h2 class="updateInfo">Please update the information below: </h2>
-      <form v-on:submit.prevent="updateNewPatientInfo" > 
+      <form v-on:submit="updateNewPatientInfo" > 
       <div class="form-element">
           <label for="name">First Name:</label>
           <input id="firstName" type="text" v-model="patient.firstName" />
@@ -24,31 +24,26 @@ import PatientService from '../services/PatientService'
 
 export default {
 name: "patient-form",
-data(){
-    return{
-        patient:{
-            id: 0,
-            firstName: "",
-            lastName: "",
-        },
-    };
-
-},
-
-methods:{
-    updateNewPatientInfo(){
-    PatientService.createPersonalInfo(this.patient)
-    .then(response => {
-        if(response.status === 201){
-            this.$store.commit("ADD_PATIENT_INFO", response.data)
-            this.$router.push({name:'Patient', params:{id: this.patient.id}});
-        }
-    });
+    data(){
+        return{
+            patient:{
+                id: 0,
+                firstName: "",
+                lastName: "",
+            },
+        };
     },
 
-}
-
-
+    methods:{
+        updateNewPatientInfo(){
+        PatientService.createPersonalInfo(this.patient)
+        .then(response => {
+            if(response.status === 201){
+                this.$store.commit("ADD_PATIENT_INFO", response.data);
+            }
+        });
+        },
+    }
 };
 </script>
 

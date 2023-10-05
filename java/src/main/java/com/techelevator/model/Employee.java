@@ -6,19 +6,15 @@ public class Employee {
 
     private String firstName;
     private String lastName;
-    private int officeId;
 
     public Employee(){
 
     }
-    public Employee(int employeeId, String firstName, String lastName, int officeId) {
+    public Employee(int employeeId, String firstName, String lastName) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.officeId = officeId;
     }
-
-
 
     public int getEmployeeId() {
         return employeeId;
@@ -44,11 +40,4 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public int getOfficeId() {
-        return officeId;
-    }
-
-    public void setOfficeId(int officeId) {
-        this.officeId = officeId;
-    }
 }

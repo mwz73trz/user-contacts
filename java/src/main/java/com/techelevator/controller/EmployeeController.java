@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.EmployeeDao;
 import com.techelevator.dao.JdbcEmployeeDao;
 import com.techelevator.model.Employee;
+import com.techelevator.model.Patient;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +47,12 @@ public class EmployeeController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found");
         } else {
             return result;
-        }
-        }
+            }
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/employee")
+    public Employee postEmployee(Principal principal, @RequestBody Employee newEmployee) {
+        return employeeDao.createEmployeeInfo(principal, newEmployee);
+    }
 }

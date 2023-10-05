@@ -16,13 +16,19 @@ export default {
         return axios.get('/reviews', review)
     },
 
-    updateAvailability(){
-        },
+    // updateAvailability(){
+    //     },
 
-    updatePersonalInfo(id, information){
-        return axios.put(`/employee/${id}`, information)
-    },
+    // updatePersonalInfo(id, information){
+    //     return axios.put(`/employee/${id}`, information)
+    // },
     getEmployeeById(employeeId) {
         return axios.get(`/employees/${employeeId}`)
-    }
+    },
+    createPersonalInfo(employee){
+        return axios.post(`/employee`, employee)
+    },
+
+    
+
 }
