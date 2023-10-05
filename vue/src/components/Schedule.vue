@@ -2,6 +2,7 @@
   <div>
       <p>Start Time: {{ this.schedule.startTime }}</p>
       <p>End Time: {{ this.schedule.endTime }}</p>
+      <router-link tag="button">Add Schedule</router-link>
   </div>
 </template>
 

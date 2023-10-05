@@ -30,6 +30,12 @@ export default {
     },
     getScheduleByEmployeeId(employeeId) {
         return axios.get(`/schedules/${employeeId}`)
+    },
+    addSchedule(schedule) {
+        return axios.post(`/schedules`, schedule)
+    },
+    updateSchedule(schedule) {
+        return axios.put(`/schedules/${schedule.scheduleId}`, schedule)
     }
 
     
