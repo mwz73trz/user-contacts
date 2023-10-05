@@ -28,7 +28,7 @@ public class JdbcEmployeeDao implements EmployeeDao {
     @Override
     public List<Employee> getAllEmployees() {
         List<Employee> employees = new ArrayList<>();
-        String sql = "SELECT employee_id, first_name, last_name, office_id " +
+        String sql = "SELECT employee_id, first_name, last_name " +
                      "FROM employee;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -45,7 +45,7 @@ public class JdbcEmployeeDao implements EmployeeDao {
     @Override
     public Employee getEmployeeByUser(String username) {
         Employee employee = null;
-        String sql = "SELECT employee.employee_id, employee.first_name, employee.last_name, employee.office_id " +
+        String sql = "SELECT employee.employee_id, employee.first_name, employee.last_name " +
                       "FROM employee " +
                         "JOIN users " +
                              "ON users.user_id = employee.employee_id " +
@@ -64,7 +64,7 @@ public class JdbcEmployeeDao implements EmployeeDao {
     @Override
     public Employee getEmployeeById(int employeeId) {
         Employee employee = null;
-        String sql = "SELECT employee_id, first_name, last_name, office_id\n" +
+        String sql = "SELECT employee_id, first_name, last_name" +
                         "\tFROM employee\n" +
                         "\tWHERE employee_id = ?;";
         try {
@@ -80,18 +80,20 @@ public class JdbcEmployeeDao implements EmployeeDao {
 
     @Override
     public Employee createEmployeeInfo(Principal principal, Employee employee) {
-        String sql = "INSERT INTO employee(employee_id, first_name, last_name, office_id) " +
-                     "VALUES (?, ?, ?, ?) " +
+        String sql = "INSERT INTO employee(employee_id, first_name, last_name) " +
+                     "VALUES (?, ?, ?) " +
                      "RETURNING employee_id;";
 
         User user = userDao.getUserByUsername(principal.getName());
         int userId = user.getId();
 
-        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, userId, employee.getFirstName(), employee.getLastName(), employee.getOfficeId());
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, userId, employee.getFirstName(), employee.getLastName());
         employee.setEmployeeId(newId);
 
         return employee;
     }
+
+
 
 
 //    @Override
@@ -118,7 +120,6 @@ public class JdbcEmployeeDao implements EmployeeDao {
         employee.setEmployeeId(rs.getInt("employee_id"));
         employee.setFirstName(rs.getString("first_name"));
         employee.setLastName(rs.getString("last_name"));
-        employee.setOfficeId(rs.getInt("office_id"));
         return employee;
     }
 

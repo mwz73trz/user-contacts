@@ -49,7 +49,7 @@ export default {
 
   computed: {
     isFormVisible() {
-      return !!(this.employee.firstName === "" && this.employee.lastName === "");
+      return !!(this.employee.firstName === "" && this.employee.lastName === "" );
     }
   },
 

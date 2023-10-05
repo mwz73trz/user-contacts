@@ -16,10 +16,10 @@ INSERT INTO office_details(office_name, phone_number, open_time, close_time, add
 	VALUES  ('Mediwizard Clinc', '1-740-361-4729', '08:00:00', '17:00:00', '234 Diagon Ally', 'Orlando', 'Florida', '34287', 85.00),
 			('Chase Clinic', '1-908-862-0280', '07:00:00', '18:00:00', '0972 Chase Place', 'Dalas', 'Texas', '10824', 90.00);
 
-INSERT INTO employee(employee_id, first_name, last_name, office_id)
-	VALUES  (2, 'Abby', 'Admin', 2),
-		    (5, 'Paul', 'Cross', 2),
-		    (4, 'Ginny', 'Weasley',1);
+INSERT INTO employee(employee_id, first_name, last_name)
+	VALUES  (2, 'Abby', 'Admin'),
+		    (5, 'Paul', 'Cross'),
+		    (4, 'Ginny', 'Weasley');
 			
 INSERT INTO employee_office(employee_id, office_id)
 	VALUES  (2, 2),
@@ -27,7 +27,7 @@ INSERT INTO employee_office(employee_id, office_id)
 		    (4, 1);
 			
 INSERT INTO review(user_id, review, office_id)
-	VALUES	(3, '"Dr.Weasley is amazing and very friendly"', 2),
+	VALUES	(3, 'Dr. Weasley is always very nice and friendly, I recommend Weasley!', 2),
 			(2, 'Chase Clinic always has times available! Staff is always on time and knowledgable', 1 );
 			
 INSERT INTO review_reply(review_id, user_id, review_reply)
