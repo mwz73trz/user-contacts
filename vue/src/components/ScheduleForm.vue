@@ -23,7 +23,7 @@ import employeeServices from '../services/EmployeeServices'
 export default {
     name: "schedule-form",
     props: {
-        sceduleId: {
+        scheduleId: {
             type: Number,
             default: 0
         }
