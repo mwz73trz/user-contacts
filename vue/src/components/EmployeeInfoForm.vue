@@ -1,16 +1,20 @@
 <template>
   <div class="form">
-      <div class="patientForm"> 
+      <div class="employeeForm"> 
           <h2 class="updateInfo">Please update the information below: </h2>
-      <form v-on:submit="updateNewPatientInfo" > 
+      <form v-on:submit.prevent="updateNewEmployeeInfo" > 
       <div class="form-element">
           <label for="name">First Name:</label>
-          <input id="firstName" type="text" v-model="patient.firstName" />
+          <input id="firstName" type="text" v-model="employee.firstName" />
       </div>
       <div class="form-element">
           <label for="name">Last Name:</label>
-          <input id="lastName" type="text" v-model="patient.lastName" />
+          <input id="lastName" type="text" v-model="employee.lastName" />
       </div>
+      <!-- <div class="form-element">
+          <label for="office">Primaty Office Name:</label>
+          <input id="officeName" type="text" v-model="officeList.officeName" />
+      </div> -->
       <div class="actions">
         <button type="submit" >Update</button>
       </div>
@@ -20,27 +24,35 @@
 </template>
 
 <script>
-import PatientService from '../services/PatientService'
+import EmployeeServices from '../services/EmployeeServices'
 
 export default {
-name: "patient-form",
+name: "employee-form",
 data(){
     return{
-        patient:{
+        employee:{
             id: 0,
             firstName: "",
             lastName: "",
-        },
+            },
+        officeList:[],
     };
 
 },
 
+created(){
+   EmployeeServices.getOffices().then(response => {
+       this.officeList = response.data;
+   }) 
+},
+
 methods:{
-    updateNewPatientInfo(){
-    PatientService.createPersonalInfo(this.patient)
+    updateNewEmployeeInfo(){
+    EmployeeServices.createPersonalInfo(this.employee)
     .then(response => {
         if(response.status === 201){
-            this.$store.commit("ADD_PATIENT_INFO", response.data)            
+            this.$store.commit("ADD_EMPLOYEE_INFO", response.data)
+            this.$router.push({name:'Employee', params:{id: this.employee.id}});
         }
     });
     },

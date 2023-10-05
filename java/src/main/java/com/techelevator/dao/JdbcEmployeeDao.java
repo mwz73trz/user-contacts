@@ -2,12 +2,15 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Employee;
+import com.techelevator.model.Office;
+import com.techelevator.model.User;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +18,11 @@ import java.util.List;
 public class JdbcEmployeeDao implements EmployeeDao {
 
     private final JdbcTemplate jdbcTemplate;
+    private final UserDao userDao;
 
-    public JdbcEmployeeDao(DataSource dataSource){
+    public JdbcEmployeeDao(DataSource dataSource, UserDao userDao){
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.userDao = userDao;
     }
 
     @Override
@@ -72,6 +77,22 @@ public class JdbcEmployeeDao implements EmployeeDao {
         }
         return employee;
     }
+
+    @Override
+    public Employee createEmployeeInfo(Principal principal, Employee employee) {
+        String sql = "INSERT INTO employee(employee_id, first_name, last_name, office_id) " +
+                     "VALUES (?, ?, ?, ?) " +
+                     "RETURNING employee_id;";
+
+        User user = userDao.getUserByUsername(principal.getName());
+        int userId = user.getId();
+
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, userId, employee.getFirstName(), employee.getLastName(), employee.getOfficeId());
+        employee.setEmployeeId(newId);
+
+        return employee;
+    }
+
 
 //    @Override
 //    public void updateEmployeeInfo(Employee employee) {

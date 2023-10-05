@@ -48,6 +48,9 @@ export default new Vuex.Store({
     },
     ADD_PATIENT_INFO(state, patient){
       state.patient = patient;
+    },
+    ADD_EMPLOYEE_INFO(state, employee){
+      state.patient = employee;
     }
   }
 })

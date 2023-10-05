@@ -12,13 +12,50 @@
         |
         <router-link v-bind:to="{name: 'employee', params: {id: $route.params.id}}" tag = "button"> View Profile </router-link>
       </nav>
+      <employee-info-form v-if="isFormVisible"></employee-info-form>
       <div class="agenda"><p>calendar placeholder</p></div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import EmployeeServices from '../services/EmployeeServices';
+import EmployeeInfoForm from './EmployeeInfoForm.vue';
+
+export default {
+  components: { 
+    EmployeeInfoForm
+    },
+
+  data(){
+    return{
+    employee:{
+      id:0,
+      firstName: "",
+      lastName: ""
+      },
+      officeList: []
+    }
+  },
+
+  created() {
+  EmployeeServices.getEmployee(this.$route.params.id, this.$route.params.id).then(response => {
+      this.employee = response.data;
+    }),
+      EmployeeServices.getOffices().then(response => {
+       this.officeList = response.data;
+   }) 
+  },
+
+  computed: {
+    isFormVisible() {
+      return !!(this.employee.firstName === "" && this.employee.lastName === "");
+    }
+  },
+
+
+};
+
 </script>
 
 <style>
