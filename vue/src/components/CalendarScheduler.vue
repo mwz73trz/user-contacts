@@ -1,16 +1,16 @@
 <template>
+    <div id="calendar-container">
     <DayPilotCalendar id="dp" :config="config" ref="scheduler" />
+  </div>
 </template>
 
 <script>
-import {DayPilot, DayPilotCalendar} from '@daypilot/daypilot-lite-vue'
-// import {onMounted, ref} from "vue";
+import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-vue";
 import employeeServices from '../services/EmployeeServices'
 
 export default {
   name: 'Scheduler',
-  props: {
-  },
+  props: { },
   data: function() {
     return {
       employee:{
@@ -26,8 +26,10 @@ export default {
 
       //how will the calendar display
       config: {
-      viewType: "Week",
-      startDate: DayPilot.Date.today(),
+        viewType: "Week",
+        startDate: DayPilot.Date.today(),
+        events: [],
+        
     //    onTimeRangeSelected: (args) => {
     //     DayPilot.Modal.prompt('Create a new event:', 'Event 1').then((modal) => {
     //       var dp = args.control;
@@ -56,15 +58,7 @@ export default {
     }),
     employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
       this.schedule = response.data;
-    });
-  },
-
-  computed: {
-    calendar() {
-      return this.$refs.scheduler.control;
-  },
-    calendarEvents(){
-     return [
+      this.config.events = [
         {
           id: this.schedule.scheduleId,
           start: this.schedule.startTime,
@@ -72,24 +66,49 @@ export default {
           text: "Available",
         },
       ];
-    }
+    });
   },
 
+  computed: {
+    calendar() {
+      return this.$refs.scheduler.control;
+  }
+    // calendarEvents(){
+    //  return [
+    //     {
+    //       id: this.schedule.scheduleId,
+    //       start: this.schedule.startTime,
+    //       end: this.schedule.endTime,
+    //       text: "Available",
+    //     },
+    //   ];
+    // }
+  },
   methods: {
     loadAppointmentEvents(){
-    this.calendar.update({events: this.calendarEvents}); //returns the "events" and redraws the UI
+    this.calendar.update({events: this.config.events}); //returns the "events" and redraws the UI
     }
   },
-
   mounted() {
     this.loadAppointmentEvents();
   },
-  
 }
-
-
 </script>
 
 <style>
+#calendar-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
 
+.event_box {
+  background-color: #d0db34;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
 </style>
