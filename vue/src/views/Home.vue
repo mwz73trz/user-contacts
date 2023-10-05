@@ -8,7 +8,7 @@
     <patient-landing v-if="this.$store.state.user.authorities[0].name === 'ROLE_USER'" />
     <employee-landing v-else-if="this.$store.state.user.authorities[0].name === 'ROLE_ADMIN'" />
     <review-list />
-    <add-review />
+    <!-- <add-review /> -->
 
     
   </div>
