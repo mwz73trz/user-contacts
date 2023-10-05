@@ -90,7 +90,6 @@ CREATE TABLE employee_schedule(
 	employee_id INT NOT NULL,
 	start_time TIME NOT NULL,
 	end_time TIME NOT NULL,
-	isBooked BOOLEAN,
 	
 	CONSTRAINT PK_employee_schedule PRIMARY KEY (schedule_id),
 	CONSTRAINT FK_employee_schedule_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id)

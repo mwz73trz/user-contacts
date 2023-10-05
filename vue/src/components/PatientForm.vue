@@ -34,18 +34,6 @@ data(){
     };
 
 },
-<<<<<<< HEAD
-methods:{
-    updateNewPatientInfo(){
-        const newPatient = {
-            firstName: this.patient.firstName,
-            lastName: this.patient.lastName
-        }
-    PatientService.createPersonalInfo(newPatient)
-    .then(response => {
-        if(response.status === 201){
-            this.$router.push("/");
-=======
 
 methods:{
     updateNewPatientInfo(){
@@ -54,7 +42,6 @@ methods:{
         if(response.status === 201){
             this.$store.commit("ADD_PATIENT_INFO", response.data)
             this.$router.push({name:'Patient', params:{id: this.patient.id}});
->>>>>>> 0621a1be6a593ee6b55c0ddaea92e12b2c8115b6
         }
     });
     },

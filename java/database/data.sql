@@ -35,9 +35,9 @@ INSERT INTO review_reply(review_id, user_id, review_reply)
 			(2, 5, 'Thanks for the response!' );
 
 INSERT INTO employee_schedule(employee_id, start_time, end_time, isBooked)
-	VALUES	(2, '07:00:00', '15:00:00', 'No'),
-			(5, '09:00:00', '18:00:00', 'Yes'),
-			(4, '08:00:00', '17:00:00', 'No');
+	VALUES	(2, '07:00:00', '15:00:00'),
+			(5, '09:00:00', '18:00:00'),
+			(4, '08:00:00', '17:00:00');
 			
 INSERT INTO appointment(created_time, patient_id, employee_id, appointment_date, start_time, end_time)
 	VALUES	('2023-10-03 07:50:45', 1, 2, '2023-10-13', '10:30:00', '11:00:00'),
