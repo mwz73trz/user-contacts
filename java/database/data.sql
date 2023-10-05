@@ -34,7 +34,7 @@ INSERT INTO review_reply(review_id, user_id, review_reply)
 	VALUES	(1, 2, 'Thanks for the lovely response'),
 			(2, 5, 'Thanks for the response!' );
 
-INSERT INTO employee_schedule(employee_id, start_time, end_time, isBooked)
+INSERT INTO employee_schedule(employee_id, start_time, end_time)
 	VALUES	(2, '07:00:00', '15:00:00'),
 			(5, '09:00:00', '18:00:00'),
 			(4, '08:00:00', '17:00:00');
