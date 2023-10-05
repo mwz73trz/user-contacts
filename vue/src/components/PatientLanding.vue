@@ -22,17 +22,20 @@
   <nav class = "nav-buttons">
     <router-link v-bind:to="{name: 'patient', params: {id: $route.params.id}}" tag = "button"> Personal Info </router-link>
   </nav>
+  <calendar-scheduler />
   <patient-form v-if="isFormVisible"></patient-form>
   </div>
   
 </template>
 <script>
 import patientService from '../services/PatientService';
+import CalendarScheduler from './CalendarScheduler.vue';
 import PatientForm from './PatientForm.vue';
 
 export default {
   components:{
-    PatientForm
+    PatientForm,
+    CalendarScheduler
   },
   data(){
     return{
