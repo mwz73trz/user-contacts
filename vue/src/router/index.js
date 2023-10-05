@@ -10,7 +10,10 @@ import OfficeDetails from '../views/OfficeDetails'
 import DoctorDetails from '../views/DoctorDetails'
 import PatientInformation from '../views/PatientInformation'
 import Schedule from '../components/Schedule'
+import AddReview from '../views/AddReview'
 // import NewPatientInfo from '../views/NewPatientInfo'
+import AddSchedule from '../views/AddSchedule'
+import EditSchedule from '../views/EditSchedule'
 
 Vue.use(Router)
 
@@ -98,6 +101,30 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+      {
+        path: '/schedules',
+        name: 'AddSchedule',
+        component: AddSchedule,
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: '/schedules/:scheduleId/edit',
+        name: 'EditSchedule',
+        component: EditSchedule,
+        meta: {
+          requiresAuth: true
+        }
+      },
+    {
+      path: '/review/create',
+      name: 'review',
+      component: AddReview,
+      meta: {
+        requiresAuth: true
+      } 
     }
     //{
     ///   path: '/patient/form',
