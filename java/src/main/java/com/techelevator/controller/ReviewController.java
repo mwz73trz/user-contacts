@@ -24,5 +24,10 @@ public class ReviewController {
         return reviewDao.getAllReviews();
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/reviews")
+    public Review postreview(@RequestBody Review newReview){
+        return reviewDao.createReview(newReview);
+    }
 
 }
