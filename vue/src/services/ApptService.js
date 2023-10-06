@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default {
-    getAppointmentsByID() {
-        return axios.get('/appointmenst')
+    getAppointmentsByID(user) {
+        return axios.get('/appointments', user)
     },
     createAppointment(appointment){
         return axios.post(`/appointments`, appointment)

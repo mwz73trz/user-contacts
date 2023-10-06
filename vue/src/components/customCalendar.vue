@@ -1,12 +1,15 @@
 <template>
-    <div id="calendar-container">
+  <div>
+  <div id="calendar-container">
+      <h1> Title </h1>
     <DayPilotCalendar id="dp" :config="config" ref="scheduler" />
+    </div>
   </div>
 </template>
 
 <script>
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-vue";
-import employeeServices from '../services/EmployeeServices'
+//import employeeServices from '../services/EmployeeServices'
 import apptServices from '../services/ApptService'
 
 export default {
@@ -14,23 +17,21 @@ export default {
   props: { },
   data: function() {
     return {
-      employee:{
-        id: 0,
-        startTime: "",
-        endTime: "",
-        },
-      schedule: {
-        id: '',
-        startTime: '',
-        endTime: ''
-      },
+    //   employee:{
+    //     id: 0,
+    //     startTime: "",
+    //     endTime: "",
+    //     },
+    //   schedule: {
+    //     id: '',
+    //     startTime: '',
+    //     endTime: ''
+    //   },
       appointment:{
         appointmentId: 0,
         employeeId: "",
         patientId: "",
-        appointmentDate: "", 
-        appointmentStartTime: "",
-        appointmentEndTime: "",
+        appointmentDate: ""
       },
 
       //how will the calendar display
@@ -62,26 +63,22 @@ export default {
   },
 
  created() {
-    employeeServices.getEmployeeById(this.$route.params.employeeId).then(response => {
-      this.employee = response.data;
-    }),
-    employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
-      this.schedule = response.data;
-      this.config.events = [
-        {
-          appointmentId: this.appointment.appointmentId,
-          employeeId: this.appointment.employeeId,
-          patientId: this.appointment.patientId,
-          Date: this.appointment.appointmentDate,
-          StartTime: this.appointment.appointmentStartTime,
-          EndTime: this.appointment.appointmentEndTime,
-          text: "Available",
-        },
-      ];
-    });
-    apptServices.getAppointmentsByID(this.$route.params.employeeId).then(response => {
-      this.appointment = response.data;
-    });
+    // employeeServices.getEmployeeById(this.state.params.employeeId).then(response => {
+    //   this.employee = response.data;
+    // }),
+    // employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
+    //   this.schedule = response.data;
+    // });
+     apptServices.getAppointmentsByID(this.$route.params.employeeId).then(response => {
+    const appointments = response.data;
+    this.config.events = appointments.map(appointment => ({
+      appointmentId: appointment.appointmentId,
+      employeeId: appointment.employeeId,
+      patientId: appointment.patientId,
+      date: appointment.appointmentDate,
+      text: "Available",
+    }));
+  });
     
   },
 
@@ -89,16 +86,7 @@ export default {
     calendar() {
       return this.$refs.scheduler.control;
   }
-    // calendarEvents(){
-    //  return [
-    //     {
-    //       id: this.schedule.scheduleId,
-    //       start: this.schedule.startTime,
-    //       end: this.schedule.endTime,
-    //       text: "Available",
-    //     },
-    //   ];
-    // }
+
   },
   methods: {
     //what comes back from the database

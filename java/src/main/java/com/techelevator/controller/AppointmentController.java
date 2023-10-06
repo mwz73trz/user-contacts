@@ -11,7 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.security.Principal;
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @PreAuthorize("isAuthenticated()")
 public class AppointmentController {
