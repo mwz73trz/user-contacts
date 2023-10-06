@@ -2,7 +2,7 @@ package com.techelevator.model;
 
 
 import javax.xml.crypto.Data;
-import java.sql.Time;
+
 import java.util.Date;
 
 
@@ -12,22 +12,21 @@ public class Appointment {
     private Date createdTime;
     private int patientId;
     private int employeeId;
-    private Date appointmentDate;
-    private Time startTime;
-    private Time endTime;
+    private Date appointmentDateStart;
+    private Date appointmentDateEnd;
 
-    public Appointment(){
+
+    public Appointment() {
 
     }
 
-    public Appointment(int appointmentId, Date createdTime, int patientId, int employeeId, Date appointmentDate, Time startTime, Time endTime) {
+    public Appointment(int appointmentId, Date createdTime, int patientId, int employeeId, Date appointmentDateStart, Date appointmentDateEnd) {
         this.appointmentId = appointmentId;
-        this.appointmentDate = appointmentDate;
+        this.createdTime = createdTime;
         this.patientId = patientId;
         this.employeeId = employeeId;
-        this.appointmentDate = appointmentDate;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.appointmentDateStart = appointmentDateStart;
+        this.appointmentDateEnd = appointmentDateEnd;
     }
 
     public int getAppointmentId() {
@@ -62,27 +61,19 @@ public class Appointment {
         this.employeeId = employeeId;
     }
 
-    public Date getAppointmentDate() {
-        return appointmentDate;
+    public Date getAppointmentDateStart() {
+        return appointmentDateStart;
     }
 
-    public void setAppointmentDate(Date appointmentDate) {
-        this.appointmentDate = appointmentDate;
+    public void setAppointmentDateStart(Date appointmentDateStart) {
+        this.appointmentDateStart = appointmentDateStart;
     }
 
-    public Time getStartTime() {
-        return startTime;
+    public Date getAppointmentDateEnd() {
+        return appointmentDateEnd;
     }
 
-    public void setStartTime(Time startTime) {
-        this.startTime = startTime;
-    }
-
-    public Time getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Time endTime) {
-        this.endTime = endTime;
+    public void setAppointmentDateEnd(Date appointmentDateEnd) {
+        this.appointmentDateEnd = appointmentDateEnd;
     }
 }
