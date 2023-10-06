@@ -1,6 +1,7 @@
 <template>
 <div>
-  <h1>Add Schedule</h1>
+    Schedule ID: {{ this.$route.params.scheduleId }}
+    Employee ID: {{ this.schedule.employeeId }}
   <form v-on:submit.prevent="submitForm">
       <div>
       <label for="startTime">Start Time:</label>
@@ -31,7 +32,6 @@ export default {
     data() {
         return {
             schedule: {
-                employeeId: '',
                 startTime: '',
                 endTime: ''
             }
@@ -40,7 +40,7 @@ export default {
     methods: {
         submitForm() {
             const newSchedule = {
-                employeeId: Number(this.$store.state.user.id),
+                employeeId: this.$store.state.user.id,
                 startTime: this.schedule.startTime,
                 endTime: this.schedule.endTime
             };
@@ -51,19 +51,19 @@ export default {
                     }
                 })
             }else {
-                newSchedule.sceduleId = this.scheduleId;
+                newSchedule.scheduleId = this.$route.scheduleId;
                 newSchedule.startTime = this.schedule.startTime;
                 newSchedule.endTime = this.schedule.endTime;
                 employeeServices.updateSchedule(newSchedule).then(response => {
                     if (response.status === 200) {
-                        this.$router.push(`/schedules/${newSchedule.scheduleId}`);
+                        this.$router.push("/");
                     }
                 })
             }
         },
             created() {
                 if (this.scheduleId != 0) {
-                    employeeServices.getScheduleByEmployeeId(this.employeeId).then(response => {
+                    employeeServices.getScheduleByEmployeeId(this.$store.state.user.id).then(response => {
                         this.schedule = response.data;
                     })
                 }

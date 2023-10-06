@@ -111,7 +111,7 @@ const router = new Router({
         }
       },
       {
-        path: '/schedules/:scheduleId/edit',
+        path: '/schedules/:employeeId',
         name: 'EditSchedule',
         component: EditSchedule,
         meta: {
