@@ -17,4 +17,8 @@ export default {
         return axios.post(`/patient`, patient)
     },
 
+    getCovidInfo(){
+        return axios.get(`/covid`)
+    }
+
 }

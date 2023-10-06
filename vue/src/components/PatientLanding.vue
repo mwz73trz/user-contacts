@@ -1,5 +1,8 @@
 <template>
 <div>
+  <div class="covid-list"> 
+    <covid-list/>
+  </div>
   <div><h1>Patient</h1></div>
   <div class="office-list">
     <label for="office-list">Select an office</label>
@@ -31,11 +34,14 @@
 import patientService from '../services/PatientService';
 import CalendarScheduler from './CalendarScheduler.vue';
 import PatientForm from './PatientForm.vue';
+import CovidList from './CovidList.vue';
+
 
 export default {
   components:{
     PatientForm,
-    CalendarScheduler
+    CalendarScheduler,
+    CovidList
   },
   data(){
     return{

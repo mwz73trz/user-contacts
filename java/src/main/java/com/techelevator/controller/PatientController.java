@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import com.techelevator.model.Patient;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 import com.techelevator.dao.PatientDao;
 import java.security.Principal;
@@ -40,4 +41,19 @@ public class PatientController {
         return patientDao.createPatientInfo(principal, newPatient);
     }
 
+//    @GetMapping("/covid")
+//    public  String getThirdPartyApi(){
+//        String apiUrl = "https://covid-19.dataflowkit.com/v1/USA";
+//        RestTemplate restTemplate = new RestTemplate();
+//        String result = restTemplate.getForObject(apiUrl, String.class);
+//        return result;
+//    }
+
+    @GetMapping("/covid")
+    public  String getThirdPartyApi(){
+        String apiUrl = "https://covid-19.dataflowkit.com/v1/WORLD";
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(apiUrl, String.class);
+        return result;
+    }
 }
