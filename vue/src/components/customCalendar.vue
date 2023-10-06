@@ -31,7 +31,9 @@ export default {
         appointmentId: 0,
         employeeId: "",
         patientId: "",
-        appointmentDate: ""
+        // date: "",
+        startTime: "",
+        endTime: ""
       },
 
       //how will the calendar display
@@ -69,16 +71,16 @@ export default {
     // employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
     //   this.schedule = response.data;
     // });
-     apptServices.getAppointmentsByID(this.$route.params.employeeId).then(response => {
-    const appointments = response.data;
-    this.config.events = appointments.map(appointment => ({
-      appointmentId: appointment.appointmentId,
-      employeeId: appointment.employeeId,
-      patientId: appointment.patientId,
-      date: appointment.appointmentDate,
-      text: "Available",
-    }));
-  });
+    apptServices.getAppointmentsByID(this.$route.params.employeeId).then(response => {
+      const appointments = response.data;
+      this.config.events = appointments.map(appointment => ({
+        id: appointment.appointmentId,
+        // date: new DayPilot.Date.Date(appointment.date),
+        start: new DayPilot.Date(appointment.startTime * 1000),
+        end: new DayPilot.Date(appointment.endTime * 1000), 
+        text: "Available",
+      }));
+    });
     
   },
 

@@ -27,7 +27,7 @@ public class JdbcAppointmentDao implements AppointmentDao {
     @Override
     public List<Appointment> getAppointmentByUser(Principal principal) {
         List <Appointment> appointment = new ArrayList<>();
-        String sql = "SELECT appointment_id, created_time, patient_id, employee_id, appointment_dateStart, appointment_dateEnd  " +
+        String sql = "SELECT appointment_id, created_time, patient_id, employee_id, appointment_date_start, appointment_date_end  " +
                      "FROM appointment " +
                      "WHERE employee_id = ? ; ";
 
@@ -49,7 +49,7 @@ public class JdbcAppointmentDao implements AppointmentDao {
 //    @Override
 //    public List<Appointment> getAllAppointments() {
 //        List <Appointment> appointment = new ArrayList<>();
-//        String sql = "SELECT appointment_id, created_time, patient_id, employee_id, appointment_date, start_time, end_time " +
+//        String sql = "SELECT appointment_id, created_time, patient_id, employee_id, appointment_date, appointment_date_start, appointment_date_end " +
 //                     "FROM appointment;";
 //        try {
 //            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
