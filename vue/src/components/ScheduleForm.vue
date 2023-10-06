@@ -47,7 +47,7 @@ export default {
             if (this.scheduleId === 0) {
                 employeeServices.addSchedule(newSchedule).then(response => {
                     if (response.status === 201) {
-                        this.router.push("/")
+                        this.$router.push("/")
                     }
                 })
             }else {
@@ -56,7 +56,7 @@ export default {
                 newSchedule.endTime = this.schedule.endTime;
                 employeeServices.updateSchedule(newSchedule).then(response => {
                     if (response.status === 200) {
-                        this.router.push(`/schedules/${newSchedule.scheduleId}`);
+                        this.$router.push(`/schedules/${newSchedule.scheduleId}`);
                     }
                 })
             }
