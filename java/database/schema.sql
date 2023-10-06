@@ -95,12 +95,11 @@ CREATE TABLE employee_schedule(
 
 CREATE TABLE appointment(
 	appointment_id SERIAL,
-	created_time TIMESTAMP NOT NULL,
+	created_time DATE DEFAULT now(),
 	patient_id INT NOT NULL,
 	employee_id INT NOT NULL,
-	appointment_date DATE NOT NULL,
-	start_time TIME NOT NULL,
-	end_time TIME NOT NULL,
+	appointment_date_start TIMESTAMP NOT NULL,
+	appointment_date_end TIMESTAMP NOT NULL,
 		
 	CONSTRAINT PK_appointment PRIMARY KEY (appointment_id),
 	CONSTRAINT FK_appointment_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id),

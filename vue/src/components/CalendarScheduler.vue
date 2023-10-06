@@ -6,7 +6,8 @@
 
 <script>
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-vue";
-import employeeServices from '../services/EmployeeServices'
+// import employeeServices from '../services/EmployeeServices'
+import apptServices from '../services/ApptService'
 
 export default {
   name: 'Scheduler',
@@ -23,6 +24,14 @@ export default {
         startTime: '',
         endTime: ''
       },
+      appointment:{
+        appointmentId: 0,
+        employeeId: "",
+        patientId: "",
+        appointmentDate: "", 
+        appointmentStartTime: "",
+        appointmentEndTime: "",
+      },
 
       //how will the calendar display
       config: {
@@ -30,21 +39,21 @@ export default {
         startDate: DayPilot.Date.today(),
         events: [],
         
-    //    onTimeRangeSelected: (args) => {
-    //     DayPilot.Modal.prompt('Create a new event:', 'Event 1').then((modal) => {
-    //       var dp = args.control;
-    //       dp.clearSelection();
-    //       if (modal.canceled) {
-    //         return;
-    //       }
-    //       dp.events.add({
-    //         start: args.start,
-    //         end: args.end,
-    //         id: DayPilot.guid(),
-    //         text: modal.result,
-    //       });
-    //     });
-    //   },
+      //  onTimeRangeSelected: (args) => {
+      //   DayPilot.Modal.prompt('Create a new event:', 'Event 1').then((modal) => {
+      //     var dp = args.control;
+      //     dp.clearSelection();
+      //     if (modal.canceled) {
+      //       return;
+      //     }
+      //     dp.events.add({
+      //       start: args.start,
+      //       end: args.end,
+      //       id: DayPilot.guid(),
+      //       text: modal.result,
+      //     });
+      //   });
+      // },
        },
      }
   },
@@ -53,20 +62,24 @@ export default {
   },
 
  created() {
-    employeeServices.getEmployeeById(this.$route.params.employeeId).then(response => {
-      this.employee = response.data;
-    }),
-    employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
-      this.schedule = response.data;
-      this.config.events = [
-        {
-          id: this.schedule.scheduleId,
-          start: this.schedule.startTime,
-          end: this.schedule.endTime,
-          text: "Available",
-        },
-      ];
-    });
+    // employeeServices.getEmployeeById(this.$route.params.employeeId).then(response => {
+    //   this.employee = response.data;
+    // }),
+    // employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
+    //   this.schedule = response.data;
+    //   this.config.events = [
+    //     {
+    //       id: this.schedule.scheduleId,
+    //       start: this.schedule.startTime,
+    //       end: this.schedule.endTime,
+    //       text: "Available",
+    //     },
+    //   ];
+    // });
+    apptServices.getAppointmentsByID(this.$route.params.employeeId).then(response => {
+      this.appointment = response.data
+    })
+    
   },
 
   computed: {
@@ -85,10 +98,13 @@ export default {
     // }
   },
   methods: {
+    //what comes back from the database
     loadAppointmentEvents(){
     this.calendar.update({events: this.config.events}); //returns the "events" and redraws the UI
     }
   },
+
+  //a lifecycle hook
   mounted() {
     this.loadAppointmentEvents();
   },

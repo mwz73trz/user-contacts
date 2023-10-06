@@ -39,10 +39,10 @@ INSERT INTO employee_schedule(employee_id, start_time, end_time)
 			(5, '09:00:00', '18:00:00'),
 			(4, '08:00:00', '17:00:00');
 			
-INSERT INTO appointment(created_time, patient_id, employee_id, appointment_date, start_time, end_time)
-	VALUES	('2023-10-03 07:50:45', 1, 2, '2023-10-13', '10:30:00', '11:00:00'),
-			('2023-09-30 14:26:09', 3, 5, '2023-11-22', '12:00:00', '13:00:00'),
-			('2023-08-15 05:32:57', 6, 4, '2023-10-10', '08:45:00', '09:30:00');
+INSERT INTO appointment(patient_id, employee_id, appointment_date_start,appointment_date_end)
+	VALUES	(1, 2, '2023-10-13 10:30:00', '2023-10-13 11:00:00'),
+			(3, 5, '2023-11-22 12:00:00', '2023-11-22 13:00:00'),
+			(6, 4, '2023-10-10 08:45:00', '2023-10-10 09:30:00');
 
 --ROLLBACK;
 COMMIT TRANSACTION;

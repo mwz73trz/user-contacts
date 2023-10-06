@@ -35,11 +35,13 @@ public class PatientController {
         }
     }
 
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/patient")
     public Patient postPatient(Principal principal, @RequestBody Patient newPatient) {
         return patientDao.createPatientInfo(principal, newPatient);
     }
+    
 
 //    @GetMapping("/covid")
 //    public  String getThirdPartyApi(){
