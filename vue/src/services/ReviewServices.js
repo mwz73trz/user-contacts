@@ -5,6 +5,6 @@ export default {
         return axios.get('/reviews')
     },
     createReview(review){
-        return axios.post(`/reviews`, review)
+        return axios.post(`/reviews/`, review)
     }
 }

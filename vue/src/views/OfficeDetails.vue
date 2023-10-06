@@ -12,14 +12,23 @@
           <li><router-link :to="{ name: 'doctor-details', params: { employeeId: employee.employeeId } }">{{ employee.lastName }}, {{ employee.firstName }}</router-link></li>
       </ul>
   </div>
+  <add-review></add-review>
+  <review-list></review-list>
   </div>
 </template>
 
 <script>
+import AddReview from '../components/AddReview.vue'
 import employeeServices from '../services/EmployeeServices'
+import ReviewList from "../components/ReviewList.vue"
+
 
 export default {
     name: 'office-details',
+    components: {
+        AddReview,
+        ReviewList
+        },
     data() {
         return {
             office: {

@@ -8,7 +8,7 @@
 <script>
 import AddReview from "../components/AddReview";
 export default {
-  name: "add-review",
+  name: "create-review",
   components: {
     AddReview,
   },
