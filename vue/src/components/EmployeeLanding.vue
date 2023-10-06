@@ -17,7 +17,9 @@
         <router-link v-bind:to="{name: 'employee', params: {id: $route.params.id}}" tag = "button"> View Profile </router-link>
       </nav>
       <employee-info-form v-if="isFormVisible"></employee-info-form>
-      <div class="agenda"><p>calendar placeholder</p></div>
+      <div class="agenda"><p>calendar placeholder</p>
+        <custom-calendar/>
+      </div>
     </div>
   </div>
 </template>
@@ -26,11 +28,13 @@
 import EmployeeServices from '../services/EmployeeServices';
 import EmployeeInfoForm from './EmployeeInfoForm.vue';
 import Schedule from '../components/Schedule.vue'
+import CustomCalendar from './customCalendar.vue';
 
 export default {
   components: { 
     EmployeeInfoForm,
-    Schedule
+    Schedule,
+    CustomCalendar
     },
   data(){
     return{

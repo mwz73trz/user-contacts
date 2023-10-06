@@ -46,21 +46,21 @@ public class JdbcAppointmentDao implements AppointmentDao {
     }
 
 
-    @Override
-    public List<Appointment> getAllAppointments() {
-        List <Appointment> appointment = new ArrayList<>();
-        String sql = "SELECT appointment_id, created_time, patient_id, employee_id, appointment_date, start_time, end_time " +
-                     "FROM appointment;";
-        try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-            while (results.next()) {
-                appointment.add(mapRowToAppointment(results));
-            }
-        } catch (CannotGetJdbcConnectionException ex) {
-            throw new DaoException("Unable to connect to server or database", ex);
-        }
-        return appointment;
-    }
+//    @Override
+//    public List<Appointment> getAllAppointments() {
+//        List <Appointment> appointment = new ArrayList<>();
+//        String sql = "SELECT appointment_id, created_time, patient_id, employee_id, appointment_date, start_time, end_time " +
+//                     "FROM appointment;";
+//        try {
+//            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+//            while (results.next()) {
+//                appointment.add(mapRowToAppointment(results));
+//            }
+//        } catch (CannotGetJdbcConnectionException ex) {
+//            throw new DaoException("Unable to connect to server or database", ex);
+//        }
+//        return appointment;
+//    }
 
     //Patient creates a new appointmentposyr
     @Override

@@ -7,6 +7,7 @@
 <script>
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-vue";
 import employeeServices from '../services/EmployeeServices'
+import apptServices from '../services/ApptService'
 
 export default {
   name: 'Scheduler',
@@ -22,6 +23,14 @@ export default {
         id: '',
         startTime: '',
         endTime: ''
+      },
+      appointment:{
+        appointmentId: 0,
+        employeeId: "",
+        patientId: "",
+        appointmentDate: "", 
+        appointmentStartTime: "",
+        appointmentEndTime: "",
       },
 
       //how will the calendar display
@@ -67,6 +76,10 @@ export default {
         },
       ];
     });
+    apptServices.getAppointmentsByID(this.$route.params.employeeId).then(response => {
+      this.appointment = response.data;
+    });
+    
   },
 
   computed: {
