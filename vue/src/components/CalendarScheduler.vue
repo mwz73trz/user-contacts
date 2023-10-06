@@ -30,21 +30,21 @@ export default {
         startDate: DayPilot.Date.today(),
         events: [],
         
-    //    onTimeRangeSelected: (args) => {
-    //     DayPilot.Modal.prompt('Create a new event:', 'Event 1').then((modal) => {
-    //       var dp = args.control;
-    //       dp.clearSelection();
-    //       if (modal.canceled) {
-    //         return;
-    //       }
-    //       dp.events.add({
-    //         start: args.start,
-    //         end: args.end,
-    //         id: DayPilot.guid(),
-    //         text: modal.result,
-    //       });
-    //     });
-    //   },
+      //  onTimeRangeSelected: (args) => {
+      //   DayPilot.Modal.prompt('Create a new event:', 'Event 1').then((modal) => {
+      //     var dp = args.control;
+      //     dp.clearSelection();
+      //     if (modal.canceled) {
+      //       return;
+      //     }
+      //     dp.events.add({
+      //       start: args.start,
+      //       end: args.end,
+      //       id: DayPilot.guid(),
+      //       text: modal.result,
+      //     });
+      //   });
+      // },
        },
      }
   },
@@ -85,10 +85,13 @@ export default {
     // }
   },
   methods: {
+    //what comes back from the database
     loadAppointmentEvents(){
     this.calendar.update({events: this.config.events}); //returns the "events" and redraws the UI
     }
   },
+
+  //a lifecycle hook
   mounted() {
     this.loadAppointmentEvents();
   },
