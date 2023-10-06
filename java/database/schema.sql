@@ -95,7 +95,7 @@ CREATE TABLE employee_schedule(
 
 CREATE TABLE appointment(
 	appointment_id SERIAL,
-	created_time TIMESTAMP NOT NULL,
+	created_time DATE DEFAULT now(),
 	patient_id INT NOT NULL,
 	employee_id INT NOT NULL,
 	appointment_date DATE NOT NULL,

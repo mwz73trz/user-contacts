@@ -3,24 +3,25 @@
     <div class="form-element">
       <label for="review">Review:</label>
       <textarea id="review" v-model="newReview.review"></textarea>
-      <button >Submit Review</button>
+      <button type="submit">Submit Review</button>
     </div>
   </form>
 </template>
 
 <script>
 import ReviewServices from "../services/ReviewServices";
+import employeeServices from "../services/EmployeeServices"
 
 export default {
   name: "add-review",
   data() {
     return {
       newReview: {
-        id: "",
-        userId: this.$store.state.user.id,
-        date: null,
+        // id: 0,
+        userId: this.$store.state.user.id, //this.$store.state.user.id
+        reviewDate: null,
         review: "",
-        officeId: this.$store.state.office.id,
+        officeId: this.$route.params.officeId//this.$store.state.office.id,
       },
     };
   },
@@ -33,6 +34,11 @@ export default {
           }
       })
     },
+     created() {
+        employeeServices.getOfficeById(this.$route.params.officeId).then(response => {
+            this.office = response.data;
+        })
+    }
   },
 };
 </script>
