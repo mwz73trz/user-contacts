@@ -12,6 +12,7 @@
     "@syncfusion/ej2-vue-schedule": "^23.1.39",
     "axios": "^0.21.1",
     "core-js": "^3.9.1",
+    "cors": "^2.8.5",
     "moment": "^2.29.4",
     "v-calendar": "^2.4.1",
     "vue": "^2.6.12",

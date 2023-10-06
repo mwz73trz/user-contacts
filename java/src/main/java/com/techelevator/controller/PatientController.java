@@ -43,4 +43,19 @@ public class PatientController {
     }
     
 
+//    @GetMapping("/covid")
+//    public  String getThirdPartyApi(){
+//        String apiUrl = "https://covid-19.dataflowkit.com/v1/USA";
+//        RestTemplate restTemplate = new RestTemplate();
+//        String result = restTemplate.getForObject(apiUrl, String.class);
+//        return result;
+//    }
+
+    @GetMapping("/covid")
+    public  String getThirdPartyApi(){
+        String apiUrl = "https://covid-19.dataflowkit.com/v1/WORLD";
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(apiUrl, String.class);
+        return result;
+    }
 }

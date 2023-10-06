@@ -6,7 +6,8 @@
 
 <script>
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-vue";
-import employeeServices from '../services/EmployeeServices'
+// import employeeServices from '../services/EmployeeServices'
+import apptServices from '../services/ApptService'
 
 export default {
   name: 'Scheduler',
@@ -22,6 +23,14 @@ export default {
         id: '',
         startTime: '',
         endTime: ''
+      },
+      appointment:{
+        appointmentId: 0,
+        employeeId: "",
+        patientId: "",
+        appointmentDate: "", 
+        appointmentStartTime: "",
+        appointmentEndTime: "",
       },
 
       //how will the calendar display
@@ -53,20 +62,24 @@ export default {
   },
 
  created() {
-    employeeServices.getEmployeeById(this.$route.params.employeeId).then(response => {
-      this.employee = response.data;
-    }),
-    employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
-      this.schedule = response.data;
-      this.config.events = [
-        {
-          id: this.schedule.scheduleId,
-          start: this.schedule.startTime,
-          end: this.schedule.endTime,
-          text: "Available",
-        },
-      ];
-    });
+    // employeeServices.getEmployeeById(this.$route.params.employeeId).then(response => {
+    //   this.employee = response.data;
+    // }),
+    // employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
+    //   this.schedule = response.data;
+    //   this.config.events = [
+    //     {
+    //       id: this.schedule.scheduleId,
+    //       start: this.schedule.startTime,
+    //       end: this.schedule.endTime,
+    //       text: "Available",
+    //     },
+    //   ];
+    // });
+    apptServices.getAppointmentsByID(this.$route.params.employeeId).then(response => {
+      this.appointment = response.data
+    })
+    
   },
 
   computed: {

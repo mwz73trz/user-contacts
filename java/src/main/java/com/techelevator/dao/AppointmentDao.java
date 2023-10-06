@@ -9,6 +9,6 @@ public interface AppointmentDao {
 
     List<Appointment> getAppointmentByUser(Principal principal);
 
-    List<Appointment> getAllAppointments();
+//    List<Appointment> getAllAppointments();
     Appointment createNewAppointment(Principal principal, Appointment appointment);
 }
