@@ -1,15 +1,17 @@
 package com.techelevator.model;
 
-import java.sql.Date;
+
+import javax.xml.crypto.Data;
 import java.sql.Time;
-import java.sql.Timestamp;
+import java.util.Date;
+
 
 public class Appointment {
 
     private int appointmentId;
-    private Timestamp createdTime;
+    private Date createdTime;
     private int patientId;
-    private int employee_id;
+    private int employeeId;
     private Date appointmentDate;
     private Time startTime;
     private Time endTime;
@@ -17,11 +19,12 @@ public class Appointment {
     public Appointment(){
 
     }
-    public Appointment(int appointmentId, Timestamp createdTime, int patientId, int employee_id, Date appointmentDate, Time startTime, Time endTime) {
+
+    public Appointment(int appointmentId, Date createdTime, int patientId, int employeeId, Date appointmentDate, Time startTime, Time endTime) {
         this.appointmentId = appointmentId;
-        this.createdTime = createdTime;
+        this.appointmentDate = appointmentDate;
         this.patientId = patientId;
-        this.employee_id = employee_id;
+        this.employeeId = employeeId;
         this.appointmentDate = appointmentDate;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -35,11 +38,11 @@ public class Appointment {
         this.appointmentId = appointmentId;
     }
 
-    public Timestamp getCreatedTime() {
+    public Date getCreatedTime() {
         return createdTime;
     }
 
-    public void setCreatedTime(Timestamp createdTime) {
+    public void setCreatedTime(Date createdTime) {
         this.createdTime = createdTime;
     }
 
@@ -51,12 +54,12 @@ public class Appointment {
         this.patientId = patientId;
     }
 
-    public int getEmployee_id() {
-        return employee_id;
+    public int getEmployeeId() {
+        return employeeId;
     }
 
-    public void setEmployee_id(int employee_id) {
-        this.employee_id = employee_id;
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
 
     public Date getAppointmentDate() {
