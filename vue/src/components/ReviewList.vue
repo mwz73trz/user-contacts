@@ -1,10 +1,11 @@
 <template>
   <div class="reviews">
       <h2>Reviews</h2>
+      <p>officeId:{{this.$route.params.officeId}}</p>
     <div
       class="review"
-      v-for="review in reviewList"
-      v-bind:key="review.id"
+      v-for="review in filteredReviews"
+      v-bind:key="review.officeId"
     >
       <p class="review-date">{{review.reviewDate}}</p>
       <h4>{{review.review}}</h4>
@@ -33,6 +34,13 @@ export default {
         this.reviewList = response.data;
     });
   },
+  computed: {
+      filteredReviews(){
+          return this.reviewList.filter((item) => {
+              return item.officeId == this.$route.params.officeId
+          })
+      }
+  }
 };
 </script>
 

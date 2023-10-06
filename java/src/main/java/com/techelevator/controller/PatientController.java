@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import com.techelevator.model.Patient;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 import com.techelevator.dao.PatientDao;
 import java.security.Principal;
@@ -40,5 +41,6 @@ public class PatientController {
     public Patient postPatient(Principal principal, @RequestBody Patient newPatient) {
         return patientDao.createPatientInfo(principal, newPatient);
     }
+    
 
 }

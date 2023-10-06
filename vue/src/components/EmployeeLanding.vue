@@ -12,8 +12,6 @@
       <nav class = "nav-buttons">
         <input type="button" value="View Review" />
         | 
-        <router-link v-bind:to="{ name: 'AddSchedule', params: { id: $route.params.id }}" tag="button">Update Availability</router-link>
-        |
         <router-link v-bind:to="{name: 'employee', params: {id: $route.params.id}}" tag = "button"> View Profile </router-link>
       </nav>
       <employee-info-form v-if="isFormVisible"></employee-info-form>

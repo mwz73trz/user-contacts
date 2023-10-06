@@ -9,19 +9,20 @@
     <employee-landing v-else-if="this.$store.state.user.authorities[0].name === 'ROLE_ADMIN'" />
     <review-list />
     <!-- <add-review /> -->
+   
 
     
   </div>
 </template>
 
 <script>
-// import AddReview from '../components/AddReview.vue';
 
 import EmployeeLanding from '../components/EmployeeLanding.vue'
 import PatientLanding from '../components/PatientLanding.vue';
 
 // import TestList from "../components/TestList.vue"
 import ReviewList from '../components/ReviewList.vue'
+// import AddReview from '../components/AddReview.vue';
 
 
 export default 
