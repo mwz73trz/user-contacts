@@ -11,6 +11,7 @@ import DoctorDetails from '../views/DoctorDetails'
 import PatientInformation from '../views/PatientInformation'
 import Schedule from '../components/Schedule'
 import CreateReview from '../views/CreateReview'
+import EmployeeReviewList from "../views/EmployeeReviewList"
 // import NewPatientInfo from '../views/NewPatientInfo'
 import AddSchedule from '../views/AddSchedule'
 import EditSchedule from '../views/EditSchedule'
@@ -120,9 +121,18 @@ const router = new Router({
       },
     {
       //path: '/reviews/create',
-      path: '/offices/:officeId',
+      path: '/review/:id',
       name: 'CreateReview',
       component: CreateReview,
+      meta: {
+        requiresAuth: true
+      } 
+    },
+    {
+      //path: '/reviews/create',
+      path: '/reviews',
+      name: 'EmployeeReview',
+      component: EmployeeReviewList,
       meta: {
         requiresAuth: true
       } 
