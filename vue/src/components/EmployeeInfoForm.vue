@@ -11,8 +11,8 @@
           <label for="name">Last Name:</label>
           <input id="lastName" type="text" v-model="employee.lastName" />
       </div>
-      <div class="form-element" > Primaty Office Name:
-          <select name="offices">
+      <div class="form-element" > Primary Office Name:
+          <select name="offices" v-model="office">
             <option value="0">Offices</option>
             <option v-for="office in officeList" :key="office.officeId" :value="office.officeId">
                 {{ office.officeName }}

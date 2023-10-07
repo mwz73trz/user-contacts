@@ -11,6 +11,8 @@
     <div>
       <nav class = "nav-buttons">
         <input type="button" value="View Review" />
+        <router-link v-bind:to="{name: 'EmployeeReviewList', params: {id: this.$route.params.officeId}}" tag = "button"> View Review </router-link>
+
         | 
         <router-link v-bind:to="{name: 'employee', params: {id: $route.params.id}}" tag = "button"> View Profile </router-link>
       </nav>
