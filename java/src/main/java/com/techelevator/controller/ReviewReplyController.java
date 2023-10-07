@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @CrossOrigin
 @RestController
 @PreAuthorize("isAuthenticated()")
@@ -17,8 +19,8 @@ public class ReviewReplyController {
         this.reviewReplyDao = reviewReplyDao;
     }
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/reviews/review-reply")
-    public ReviewReply postReviewReply(@RequestBody ReviewReply newreviewReply){
-        return reviewReplyDao.respondReviewByUser(newreviewReply);
+    @PostMapping("/reviews/{reviewId}")
+    public ReviewReply postReviewReply(Principal principal, @PathVariable int reviewId, @RequestBody ReviewReply newreviewReply){
+        return reviewReplyDao.respondReviewByUser(principal, reviewId, newreviewReply);
     }
 }
