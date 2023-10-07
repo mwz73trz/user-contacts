@@ -2,35 +2,19 @@
   <div class="home">
     <h1>
       <img src="../assets/AppLogo.png" class="logo">Welcome, {{ this.$store.state.user.username }}</h1>
-    <p>{{ this.$store.state.user.authorities[0].name }}</p>
-    <!-- <test-list> </test-list> -->
     <patient-landing v-if="this.$store.state.user.authorities[0].name === 'ROLE_USER'" />
-    <employee-landing v-else-if="this.$store.state.user.authorities[0].name === 'ROLE_ADMIN'" />
-    <!-- <review-list /> -->
-    <!-- <add-review /> -->
-   
-
-    
+    <employee-landing v-else-if="this.$store.state.user.authorities[0].name === 'ROLE_ADMIN'" />    
   </div>
 </template>
 
 <script>
-
 import EmployeeLanding from '../components/EmployeeLanding.vue'
 import PatientLanding from '../components/PatientLanding.vue';
-
-// import TestList from "../components/TestList.vue"
-// import ReviewList from '../components/ReviewList.vue'
-// import AddReview from '../components/AddReview.vue';
-
 
 export default 
   {
   name: "home",
   components:{
-    // ReviewList,
-    // AddReview,
-    // TestList,
     PatientLanding,
     EmployeeLanding,
    
