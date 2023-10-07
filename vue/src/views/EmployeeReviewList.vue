@@ -1,17 +1,21 @@
 <template>
   <div>
-      <review-list />
+    <add-review></add-review>
+    <p>{{ this.$route.params.officeId }}</p>
+    <review-list />
   </div>
 </template>
 
 <script>
-import ReviewList from "../components/ReviewList.vue"
+import ReviewList from "../components/ReviewList.vue";
+import AddReview from "../components/AddReview.vue";
 export default {
-    components: {ReviewList}
-
-}
+  components: {
+    ReviewList,
+    AddReview,
+  },
+};
 </script>
 
 <style>
-
 </style>

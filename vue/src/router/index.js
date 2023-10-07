@@ -130,7 +130,7 @@ const router = new Router({
     },
     {
       //path: '/reviews/create',
-      path: '/reviews',
+      path: '/review/:officeId',
       name: 'EmployeeReview',
       component: EmployeeReviewList,
       meta: {
