@@ -14,6 +14,7 @@ import EmployeeReviewList from "../views/EmployeeReviewList"
 // import NewPatientInfo from '../views/NewPatientInfo'
 import AddSchedule from '../views/AddSchedule'
 import EditSchedule from '../views/EditSchedule'
+import RepliesList from '../views/RepliesList'
 
 Vue.use(Router)
 
@@ -119,12 +120,20 @@ const router = new Router({
         }
       },
     {
-      path: '/review/:officeId',
+      path: '/reviews/:officeId',
       name: 'EmployeeReview',
       component: EmployeeReviewList,
       meta: {
         requiresAuth: true
       } 
+    },
+    {
+      path: '/reviews/:reviewId/replies',
+      name: 'RepliesList',
+      component: RepliesList,
+      meta: {
+        requiresAuth: true
+      }
     }
     //{
     ///   path: '/patient/form',

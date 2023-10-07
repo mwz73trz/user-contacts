@@ -12,7 +12,7 @@
         <tbody>
           <tr v-for="review in reviewList" v-bind:key="review.officeId">
             <td with="80%">{{ review.reviewDate }}</td>
-            <td>{{ review.review }}</td>
+            <router-link v-bind:to="{ name: 'RepliesList', params: { id: review.id } }" v-bind:key="review.id"><td>{{ review.review }}</td></router-link>
             <td><button>Reply</button></td>
           </tr>
         </tbody>
