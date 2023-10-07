@@ -9,6 +9,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.security.Principal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class JdbcAppointmentDao implements AppointmentDao {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, employeeId);
             while (results.next()) {
                 appointment.add(mapRowToAppointment(results));
+
             }
         } catch (CannotGetJdbcConnectionException ex) {
             throw new DaoException("Unable to connect to server or database", ex);
@@ -88,6 +90,7 @@ public class JdbcAppointmentDao implements AppointmentDao {
         appointment.setEmployeeId(rs.getInt("employee_id"));
         appointment.setAppointmentDateStart(rs.getDate("appointment_date_start"));
         appointment.setAppointmentDateEnd(rs.getDate("appointment_date_end"));
+
 
 
         return appointment;

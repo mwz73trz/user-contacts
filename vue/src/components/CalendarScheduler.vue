@@ -6,8 +6,8 @@
 
 <script>
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-vue";
-// import employeeServices from '../services/EmployeeServices'
-import apptServices from '../services/ApptService'
+import employeeServices from '../services/EmployeeServices'
+// import apptServices from '../services/ApptService'
 
 export default {
   name: 'Scheduler',
@@ -62,23 +62,23 @@ export default {
   },
 
  created() {
-    // employeeServices.getEmployeeById(this.$route.params.employeeId).then(response => {
-    //   this.employee = response.data;
-    // }),
-    // employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
-    //   this.schedule = response.data;
-    //   this.config.events = [
-    //     {
-    //       id: this.schedule.scheduleId,
-    //       start: this.schedule.startTime,
-    //       end: this.schedule.endTime,
-    //       text: "Available",
-    //     },
-    //   ];
-    // });
-    apptServices.getAppointmentsByID(this.$route.params.employeeId).then(response => {
-      this.appointment = response.data
-    })
+    employeeServices.getEmployeeById(this.$route.params.employeeId).then(response => {
+      this.employee = response.data;
+    }),
+    employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
+      this.schedule = response.data;
+      this.config.events = [
+        {
+          id: this.schedule.scheduleId,
+          start: this.schedule.startTime,
+          end: this.schedule.endTime,
+          text: "Available",
+        },
+      ];
+    });
+    // apptServices.getAppointmentsByID(this.$route.params.employeeId).then(response => {
+    //   this.appointment = response.data
+    // })
     
   },
 

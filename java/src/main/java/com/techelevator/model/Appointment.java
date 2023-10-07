@@ -15,7 +15,6 @@ public class Appointment {
     private Date appointmentDateStart;
     private Date appointmentDateEnd;
 
-
     public Appointment() {
 
     }
@@ -76,4 +75,5 @@ public class Appointment {
     public void setAppointmentDateEnd(Date appointmentDateEnd) {
         this.appointmentDateEnd = appointmentDateEnd;
     }
+
 }

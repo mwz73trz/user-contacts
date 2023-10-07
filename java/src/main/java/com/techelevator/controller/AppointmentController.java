@@ -2,7 +2,6 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.AppointmentDao;
 import com.techelevator.model.Appointment;
-import com.techelevator.model.Patient;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.security.Principal;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin
 @RestController
 @PreAuthorize("isAuthenticated()")
 public class AppointmentController {
