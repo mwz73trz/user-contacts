@@ -10,7 +10,6 @@ import OfficeDetails from '../views/OfficeDetails'
 import DoctorDetails from '../views/DoctorDetails'
 import PatientInformation from '../views/PatientInformation'
 import Schedule from '../components/Schedule'
-import CreateReview from '../views/CreateReview'
 import EmployeeReviewList from "../views/EmployeeReviewList"
 // import NewPatientInfo from '../views/NewPatientInfo'
 import AddSchedule from '../views/AddSchedule'
@@ -120,16 +119,6 @@ const router = new Router({
         }
       },
     {
-      //path: '/reviews/create',
-      path: '/review/:id',
-      name: 'CreateReview',
-      component: CreateReview,
-      meta: {
-        requiresAuth: true
-      } 
-    },
-    {
-      //path: '/reviews/create',
       path: '/review/:officeId',
       name: 'EmployeeReview',
       component: EmployeeReviewList,

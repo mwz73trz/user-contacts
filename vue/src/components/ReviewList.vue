@@ -1,7 +1,6 @@
 <template>
   <div class="reviews">
-      <h2>Reviews</h2>
-      <p>officeId:{{this.$route.params.officeId}}</p>
+      <h2>Office Reviews</h2>
     <div
       class="review"
       v-for="review in filteredReviews"
@@ -36,9 +35,15 @@ export default {
   },
   computed: {
       filteredReviews(){
+        if (this.$store.state.user.authorities[0].name === 'ROLE_ADMIN') {
           return this.reviewList.filter((item) => {
-              return item.officeId == this.$route.params.officeId
+              return item.userId == this.$store.state.user.id;
           })
+        }else {
+          return this.reviewList.filter((item) => {
+              return item.officeId == this.$route.params.officeId;
+          })
+        }
       }
   }
 };

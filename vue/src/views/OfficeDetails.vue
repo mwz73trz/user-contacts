@@ -1,5 +1,6 @@
 <template>
 <div>
+    <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
   <h1>{{ office.officeName }}</h1>
   <p>Our office opens at {{ office.openTime }} and closes at {{ office.closeTime }}</p>
   <p>For appointments call {{ office.phoneNumber }}</p>

@@ -1,5 +1,5 @@
 <template>
-  <form v-on:submit.prevent="addNewReview">
+  <form v-on:submit="addNewReview">
     <div class="form-element">
       <label for="review">Review:</label>
       <textarea id="review" v-model="newReview.review"></textarea>
@@ -17,11 +17,10 @@ export default {
   data() {
     return {
       newReview: {
-        // id: 0,
-        userId: this.$store.state.user.id, //this.$store.state.user.id
+        userId: this.$store.state.user.id,
         reviewDate: null,
         review: "",
-        officeId: this.$route.params.officeId//this.$store.state.office.id,
+        officeId: this.$route.params.officeId
       },
     };
   },
@@ -29,8 +28,7 @@ export default {
     addNewReview() {
       ReviewServices.createReview(this.newReview).then( response => {
           if(response.status === 201){
-              this.$router.push('/')
-            //   this.$store.commit('ADD_REVIEW', response.data)
+             this.$store.commit('ADD_REVIEW', response.data)
           }
       })
     },
