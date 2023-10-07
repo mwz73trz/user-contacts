@@ -16,17 +16,16 @@ export default {
         return axios.get('/reviews', review)
     },
 
-    // updateAvailability(){
-    //     },
-
-    // updatePersonalInfo(id, information){
-    //     return axios.put(`/employee/${id}`, information)
-    // },
     getEmployeeById(employeeId) {
         return axios.get(`/employees/${employeeId}`)
     },
+    //updating employeeinfo
     createPersonalInfo(employee){
         return axios.post(`/employee`, employee)
+    },
+    //updating employeeinfo with office
+    addOfficeIdToEmployee(employee){
+        return axios.post(`/employee/offieId`, employee)
     },
     getScheduleByEmployeeId(employeeId) {
         return axios.get(`/schedules/${employeeId}`)

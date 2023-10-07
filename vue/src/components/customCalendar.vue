@@ -2,30 +2,30 @@
   <div>
   <div id="calendar-container">
       <h1> Title </h1>
-      <DayPilotNavigator id="nav" :config="navigatorConfig" />
+     // <DayPilotNavigator id="nav" :config="navigatorConfig" />
       <DayPilotCalendar id="dp" :config="config" ref="calendar" />
     </div>
   </div>
 </template>
 
 <script>
-import { DayPilot, DayPilotCalendar, DayPilotNavigator } from "@daypilot/daypilot-lite-vue";
+import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-vue"; // addback DayPilotNavigator
 import ApptService from '../services/ApptService'
 
 export default {
   name: 'Calendar',
   data: function() {
     return {
-      navigatorConfig: {
-        showMonths: 3,
-        skipMonths: 3,
-        selectMode: "Week",
-        startDate: DayPilot.Date.today(),
-        selectionDay: DayPilot.Date.today(),
-        onTimeRangeSelected: args => {
-          this.config.startDate = args.day;
-        }
-      },
+      // navigatorConfig: {
+      //   showMonths: 3,
+      //   skipMonths: 3,
+      //   selectMode: "Week",
+      //   startDate: DayPilot.Date.today(),
+      //   selectionDay: DayPilot.Date.today(),
+      //   onTimeRangeSelected: args => {
+      //     this.config.startDate = args.day;
+      //   }
+      // },
       config: {
         viewType: "WorkWeek",
         startDate: DayPilot.Date.today(),
@@ -57,7 +57,7 @@ export default {
   },
   components: {
     DayPilotCalendar,
-    DayPilotNavigator
+   // DayPilotNavigator
   },
   computed: {
     calendar() {

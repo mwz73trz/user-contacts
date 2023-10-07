@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.EmployeeDao;
 import com.techelevator.dao.JdbcEmployeeDao;
 import com.techelevator.model.Employee;
+import com.techelevator.model.Office;
 import com.techelevator.model.Patient;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -55,4 +56,12 @@ public class EmployeeController {
     public Employee postEmployee(Principal principal, @RequestBody Employee newEmployee) {
         return employeeDao.createEmployeeInfo(principal, newEmployee);
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PutMapping("/employee/officeId")
+    public Employee postEmployeeOfficeId(Principal principal, @RequestBody Employee newEmployee) {
+       return employeeDao.createNewEmployeeOffice(principal, newEmployee);
+    }
 }
+
+

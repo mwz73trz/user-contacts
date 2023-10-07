@@ -62,7 +62,11 @@ methods:{
     },
 
     updateEmployeeOfficeInfo(){
-        
+        EmployeeServices.addOfficeIdToEmployee(this.employee).then(response => {
+            if(response.status === 201){
+                this.$store.commit("ADD_OFFICE_INFO", response.data)
+            }
+        })
     },
 
 }

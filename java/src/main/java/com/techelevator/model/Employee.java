@@ -7,6 +7,16 @@ public class Employee {
     private String firstName;
     private String lastName;
 
+    private int officeId;
+
+    public int getOfficeId() {
+        return officeId;
+    }
+
+    public void setOfficeId(int officeId) {
+        this.officeId = officeId;
+    }
+
     public Employee(){
 
     }

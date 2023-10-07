@@ -2,8 +2,8 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Employee;
-import com.techelevator.model.Office;
 import com.techelevator.model.User;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -20,16 +20,19 @@ public class JdbcEmployeeDao implements EmployeeDao {
     private final JdbcTemplate jdbcTemplate;
     private final UserDao userDao;
 
-    public JdbcEmployeeDao(DataSource dataSource, UserDao userDao){
+    private final OfficeDao officeDao;
+
+    public JdbcEmployeeDao(DataSource dataSource, UserDao userDao, OfficeDao officeDao) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.userDao = userDao;
+        this.officeDao = officeDao;
     }
 
     @Override
     public List<Employee> getAllEmployees() {
         List<Employee> employees = new ArrayList<>();
         String sql = "SELECT employee_id, first_name, last_name " +
-                     "FROM employee;";
+                "FROM employee;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
@@ -39,17 +42,17 @@ public class JdbcEmployeeDao implements EmployeeDao {
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         }
-            return employees;
+        return employees;
     }
 
     @Override
     public Employee getEmployeeByUser(String username) {
         Employee employee = null;
         String sql = "SELECT employee.employee_id, employee.first_name, employee.last_name " +
-                      "FROM employee " +
-                        "JOIN users " +
-                             "ON users.user_id = employee.employee_id " +
-                      "WHERE users.username = ?; " ;
+                "FROM employee " +
+                "JOIN users " +
+                "ON users.user_id = employee.employee_id " +
+                "WHERE users.username = ?; ";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
             if (results.next()) {
@@ -65,8 +68,8 @@ public class JdbcEmployeeDao implements EmployeeDao {
     public Employee getEmployeeById(int employeeId) {
         Employee employee = null;
         String sql = "SELECT employee_id, first_name, last_name" +
-                        "\tFROM employee\n" +
-                        "\tWHERE employee_id = ?;";
+                "\tFROM employee\n" +
+                "\tWHERE employee_id = ?;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, employeeId);
             if (results.next()) {
@@ -81,8 +84,8 @@ public class JdbcEmployeeDao implements EmployeeDao {
     @Override
     public Employee createEmployeeInfo(Principal principal, Employee employee) {
         String sql = "INSERT INTO employee(employee_id, first_name, last_name) " +
-                     "VALUES (?, ?, ?) " +
-                     "RETURNING employee_id;";
+                "VALUES (?, ?, ?) " +
+                "RETURNING employee_id;";
 
         User user = userDao.getUserByUsername(principal.getName());
         int userId = user.getId();
@@ -93,26 +96,35 @@ public class JdbcEmployeeDao implements EmployeeDao {
         return employee;
     }
 
+    @Override
+     public Employee createNewEmployeeOffice(Principal principal, Employee employee) {
+        String sql = "INSERT INTO employee_office (employee_id, office_id) " +
+                "VALUES (?, ?) " +
+                "RETURNING office_id ;";
 
+//        String sql = "INSERT INTO employee_office (employee_id, office_id) " +
+//                "VALUES (" +
+//                "(SELECT employee_id FROM employee WHERE employee_id = ?), " +
+//                "(SELECT office_id FROM office_details WHERE office_id = ?)) " +
+//                "RETURNING office_id ;";
 
+        User user = userDao.getUserByUsername(principal.getName());
+        int userId = user.getId();
 
-//    @Override
-//    public void updateEmployeeInfo(Employee employee) {
-//        String sql = "UPDATE employee " +
-//                     "JOIN office_details " +
-//                         "ON employee.office_id = office_details.office_id " +
-//                     "SET employee.user_id = ?, " +
-//                        "employee.first_name = ?, " +
-//                        "employee.last_name = ?, " +
-//                        "employee.office_id = office_details.office_id " +
-//                        "WHERE employee.employee_id = ?";
-//
-//        jdbcTemplate.update(sql,
-//                employee.getUserId(),
-//                employee.getFirstName(),
-//                employee.getLastName(),
-//                employee.getEmployeeId());
-//    }
+        try {
+            Integer newOfficeId = jdbcTemplate.queryForObject(sql, Integer.class,  userId, employee.getOfficeId());
+            employee.setOfficeId(newOfficeId);
+            return employee;
+        } catch (CannotGetJdbcConnectionException ex) {
+            // add any handling code.
+            throw new DaoException("Cannot connect to database. Try again later");
+        }
+//        catch (
+//                DataIntegrityViolationException ex) {
+//            throw new DaoException("Data Integrity Violation", ex);
+//        }
+    }
+
 
 
     private Employee mapRowToEmployee(SqlRowSet rs){
