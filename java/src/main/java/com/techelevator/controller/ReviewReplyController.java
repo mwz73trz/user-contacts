@@ -26,7 +26,7 @@ public class ReviewReplyController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping("/reviews/{reviewId}")
+    @RequestMapping("/reviews/{reviewId}/replies")
     public List<ReviewReply> getRepliesByReviewId(@PathVariable int reviewId) {
         return reviewReplyDao.replyListByReviewId(reviewId);
     }

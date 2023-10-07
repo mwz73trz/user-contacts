@@ -11,7 +11,7 @@
         </tr>
         <tbody>
           <tr v-for="reply in replyList" v-bind:key="reply.replyId">
-            <td with="80%">{{ reply.replyDate }}</td>
+            <td with="80%">{{ reply.reviewDate }}</td>
             <td>{{ reply.reviewReply }}</td>
           </tr>
         </tbody>
@@ -38,7 +38,7 @@ export default {
         }
     },
     created() {
-       replyServices.getReplies().then(response => {
+       replyServices.getReplies(this.$route.params.id).then(response => {
            this.replyList = response.data;
        }) 
     }
@@ -46,5 +46,28 @@ export default {
 </script>
 
 <style>
+h2 {
+  text-align: center;
+}
+.replies-list {
+  margin: 0 auto;
+  max-width: 800px;
+}
+.reply {
+  font-size: 24px;
+  border-bottom: 1px solid #f2f2f2;
+  padding: 10px 20px;
+}
+.reply:last-child {
+  border: 0px;
+}
 
+table {
+  text-align: left;
+  width: 800px;
+  border-collapse: collapse;
+}
+td {
+  padding: 4px;
+}
 </style>

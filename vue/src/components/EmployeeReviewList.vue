@@ -12,7 +12,7 @@
         <tbody>
           <tr v-for="review in reviewList" v-bind:key="review.officeId">
             <td with="80%">{{ review.reviewDate }}</td>
-            <router-link v-bind:to="{ name: 'RepliesList', params: { id: review.id } }" v-bind:key="review.id"><td>{{ review.review }}</td></router-link>
+            <router-link v-bind:to="{ name: 'RepliesList', params: { id: review.reviewId } }" v-bind:key="review.reviewId"><td>{{ review.review }}</td></router-link>
             <td><button>Reply</button></td>
           </tr>
         </tbody>
@@ -29,7 +29,7 @@ export default {
     return {
       reviewList: [],
       review: {
-        id: 0,
+        reviewId: 0,
         userId: "",
         reviewDate: "",
         review: "",
