@@ -66,7 +66,7 @@ export default {
   },
     methods: {
     loadEvents(){
-  ApptService.getAppointmentsByID(this.$route.params.employeeId).then((response) => {
+    ApptService.getAppointmentsByID(this.$route.params.employeeId).then((response) => {
     const events = response.data.map((appointment) => ({
       id: appointment.appointmentId,
       start: appointment.date + "T" + appointment.startTime,
