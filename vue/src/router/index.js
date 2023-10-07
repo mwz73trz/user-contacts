@@ -15,6 +15,7 @@ import EmployeeReviewList from "../views/EmployeeReviewList"
 import AddSchedule from '../views/AddSchedule'
 import EditSchedule from '../views/EditSchedule'
 import RepliesList from '../views/RepliesList'
+import AddReplyForm from '../views/AddReplyForm'
 
 Vue.use(Router)
 
@@ -131,6 +132,14 @@ const router = new Router({
       path: '/reviews/:reviewId/replies',
       name: 'RepliesList',
       component: RepliesList,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: 'reviews/:reviewId/replies/add',
+      name: 'AddReplyForm',
+      component: AddReplyForm,
       meta: {
         requiresAuth: true
       }

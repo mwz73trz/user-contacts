@@ -20,7 +20,7 @@ public class ReviewReplyController {
         this.reviewReplyDao = reviewReplyDao;
     }
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/reviews/{reviewId}")
+    @PostMapping("/reviews/{reviewId}/replies")
     public ReviewReply postReviewReply(Principal principal, @PathVariable int reviewId, @RequestBody ReviewReply newreviewReply){
         return reviewReplyDao.respondReviewByUser(principal, reviewId, newreviewReply);
     }

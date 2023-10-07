@@ -57,6 +57,9 @@ export default new Vuex.Store({
     },
     ADD_REVIEW(state, review) {
       state.review = review
+    },
+    ADD_REPLY(state, reply) {
+      state.reply = reply
     }
   }
 })
