@@ -2,11 +2,13 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Review;
+import com.techelevator.model.User;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +16,11 @@ import java.util.List;
 public class JdbcReviewDao implements  ReviewDao{
 
     private final JdbcTemplate jdbcTemplate;
+    private final UserDao userDao;
 
-    public JdbcReviewDao(JdbcTemplate jdbcTemplate) {
+    public JdbcReviewDao(JdbcTemplate jdbcTemplate, UserDao userDao) {
         this.jdbcTemplate = jdbcTemplate;
+        this.userDao = userDao;
     }
 
     @Override
@@ -26,6 +30,27 @@ public class JdbcReviewDao implements  ReviewDao{
                 "\tFROM review;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            while (results.next()) {
+                reviews.add(mapRowToReview(results));
+            }
+        } catch (CannotGetJdbcConnectionException ex){
+            throw  new DaoException("Cannot connect to server or database", ex);
+        }
+        return reviews;
+    }
+
+    @Override
+    public List<Review> getReviewsByOffice(Principal principal) {
+        List<Review> reviews = new ArrayList<>();
+        String sql = "SELECT review_id, user_id, review_date, review, office_id " +
+                    " FROM review " +
+                    " WHERE user_id = ? ; " ;
+
+        User user = userDao.getUserByUsername(principal.getName());
+        int userId = user.getId();
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             while (results.next()) {
                 reviews.add(mapRowToReview(results));
             }

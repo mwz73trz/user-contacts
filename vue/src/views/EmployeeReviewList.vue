@@ -1,8 +1,8 @@
 <template>
   <div>
     <add-review></add-review>
-    <p>{{ this.$route.params.officeId }}</p>
-    <review-list />
+    <p>{{ this.$route.params.officeId }}</p> 
+    <review-list />  
   </div>
 </template>
 
