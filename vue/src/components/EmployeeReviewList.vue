@@ -10,9 +10,10 @@
           <th>Review</th>
         </tr>
         <tbody>
-          <tr v-for="review in filteredReviews" v-bind:key="review.officeId">
+          <tr v-for="review in reviewList" v-bind:key="review.officeId">
             <td with="80%">{{ review.reviewDate }}</td>
             <td>{{ review.review }}</td>
+            <td><button>Reply</button></td>
           </tr>
         </tbody>
       </table>
@@ -37,17 +38,17 @@ export default {
     };
   },
   created() {
-    ReviewServices.getReviews().then(response => {
+    ReviewServices.getEmployeeReviews().then(response => {
         this.reviewList = response.data;
     });
   },
-  computed: {
-      filteredReviews(){
-          return this.reviewList.filter((item) => {
-              return item.officeId == this.$route.params.officeId;
-          })
-        }
-      }
+//   computed: {
+//       filteredReviews(){
+//           return this.reviewList.filter((item) => {
+//               return item.officeId == this.$route.params.officeId;
+//           })
+//         }
+//       }
   }
 </script>
 

@@ -42,9 +42,17 @@ public class JdbcReviewDao implements  ReviewDao{
     @Override
     public List<Review> getReviewsByOffice(Principal principal) {
         List<Review> reviews = new ArrayList<>();
-        String sql = "SELECT review_id, user_id, review_date, review, office_id " +
-                    " FROM review " +
-                    " WHERE user_id = ? ; " ;
+        String sql = "SELECT review.review_id, " +
+                        "review.user_id, " +
+                        "review.review_date, " +
+                        "review.review, " +
+                        "review.office_id " +
+                        "FROM review " +
+                        "JOIN employee_office " +
+                        "ON employee_office.office_id = review.office_id " +
+                        "JOIN employee " +
+                        "ON employee.employee_id = employee_office.employee_id " +
+                        "WHERE employee.employee_id = ?; ; " ;
 
         User user = userDao.getUserByUsername(principal.getName());
         int userId = user.getId();

@@ -1,16 +1,16 @@
 <template>
   <div>
     <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
-    <review-list />  
+    <employee-review-list />  
   </div>
 </template>
 
 <script>
-import ReviewList from "../components/ReviewList.vue";
+import EmployeeReviewList from "../components/EmployeeReviewList.vue";
 
 export default {
   components: {
-    ReviewList,
+    EmployeeReviewList,
   },
 };
 </script>
