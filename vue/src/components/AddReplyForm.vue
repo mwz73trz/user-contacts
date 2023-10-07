@@ -1,10 +1,13 @@
 <template>
   <div>
       <form v-on:submit.prevent="addReply">
-        <div>
+        <div class="form">
           <label for="reply">Reply Response:</label>
           <textarea id="review-reply" cols="30" rows="10" v-model="newReply.reviewReply"></textarea>
-          <button type="submit">Submit Reply</button>
+            <div class="actions">
+              <button type="submit">Submit</button>
+              <router-link :to="{ name: 'EmployeeReview' }" tag ="button">Cancel</router-link>
+            </div>
         </div>
       </form>
   </div>
@@ -15,28 +18,42 @@ import replyServices from '../services/ReplyServices'
 
 export default {
   name: 'add-reply-form',
+  props:{
+
+  },
   data() {
     return {
       newReply: {
         reviewId: this.$route.params.id,
         userId: this.$store.state.user.id,
-        reviewDate: null,
+        reviewDate: Date.now(),
         reviewReply: ''
       }
     }
   },
   methods: {
     addReply() {
-      replyServices.addReply(this.$route.params.id, this.newReply).then(response => {
+      replyServices.createAddReply(this.$route.params.id, this.newReply).then(response => {
         if (response.status === 201) {
           this.$store.commit('ADD_REPLY', response.data)
+          this.$router.push({name: 'EmployeeReview'})
         }
       })
-    }
+    },
   }
 }
 </script>
 
 <style>
+.form{
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.actions{
+display: flex;
+justify-content: space-around;
+
+}
 
 </style>

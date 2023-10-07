@@ -8,8 +8,8 @@
 import RepliesByReview from '../components/RepliesByReview.vue'
 
 export default {
-        components: {
-        RepliesByReview
+  components: {
+      RepliesByReview
     }
 }
 </script>

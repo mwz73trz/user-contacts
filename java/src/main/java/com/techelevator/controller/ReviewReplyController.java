@@ -25,6 +25,7 @@ public class ReviewReplyController {
         return reviewReplyDao.respondReviewByUser(principal, reviewId, newreviewReply);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping("/reviews/{reviewId}/replies")
     public List<ReviewReply> getRepliesByReviewId(@PathVariable int reviewId) {

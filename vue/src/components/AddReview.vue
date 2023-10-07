@@ -18,7 +18,7 @@ export default {
     return {
       newReview: {
         userId: this.$store.state.user.id,
-        reviewDate: null,
+        reviewDate: Date.now(),
         review: "",
         officeId: this.$route.params.officeId
       },

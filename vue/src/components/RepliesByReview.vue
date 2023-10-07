@@ -2,6 +2,11 @@
   <div class="replies">
     <div>
       <h2>Replies</h2>
+        <div class="navButtons">
+          <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
+          |
+          <router-link :to="{ name: 'EmployeeReview' }" tag ="button">Return To Reviews</router-link>
+        </div>
       </div>
     <div class="replies-list">
       <table>
@@ -49,7 +54,11 @@ export default {
 h2 {
   text-align: center;
 }
+.navButtons{
+ text-align: center;
+}
 .replies-list {
+  padding: 40px;
   margin: 0 auto;
   max-width: 800px;
 }
