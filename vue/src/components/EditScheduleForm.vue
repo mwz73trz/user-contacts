@@ -1,7 +1,7 @@
 <template>
    <div>
       <h1>Edit Schedule</h1>
-     <form v-on:submit="submitForm">
+     <form v-on:submit.prevent="submitForm">
        <div>
          <label for="startTime">Start Time</label>
          <input type="text" v-model="schedule.startTime">
@@ -33,10 +33,10 @@ export default {
   methods: {
     submitForm() {
       const updatedForm = {
-        newId: this.schedule.scheduleId,
-        newUser: this.schedule.employeeId,
-        newStart: this.schedule.startTime,
-        newEnd: this.schedule.endTime
+        scheduleId: this.schedule.scheduleId,
+        employeeId: this.schedule.employeeId,
+        startTime: this.schedule.startTime,
+        endTime: this.schedule.endTime
       }
       employeeServices.updateSchedule(this.schedule.scheduleId, updatedForm).then(response => {
         if (response.status === 200) {
