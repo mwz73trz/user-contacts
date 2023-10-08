@@ -38,7 +38,7 @@ public class ScheduleController {
     @PutMapping("/schedules/{scheduleId}")
     public Schedule updateSchedule(@PathVariable int scheduleId, @RequestBody Schedule updatedSchedule) {
         updatedSchedule.setScheduleId(scheduleId);
-        if (scheduleDao.updateSchedule(updatedSchedule)) {
+        if (scheduleDao.updateSchedule(scheduleId, updatedSchedule)) {
             return updatedSchedule;
         }else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Schedule not found to update");
