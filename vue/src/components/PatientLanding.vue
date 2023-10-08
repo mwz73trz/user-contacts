@@ -1,8 +1,6 @@
 <template>
 <div>
   <div class="covid-list"> 
-     <h1 class = "Covid">
-      <img src="../assets/Covid-19.png" alt = "Covid world wide satistics" class="logo"></h1>
     <covid-list/>
   </div>
   <div class="headerPatient"><h1>Please Select one of the below to view additional information.</h1></div>
