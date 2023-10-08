@@ -38,22 +38,25 @@ export default {
         viewType: "Week",
         startDate: DayPilot.Date.today(),
         events: [],
-        
-      //  onTimeRangeSelected: (args) => {
-      //   DayPilot.Modal.prompt('Create a new event:', 'Event 1').then((modal) => {
-      //     var dp = args.control;
-      //     dp.clearSelection();
-      //     if (modal.canceled) {
-      //       return;
-      //     }
-      //     dp.events.add({
-      //       start: args.start,
-      //       end: args.end,
-      //       id: DayPilot.guid(),
-      //       text: modal.result,
-      //     });
-      //   });
-      // },
+        // onTimeRangeSelected: async (args) => {
+
+        //   var form = [
+        //     {name: "Enter First Name", id: "first"},
+        //     {name: "Enter Last Name", id: "last"},
+        //     {option: "doc ", id:"doc"}
+        //   ];
+
+        //   var data = {
+        //     first: "Jane",
+        //     last: "Doe",
+        //     id: 1204
+        //   };
+        //   const modal = await DayPilot.Modal.form(form,data).then(function(args){
+        //     if(!args.canceled){
+        //       console.log("data", args.result)
+        //     }
+        //   });
+
        },
      }
   },

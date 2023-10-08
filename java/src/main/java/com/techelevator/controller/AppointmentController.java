@@ -45,7 +45,7 @@ public class AppointmentController {
 //    }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/appointment")
+    @PostMapping("/appointments/create")
     public Appointment postAppointment(Principal principal, @RequestBody Appointment newAppointment) {
         return appointmentDao.createNewAppointment(principal, newAppointment);
     }

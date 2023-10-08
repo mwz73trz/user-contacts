@@ -28,7 +28,7 @@ public class JdbcAppointmentDao implements AppointmentDao {
     @Override
     public List<Appointment> getAppointmentByUser(Principal principal) {
         List <Appointment> appointment = new ArrayList<>();
-        String sql = "SELECT appointment_id, created_time, patient_id, employee_id, appointment_date_start, appointment_date_end  " +
+        String sql = "SELECT appointment_id, created_time, patient_id, employee_id, appointment_date_start, appointment_time_start, appointment_date_end, appointment_time_end  " +
                      "FROM appointment " +
                      "WHERE employee_id = ? ; ";
 
@@ -51,7 +51,7 @@ public class JdbcAppointmentDao implements AppointmentDao {
 //    @Override
 //    public List<Appointment> getAllAppointments() {
 //        List <Appointment> appointment = new ArrayList<>();
-//        String sql = "SELECT appointment_id, created_time, patient_id, employee_id, appointment_date, appointment_date_start, appointment_date_end " +
+//        String sql = "SELECT appointment_id, created_time, patient_id, employee_id, appointment_date_start, appointment_time_start, appointment_date_end, appointment_time_end " +
 //                     "FROM appointment;";
 //        try {
 //            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -67,8 +67,8 @@ public class JdbcAppointmentDao implements AppointmentDao {
     //Patient creates a new appointmentposyr
     @Override
     public Appointment createNewAppointment(Principal principal, Appointment appointment) {
-       String sql = "INSERT INTO appointment( patient_id, employee_id, appointment_date_start, appointment_date_end ) " +
-                    "VALUES (?, ?, ?, ?, ?) RETURNING appointment_id; " ;
+       String sql = "INSERT INTO appointment( patient_id, employee_id, appointment_date_start, appointment_time_start, appointment_date_end, appointment_time_end) " +
+                    "VALUES (?, ?, ?, ?, ?, ?) RETURNING appointment_id; " ;
         User user = userDao.getUserByUsername(principal.getName());
         int userId = user.getId();
 
@@ -76,7 +76,9 @@ public class JdbcAppointmentDao implements AppointmentDao {
                                                     userId,
                                                     appointment.getEmployeeId(),
                                                     appointment.getAppointmentDateStart(),
-                                                    appointment.getAppointmentDateEnd());
+                                                    appointment.getAppointmentTimeStart(),
+                                                    appointment.getAppointmentDateEnd(),
+                                                    appointment.getAppointmentTimeEnd());
 
         appointment.setAppointmentId(newId);
         return appointment;
@@ -89,8 +91,9 @@ public class JdbcAppointmentDao implements AppointmentDao {
         appointment.setPatientId(rs.getInt("patient_id"));
         appointment.setEmployeeId(rs.getInt("employee_id"));
         appointment.setAppointmentDateStart(rs.getDate("appointment_date_start"));
+        appointment.setAppointmentTimeStart(rs.getTime("appointment_time_start"));
         appointment.setAppointmentDateEnd(rs.getDate("appointment_date_end"));
-
+        appointment.setAppointmentTimeEnd(rs.getTime("appointment_time_end"));
 
 
         return appointment;

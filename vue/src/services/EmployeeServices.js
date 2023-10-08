@@ -35,8 +35,8 @@ export default {
     },
     updateSchedule(schedule) {
         return axios.put(`/schedules/${schedule.scheduleId}`, schedule)
-    }
+    },
 
-    
+   
 
 }

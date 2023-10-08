@@ -60,6 +60,9 @@ export default new Vuex.Store({
     },
     ADD_REPLY(state, reply) {
       state.reply = reply
+    },
+    ADD_APPOINTMENT_EMPLOYEE(state, appointment){
+      state.appointment = appointment
     }
   }
 })

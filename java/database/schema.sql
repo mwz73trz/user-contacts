@@ -98,8 +98,10 @@ CREATE TABLE appointment(
 	created_time DATE DEFAULT now(),
 	patient_id INT NOT NULL,
 	employee_id INT NOT NULL,
-	appointment_date_start TIMESTAMP NOT NULL,
-	appointment_date_end TIMESTAMP NOT NULL,
+	appointment_date_start DATE NOT NULL,
+	appointment_time_start TIME NOT NULL,
+	appointment_date_end DATE NOT NULL,
+	appointment_time_end TIME NOT NULL,
 		
 	CONSTRAINT PK_appointment PRIMARY KEY (appointment_id),
 	CONSTRAINT FK_appointment_employee FOREIGN KEY (employee_id) REFERENCES employee(employee_id),

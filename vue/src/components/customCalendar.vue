@@ -2,113 +2,100 @@
   <div>
   <div id="calendar-container">
       <h1> Title </h1>
-     // <DayPilotNavigator id="nav" :config="navigatorConfig" />
+      <DayPilotNavigator id="nav" :config="navigatorConfig" />
       <DayPilotCalendar id="dp" :config="config" ref="calendar" />
     </div>
   </div>
 </template>
 
 <script>
-import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-vue"; // addback DayPilotNavigator
+import { DayPilot, DayPilotCalendar, DayPilotNavigator } from "@daypilot/daypilot-lite-vue"; // addback DayPilotNavigator
 import ApptService from '../services/ApptService'
 
 export default {
   name: 'Calendar',
   data: function() {
     return {
-      // navigatorConfig: {
-      //   showMonths: 3,
-      //   skipMonths: 3,
-      //   selectMode: "Week",
-      //   startDate: DayPilot.Date.today(),
-      //   selectionDay: DayPilot.Date.today(),
-      //   onTimeRangeSelected: args => {
-      //     this.config.startDate = args.day;
-      //   }
-      // },
+      newAppointment:{
+        appointmentId: 0,
+        employeeId: "",
+        patientId: "",
+        appointmentDateStart: "",
+        appointmentTimeStart: "",
+        appointmentDateEnd: "",
+        appointmentTimeEnd: ""
+      },
+      navigatorConfig: {
+        showMonths: 1,
+        skipMonths: 1,
+        selectMode: "Week",
+        startDate: DayPilot.Date.today(),
+        selectionDay: DayPilot.Date.today(),
+        onTimeRangeSelected: args => {
+          this.config.startDate = args.day;
+        }
+      },
       config: {
         viewType: "WorkWeek",
         startDate: DayPilot.Date.today(),
-        events: [],
+        events: [],           
         onTimeRangeSelected: async (args) => {
-          const modal = await DayPilot.Modal.prompt("Create a new event:", "Event 1");
+          const modal = await DayPilot.Modal.prompt("Create a new event:", "Blocked");
           const dp = args.control;
           dp.clearSelection();
           if (modal.canceled) {
             return;
           }
-          dp.events.add({
+          dp.events.add({            
             start: args.start,
             end: args.end,
             id: DayPilot.guid(),
             text: modal.result
           });
+        const startDateTime = args.start.split("T");
+        const endDateTime = args.start.split("T");
+        this.newAppointment.appointmentDateStart = startDateTime[0];
+        this.newAppointment.appointmentTimeStart = startDateTime[1];
+        this.newAppointment.appointmentDateEnd = endDateTime[0];
+        this.newAppointment.appointmentTimeEnd = endDateTime[1];
+                
         },
        },
-      appointments:{
-        appointmentId: 0,
-        employeeId: "",
-        patientId: "",
-        date: "",
-        startTime: "",
-        endTime: ""
-      },
+      
     }
   },
   components: {
-    DayPilotCalendar,
-   // DayPilotNavigator
+   DayPilotCalendar,
+   DayPilotNavigator
   },
   computed: {
     calendar() {
       return this.$refs.calendar.control;
     }
   },
-    methods: {
+  methods: {
     loadEvents(){
     ApptService.getAppointmentsByID(this.$route.params.employeeId).then((response) => {
     const events = response.data.map((appointment) => ({
       id: appointment.appointmentId,
-      start: appointment.date + "T" + appointment.startTime,
-      end: appointment.date + "T" + appointment.endTime,
-      text: appointment.patientId, // You may want to change this to use the actual appointment text
-    }));
+      start: appointment.appointmentDateStart + "T" + appointment.appointmentTimeStart,
+      end: appointment.appointmentDateEnd + "T" + appointment.appointmentTimeEnd,
+      text: appointment.patientId, 
+      }));
     this.config.events = events;
     this.calendar.update();
-  });
-
-    //   const events = [
-    //     {
-    //       id: 1,
-    //       start: "2023-10-06T10:00:00",
-    //       end: "2023-10-06T10:00:00",
-    //       text: "Event 1",
-    //     },
-    
-    //   ];
-
-    //   // () => {
-    //   //   for(let x=0; x < this.appointments.length; x++) {
-    //   //   events[x].id = this.appointments[x].appointmentId;
-    //   //   events[x].start = this.appointments[x].startTime;
-    //   //   events[x].end = this.appointments[x].endTime;
-    //   //   events[x].text = this.appointments[x].patientId;
-    //   //   }
-    //   // }
-
-    //   // () => {this.appointments.forEach(appointment => {
-    //   //   events.push(appointment);
-    //   // });}
-
-    // this.calendar.update({events});
-     }
-  },
- created() {
-    ApptService.getAppointmentsByID(
-      this.$route.params.employeeId).then(response => {
-      this.appointments = response.data;
     });
+   }, 
+   addNewAppointment(){
+     ApptService.addEmployeeAppointment(this.$route.params.employeeId, this.newAppointment)
+      .then(response => {
+      if(response.status === 201){
+      this.$store.commit("ADD_APPOINTMENT_EMPLOYEE", response.data)
+      }
+    })
+   }
   },
+
   //a lifecycle hook
   mounted() {
     this.loadEvents();
