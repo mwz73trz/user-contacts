@@ -1,15 +1,9 @@
 <template>
 
-<div id="container">
+<div class="container">
   <div class = "row">
-      <!-- <iframe src="https://covid-19.dataflowkit.com/v1/WORLD.html" 
-	frameborder="0" scrolling="no"
-	width="250" height="250"> -->
-<!-- </iframe>  -->
-   <h1 class = "Covid"> 
-      <img src="../assets/Covid-19.png" alt = "Click me" class="logo" id ="imageToClick"></h1>
-      <div id ="detailsContainer"> </div>
-     <h1>Covid-19 summary results</h1>
+      <img src="../assets/Covid-19.png" alt = "Click me" class="logo" id ="imageToClick">
+     <p>Covid-19 summary results</p>
       <div class="key">Below are the estimated {{covidData['Country_text']}} data</div>
       <div class="key">Total Covid Cases:{{covidData['Total Cases_text']}} </div>
       <div class="key">Total Death Cases:{{covidData['Total Deaths_text']}} </div>
@@ -47,28 +41,39 @@ created(){
 <style>
 
 .row {
-    border: 2px solid lightgrey;
+    border: 1px 
+    solid rgb(141, 11, 11);
     overflow: hidden;
+    float:right;
+    text-align: left;
+    font:bold;
+  
+    
 }
 
 .key {
     width: 50%;
     float:left;
-    padding-left: 5px;
+    font:bold;
 }
 
-#container {
+.container {
+    display: flex;
     width: 30%;
-    border: 2px solid #1b1c1d; 
-    font-family: monospace;
-    font-weight: bold; 
-     border-radius: 8px;
+    font-family: calibri;
+    font-size: 80%;
+    font: bold;
+    border-radius: 8px;
+    text-align: center;
+    float: right;
+    
 }
 
 .logo{
-  border: 1px solid rgb(176, 165, 196);
+  border: 1px ;
   border-radius: 6px;
-  padding: 6px;
-  width: 150px;
+  padding: 15px;
+  width: 160px;
+  float: left;
 }
 </style>
