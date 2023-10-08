@@ -7,7 +7,7 @@
 
 <script>
 import employeeServices from '../services/EmployeeServices'
-import CalendarScheduler from '../components/CalendarScheduler.vue'
+import CalendarScheduler from '../components/PatientApptCalendarVue.vue'
 
 export default {
   name: 'doctor-details',

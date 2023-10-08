@@ -1,23 +1,21 @@
 <template>
     <div id="calendar-container">
-    <DayPilotCalendar id="dp" :config="config" ref="scheduler" />
+    <DayPilotCalendar id="dp" :config="config" ref="calendar" />
   </div>
 </template>
 
 <script>
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-vue";
 import employeeServices from '../services/EmployeeServices'
-// import apptServices from '../services/ApptService'
+import ApptService from '../services/ApptService'
 
 export default {
-  name: 'Scheduler',
+  name: 'calendar',
   props: { },
   data: function() {
     return {
       employee:{
         id: 0,
-        startTime: "",
-        endTime: "",
         },
       schedule: {
         id: '',
@@ -28,9 +26,10 @@ export default {
         appointmentId: 0,
         employeeId: "",
         patientId: "",
-        appointmentDate: "", 
-        appointmentStartTime: "",
-        appointmentEndTime: "",
+        appointmentDateStart: "",
+        appointmentTimeStart: "",
+        appointmentDateEnd: "",
+        appointmentTimeEnd: ""
       },
 
       //how will the calendar display
@@ -87,7 +86,7 @@ export default {
 
   computed: {
     calendar() {
-      return this.$refs.scheduler.control;
+      return this.$refs.calendar.control;
   }
     // calendarEvents(){
     //  return [
@@ -101,10 +100,18 @@ export default {
     // }
   },
   methods: {
-    //what comes back from the database
-    loadAppointmentEvents(){
-    this.calendar.update({events: this.config.events}); //returns the "events" and redraws the UI
-    }
+    loadEvents(){
+      ApptService.getAppointmentsByID(this.$route.params.patientId).then((response) => {
+      const events = response.data.map((appointment) => ({
+        id: appointment.appointmentId,
+        start: appointment.appointmentDateStart + "T" + appointment.appointmentTimeStart,
+        end: appointment.appointmentDateEnd + "T" + appointment.appointmentTimeEnd,
+        text: "Booked", 
+        }));
+      this.config.events = events;
+      this.calendar.update();
+      });
+    }, 
   },
 
   //a lifecycle hook
