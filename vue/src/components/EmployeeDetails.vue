@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import EmployeeProfile from '../components/EmployeeProfile.vue';
+import EmployeeProfile from './EmployeeProfile.vue';
 
 export default {
   name: "employee-details",

@@ -1,31 +1,19 @@
 <template>
   <div>
-      <h1>Doctor: {{ employee.firstName }} {{ employee.lastName }}</h1>
+      <doctor-info />
       <div class="appointmentCalendar"> <calendar-scheduler></calendar-scheduler> </div>
   </div>
 </template>
 
 <script>
-import employeeServices from '../services/EmployeeServices'
+import DoctorInfo from '../components/DoctorInfo.vue'
 import CalendarScheduler from '../components/PatientApptCalendarVue.vue'
 
 export default {
   name: 'doctor-details',
   components: {
+    DoctorInfo,
     CalendarScheduler
-  },
-  data() {
-    return {
-      employee: {
-        firstName: '',
-        lastName: ''
-      }
-    }
-  },
-  created() {
-    employeeServices.getEmployeeById(this.$route.params.employeeId).then(response => {
-      this.employee = response.data;
-    })
   }
 }
 </script>
