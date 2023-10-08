@@ -1,8 +1,8 @@
 <template>
 <div>
   <div class="covid-list"> 
-     <h1 class = "Covid">
-      <img src="../assets/Covid-19.png" alt = "Covid world wide satistics" class="logo"></h1>
+     <!-- <h1 class = "Covid"> Click the image to show Covid stastics
+      <img src="../assets/Covid-19.png" alt = "Click me" class="logo"></h1> -->
     <covid-list/>
   </div>
   <div><h1>Patient</h1></div>
@@ -89,10 +89,10 @@ computed: {
 </script>
 
 <style scoped>
-.logo{
+/* .logo{
   border: 1px solid rgb(176, 165, 196);
   border-radius: 6px;
   padding: 6px;
   width: 150px;
-}
+} */
 </style>
