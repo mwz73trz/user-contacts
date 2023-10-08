@@ -33,10 +33,10 @@ export default {
     addSchedule(schedule) {
         return axios.post(`/schedules`, schedule)
     },
-    updateSchedule(schedule) {
-        return axios.put(`/schedules/${schedule.scheduleId}`, schedule)
-    }
+    updateSchedule(scheduleId, schedule) {
+        return axios.put(`/schedules/${scheduleId}`, schedule)
+    },
 
-    
+   
 
 }

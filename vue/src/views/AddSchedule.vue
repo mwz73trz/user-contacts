@@ -1,15 +1,16 @@
 <template>
   <div>
-      <schedule-form></schedule-form>
+      <add-schedule-form />
   </div>
 </template>
 
 <script>
-import ScheduleForm from '../components/ScheduleForm.vue'
+import AddScheduleForm from '../components/AddScheduleForm.vue'
 
 export default {
+    name: 'add-schedule',
     components: {
-        ScheduleForm
+        AddScheduleForm
     }
 }
 </script>

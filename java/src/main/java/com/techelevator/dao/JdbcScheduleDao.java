@@ -44,11 +44,11 @@ public class JdbcScheduleDao implements ScheduleDao{
     }
 
     @Override
-    public boolean updateSchedule(Schedule schedule) {
-        String sql = "UPDATE employee_schedule \n" +
-                        "\tSET start_time = ?, end_time = ?\n" +
+    public boolean updateSchedule(int scheduleId, Schedule schedule) {
+        String sql = "UPDATE employee_schedule\n" +
+                        "\tSET schedule_id=?, employee_id=?, start_time=?, end_time=?\n" +
                         "\tWHERE schedule_id = ?;";
-        int count = jdbcTemplate.update(sql, schedule.getStartTime(), schedule.getEndTime(), schedule.getScheduleId());
+        int count = jdbcTemplate.update(sql, schedule.getScheduleId(), schedule.getEmployeeId(), schedule.getStartTime(), schedule.getEndTime(), scheduleId);
         return count == 1;
     }
 

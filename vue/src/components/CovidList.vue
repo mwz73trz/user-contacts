@@ -42,25 +42,6 @@ created(){
 }
 }
 
-document.addEventListener('DOMContentLoaded', function(){
-    const imageToClick = document.getElementById('imageToClick');
-    // const detailsContainer = document.getElementById('detailsContainer');
-    // const additionalDetails = {
-    //        "Country_text":'',
-    //         "Last Update":'',
-    //         "Total Cases_text":'',
-    //         "Total Deaths_text":'',
-    //         "Total Recovered_text":''
-
-    // };
-    imageToClick.addEventListener('click', function () {
-        // detailsContainer.innerHTML = `
-        // <h2> ${additionalDetails['Total Cases_text']}</h2>`;
-    });
-});
-
-
-
 </script>
 
 <style>

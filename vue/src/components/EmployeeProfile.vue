@@ -9,8 +9,7 @@
       <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
     </div>
 
-    <div class="form">
-      <!-- <input type="button" value="Update Information"> -->
+    <!-- <div class="form">
       <form v-on:submit.prevent="updateInformation" > 
       <div class="form-element">
           <label for="name">First Name:</label>
@@ -30,7 +29,7 @@
     
       </form> 
 
-    </div>
+    </div> -->
   </div>
 </template>
 

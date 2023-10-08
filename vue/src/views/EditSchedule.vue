@@ -1,17 +1,17 @@
 <template>
   <div>
-      <h1>Edit Schedule</h1>
-      <schedule-form v-bind:scheduleId="parseInt($route.params.scheduleId)" />
+       <edit-schedule-form />
   </div>
 </template>
 
 <script>
-import ScheduleForm from '../components/ScheduleForm.vue'
+import EditScheduleForm from '../components/EditScheduleForm.vue'
 
 export default {
-    components: {
-        ScheduleForm
-    }
+  name: 'edit-schedule',
+  components: {
+    EditScheduleForm
+  }
 }
 </script>
 
