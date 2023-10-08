@@ -32,17 +32,29 @@ public class AppointmentController {
         }
     }
 
-//    @ResponseStatus(HttpStatus.OK)
-//    @RequestMapping(path = "/appointments", method = RequestMethod.GET)
-//    public List<Appointment> getAppointments(){
-//        List<Appointment> appointments = appointmentDao.getAllAppointments();
-//
-//        if (appointments.isEmpty()) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No appointments found.");
-//        } else {
-//            return appointments;
-//        }
-//    }
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/appointments/doctor", method = RequestMethod.GET)
+    public List<Appointment> getAllAppointments(){
+        List<Appointment> appointments = appointmentDao.getAllAppointments();
+
+        if (appointments.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No appointments found.");
+        } else {
+            return appointments;
+        }
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/appointments/{employeeId}", method = RequestMethod.GET)
+    public List<Appointment> getAllAppointmentsByEmployeeId(@PathVariable int employeeId){
+        List<Appointment> appointments = appointmentDao.getAllAppointmentsForEmployee(employeeId);
+
+        if (appointments.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No appointments found.");
+        } else {
+            return appointments;
+        }
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/appointments/create")

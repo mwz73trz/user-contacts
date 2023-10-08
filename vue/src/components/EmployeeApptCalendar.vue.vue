@@ -11,8 +11,9 @@
 </template>
 
 <script>
-import { DayPilot, DayPilotCalendar, DayPilotNavigator } from "@daypilot/daypilot-lite-vue"; // addback DayPilotNavigator
+import { DayPilot, DayPilotCalendar, DayPilotNavigator } from "@daypilot/daypilot-lite-vue";
 import ApptService from '../services/ApptService'
+// import PatientService from '../services/PatientServices'
 
 export default {
   name: 'Calendar',
@@ -82,6 +83,11 @@ export default {
       return this.$refs.calendar.control;
     }
   },
+  created:{
+    getPatientInfo(){
+      // need to pull in patient info to get Name
+    }
+  },
   methods: {
     loadEvents(){
       ApptService.getAppointmentsByID(this.$route.params.employeeId).then((response) => {
@@ -121,8 +127,8 @@ export default {
 
 .calendar-wrapper {
   display: flex;
-  flex-direction: row; /* Stack calendar and navigator vertically */
-  align-items: center; /* Center calendar and navigator horizontally */
+  flex-direction: row; 
+  align-items: center; 
 }
 #dp{
   flex:1

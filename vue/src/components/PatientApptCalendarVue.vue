@@ -1,27 +1,38 @@
 <template>
+     <div>
     <div id="calendar-container">
-    <DayPilotCalendar id="dp" :config="config" ref="calendar" />
+      <h1>Appointments for Dr. {{ employee.lastName}}</h1>
+      <h2>Select a available appointment</h2>
+      <h2> Dr. {{employee.lastName}} is available {{schedule.startTime}} to {{ schedule.endTime}} Monday through Friday </h2>
+      <div class="calendar-wrapper">
+        <DayPilotCalendar id="dp" :config="config" ref="calendar" />
+        <DayPilotNavigator id="calNav" :config="navigatorConfig" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-vue";
+import { DayPilot, DayPilotCalendar, DayPilotNavigator } from "@daypilot/daypilot-lite-vue";
 import employeeServices from '../services/EmployeeServices'
 import ApptService from '../services/ApptService'
 
 export default {
-  name: 'calendar',
+  name: 'Calendar',
   props: { },
   data: function() {
     return {
       employee:{
         id: 0,
+        firstName: '',
+        lastName: '',
         },
       schedule: {
         id: '',
         startTime: '',
         endTime: ''
       },
+      appointmentList: [],
       appointment:{
         appointmentId: 0,
         employeeId: "",
@@ -31,12 +42,21 @@ export default {
         appointmentDateEnd: "",
         appointmentTimeEnd: ""
       },
-
-      //how will the calendar display
+      navigatorConfig: {
+        showMonths: 3,
+        skipMonths: 2,
+        selectMode: "Week",
+        startDate: DayPilot.Date.today(),
+        selectionDay: DayPilot.Date.today(),
+        onTimeRangeSelected: args => {
+          this.config.startDate = args.day;
+        },
+      },
       config: {
-        viewType: "Week",
+        viewType: "WorkWeek",
         startDate: DayPilot.Date.today(),
         events: [],
+
         // onTimeRangeSelected: async (args) => {
 
         //   var form = [
@@ -60,76 +80,82 @@ export default {
      }
   },
   components: {
-    DayPilotCalendar
-  },
-
- created() {
-    employeeServices.getEmployeeById(this.$route.params.employeeId).then(response => {
-      this.employee = response.data;
-    }),
-    employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
-      this.schedule = response.data;
-      this.config.events = [
-        {
-          id: this.schedule.scheduleId,
-          start: this.schedule.startTime,
-          end: this.schedule.endTime,
-          text: "Available",
-        },
-      ];
-    });
-    // apptServices.getAppointmentsByID(this.$route.params.employeeId).then(response => {
-    //   this.appointment = response.data
-    // })
-    
+    DayPilotCalendar,
+    DayPilotNavigator
   },
 
   computed: {
     calendar() {
       return this.$refs.calendar.control;
-  }
-    // calendarEvents(){
-    //  return [
-    //     {
-    //       id: this.schedule.scheduleId,
-    //       start: this.schedule.startTime,
-    //       end: this.schedule.endTime,
-    //       text: "Available",
-    //     },
-    //   ];
-    // }
+    }
   },
+
+ created() {
+    employeeServices.getEmployeeById(this.$route.params.employeeId).then(response => {
+      this.employee = response.data;
+    })
+    // employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
+    //   this.schedule = response.data;
+    //   if(this.schedule.startTime && this.schedule.endTime) {
+    //     this.config.events.push({
+    //       id: 0,
+    //       start:DayPilot.Date.today().addTime(this.schedule.startTime),
+    //       end: DayPilot.Date.today().addTime(this.schedule.endTime),
+    //       text: "Available"
+    //     })
+    //   }
+    // })
+ },
+    
+    
   methods: {
     loadEvents(){
-      ApptService.getAppointmentsByID(this.$route.params.patientId).then((response) => {
+      ApptService.getAppointmentsByEmployeeId(this.$route.params.employeeId).then((response) => {
       const events = response.data.map((appointment) => ({
         id: appointment.appointmentId,
         start: appointment.appointmentDateStart + "T" + appointment.appointmentTimeStart,
         end: appointment.appointmentDateEnd + "T" + appointment.appointmentTimeEnd,
         text: "Booked", 
-        }));
+        })); 
       this.config.events = events;
       this.calendar.update();
-      });
+      });      
+    //   employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
+    //   this.schedule = response.data;
+    //   if(this.schedule.startTime && this.schedule.endTime) {
+    //     this.config.events.push({
+    //       id: 0,
+    //       start:DayPilot.Date.today().addTime(this.schedule.startTime),
+    //       end: DayPilot.Date.today().addTime(this.schedule.endTime),
+    //       text: "Available"
+    //     })
+    //   }
+    // })
     }, 
   },
 
   //a lifecycle hook
   mounted() {
-    this.loadAppointmentEvents();
+    this.loadEvents();
   },
 }
 </script>
 
 <style>
 #calendar-container {
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
 }
 
+.calendar-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#dp{
+  flex:1
+}
 .event_box {
   background-color: #d0db34;
   color: #fff;
