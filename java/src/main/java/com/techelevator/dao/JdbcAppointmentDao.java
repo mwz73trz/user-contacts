@@ -48,21 +48,37 @@ public class JdbcAppointmentDao implements AppointmentDao {
     }
 
 
-//    @Override
-//    public List<Appointment> getAllAppointments() {
-//        List <Appointment> appointment = new ArrayList<>();
-//        String sql = "SELECT appointment_id, created_time, patient_id, employee_id, appointment_date_start, appointment_time_start, appointment_date_end, appointment_time_end " +
-//                     "FROM appointment;";
-//        try {
-//            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-//            while (results.next()) {
-//                appointment.add(mapRowToAppointment(results));
-//            }
-//        } catch (CannotGetJdbcConnectionException ex) {
-//            throw new DaoException("Unable to connect to server or database", ex);
-//        }
-//        return appointment;
-//    }
+    @Override
+    public List<Appointment> getAllAppointments() {
+        List <Appointment> appointment = new ArrayList<>();
+        String sql = "SELECT appointment_id, created_time, patient_id, employee_id, appointment_date_start, appointment_time_start, appointment_date_end, appointment_time_end " +
+                     "FROM appointment;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            while (results.next()) {
+                appointment.add(mapRowToAppointment(results));
+            }
+        } catch (CannotGetJdbcConnectionException ex) {
+            throw new DaoException("Unable to connect to server or database", ex);
+        }
+        return appointment;
+    }
+
+    public List<Appointment> getAllAppointmentsForEmployee(int employeeId) {
+        List <Appointment> appointment = new ArrayList<>();
+        String sql = "SELECT appointment_id, created_time, patient_id, employee_id, appointment_date_start, appointment_time_start, appointment_date_end, appointment_time_end " +
+                "FROM appointment " +
+                "WHERE employee_id = ? ;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, employeeId);
+            while (results.next()) {
+                appointment.add(mapRowToAppointment(results));
+            }
+        } catch (CannotGetJdbcConnectionException ex) {
+            throw new DaoException("Unable to connect to server or database", ex);
+        }
+        return appointment;
+    }
 
     //Patient creates a new appointmentposyr
     @Override

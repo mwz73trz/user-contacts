@@ -1,7 +1,7 @@
 <template>
   <div>
       <h1>Doctor: {{ employee.firstName }} {{ employee.lastName }}</h1>
-      <calendar-scheduler></calendar-scheduler>
+      <div class="appointmentCalendar"> <calendar-scheduler></calendar-scheduler> </div>
   </div>
 </template>
 
@@ -31,5 +31,8 @@ export default {
 </script>
 
 <style>
+.appointmentCalendar{
+  border-style: solid;
+}
 
 </style>

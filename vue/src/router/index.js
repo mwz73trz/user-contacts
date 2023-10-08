@@ -11,7 +11,6 @@ import DoctorDetails from '../views/DoctorDetails'
 import PatientInformation from '../views/PatientInformation'
 import Schedule from '../components/Schedule'
 import EmployeeReviewList from "../views/EmployeeReviewList"
-// import NewPatientInfo from '../views/NewPatientInfo'
 import AddSchedule from '../views/AddSchedule'
 import EditSchedule from '../views/EditSchedule'
 import RepliesList from '../views/RepliesList'
@@ -144,15 +143,6 @@ const router = new Router({
         requiresAuth: true
       }
     }
-    //{
-    ///   path: '/patient/form',
-    //   name: 'patient-form',
-    //   component: NewPatientInfo,
-    //   meta: {
-    //     requiresAuth: true
-    //   }
-    // }
-
   ]
 })
 

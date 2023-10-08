@@ -18,7 +18,7 @@
       
       <employee-info-form v-if="isFormVisible"></employee-info-form>
       <div class="agenda"><p>calendar placeholder</p>
-        <custom-calendar/>
+        <EmployeeApptCalendar/>
       </div>
     </div>
   </div>
@@ -28,13 +28,13 @@
 import EmployeeServices from '../services/EmployeeServices';
 import EmployeeInfoForm from './EmployeeInfoForm.vue';
 import Schedule from '../components/Schedule.vue'
-import CustomCalendar from './EmployeeApptCalendar.vue.vue';
+import EmployeeApptCalendar from './EmployeeApptCalendar.vue';
 
 export default {
   components: { 
     EmployeeInfoForm,
     Schedule,
-    CustomCalendar
+    EmployeeApptCalendar
     },
   data(){
     return{
