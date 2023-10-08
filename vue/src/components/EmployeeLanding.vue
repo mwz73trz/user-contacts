@@ -28,7 +28,7 @@
 import EmployeeServices from '../services/EmployeeServices';
 import EmployeeInfoForm from './EmployeeInfoForm.vue';
 import Schedule from '../components/Schedule.vue'
-import CustomCalendar from './customCalendar.vue';
+import CustomCalendar from './EmployeeApptCalendar.vue.vue';
 
 export default {
   components: { 

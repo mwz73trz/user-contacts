@@ -5,7 +5,8 @@
       <img src="../assets/Covid-19.png" alt = "Covid world wide satistics" class="logo"></h1>
     <covid-list/>
   </div>
-  <div><h1>Patient</h1></div>
+  <div class="headerPatient"><h1>Please Select one of the below to view additional information.</h1></div>
+  <div><h2>To book an appointment please select the doctores name.</h2></div>
   <div class="office-list">
     <label for="office-list">Select an office</label>
     <select name="offices" v-on:change="officesRoute($event)">
@@ -25,7 +26,7 @@
     </select>
   </div>
   <nav class = "nav-buttons">
-    <router-link v-bind:to="{name: 'patient', params: {id: $route.params.id}}" tag = "button"> Personal Info </router-link>
+    <router-link v-bind:to="{name: 'patient', params: {id: $route.params.id}}" tag = "button"> To view your personal info </router-link>
   </nav>
   <calendar-scheduler />
   <patient-form v-if="isFormVisible"></patient-form>
@@ -34,7 +35,6 @@
 </template>
 <script>
 import patientService from '../services/PatientService';
-import CalendarScheduler from './CalendarScheduler.vue';
 import PatientForm from './PatientForm.vue';
 import CovidList from './CovidList.vue';
 
@@ -42,7 +42,6 @@ import CovidList from './CovidList.vue';
 export default {
   components:{
     PatientForm,
-    CalendarScheduler,
     CovidList
   },
   data(){
@@ -94,5 +93,11 @@ computed: {
   border-radius: 6px;
   padding: 6px;
   width: 150px;
+}
+.headerPatient{
+  text-align: center;
+}
+.office-list, .employee-list{
+  text-align: center;
 }
 </style>
