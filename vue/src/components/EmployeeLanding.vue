@@ -72,8 +72,8 @@ export default {
   border-style: solid;
 }
 .employee{
-  /* background-color: white; */
-  background: rgb(103, 147, 177);
+  background-color: white;
+  /* background: rgb(103, 147, 177); */
   }
 .nav-buttons{
   display: flex;

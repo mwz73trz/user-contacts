@@ -1,67 +1,57 @@
 <template>
   <div class="home">
-     <nav class="navbar">
-    <h1>
-      <img src="../assets/AppLogo.png" class="logo">Welcome, {{ this.$store.state.user.username }}</h1>
-     </nav>
-     <div class="page-content">
-    <patient-landing v-if="this.$store.state.user.authorities[0].name === 'ROLE_USER'" />
-    <employee-landing v-else-if="this.$store.state.user.authorities[0].name === 'ROLE_ADMIN'" />    
+    <nav class="navbar">
+      <h1>
+        <img src="../assets/AppLogo.png" class="logo" />Welcome,
+        {{ this.$store.state.user.username }}
+      </h1>
+    </nav>
+    <div class="page-content">
+      <patient-landing
+        v-if="this.$store.state.user.authorities[0].name === 'ROLE_USER'"
+      />
+      <employee-landing
+        v-else-if="this.$store.state.user.authorities[0].name === 'ROLE_ADMIN'"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import EmployeeLanding from '../components/EmployeeLanding.vue'
-import PatientLanding from '../components/PatientLanding.vue';
+import EmployeeLanding from "../components/EmployeeLanding.vue";
+import PatientLanding from "../components/PatientLanding.vue";
 
-export default 
-  {
+export default {
   name: "home",
-  components:{
+  components: {
     PatientLanding,
     EmployeeLanding,
-   
-  }
+  },
 };
 </script>
 
-<<<<<<< HEAD
 <style>
-body, html {
-  background-color: #fff;
-  margin: 0;
+body,
+html {
   padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
 }
-=======
-<style scoped>
-
-
-.navbar {
-  background: rgb(103, 147, 177); 
-  font-family: monospace;
-  font-size: 12px;
-  padding: 10px; 
-}
-
->>>>>>> 67b3dc6b3c312230d094f67aa29b6339a0154554
-.logo{
+.logo {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
   width: 100px;
   display: flex;
   float: left;
-
 }
 
-.home{
-  background: rgb(103, 147, 177);
+.home {
+  /* background: rgb(103, 147, 177); */
   font-family: monospace;
   font-size: 12px;
   display: list-item;
 }
-
-
-
 </style>
