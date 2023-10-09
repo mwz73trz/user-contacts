@@ -1,13 +1,18 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.OfficeDao;
+import com.techelevator.exception.DaoException;
+import com.techelevator.model.Appointment;
 import com.techelevator.model.Employee;
 import com.techelevator.model.Office;
 import org.springframework.http.HttpStatus;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -47,4 +52,13 @@ public class OfficeController {
         }
     }
 
+    @GetMapping("employee-offices/{employeeId}")
+    public List<Office> getOfficesByEmployeeId(@PathVariable int employeeId){
+        List<Office> offices = officeDao.getOfficesByEmployeeId(employeeId);
+        if(offices.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No offices found");
+        } else{
+            return offices;
+        }
+    }
 }

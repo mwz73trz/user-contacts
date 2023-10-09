@@ -24,7 +24,6 @@
                 {{ office.officeName }}
             </option> 
           </select>
-          {{ employee.officeId }}
       </div>
       <div class="actions">
         <button type="submit"> Update </button>
@@ -60,21 +59,20 @@ created(){
 
 methods:{
     updateNewEmployeeInfo(){
-        if  (this.employee.employeeId != 0) {
+        if  (this.employee.id != 0) {
             this.updateEmployeeOfficeInfo();
         }else {
     EmployeeServices.createPersonalInfo(this.employee)
     .then(response => {
         if(response.status === 201){
             this.$store.commit("ADD_EMPLOYEE_INFO", response.data)
-            // this.$router.push({name:'Employee', params:{id: this.employee.id}});
+            // this.updateEmployeeOfficeInfo();
         }
     });
         }
     },
 
     updateEmployeeOfficeInfo(){
-        // for (const office of)
         EmployeeServices.addOfficeIdToEmployee(this.employee).then(response => {
             if(response.status === 201){
                 this.$store.commit("ADD_OFFICE_INFO", response.data)

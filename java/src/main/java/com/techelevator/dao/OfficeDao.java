@@ -11,5 +11,6 @@ public interface OfficeDao {
 
     public boolean updateOfficeInfo(Office office);
     List<Employee> getEmployeesForOfficeId(int officeId);
+    List<Office> getOfficesByEmployeeId(int employeeId);
 
 }

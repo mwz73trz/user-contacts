@@ -74,8 +74,6 @@ export default {
 
   created() {
     EmployeeServices.getEmployee(
-      this.$route.params.id,
-      this.$route.params.id
     ).then((response) => {
       this.employee = response.data;
     }),

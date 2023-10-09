@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default {
-    getEmployee(user) {
-        return axios.get('/employee/user', user)
+    getEmployee() {
+        return axios.get('/employee/user')
     },
 
     getOffices(){

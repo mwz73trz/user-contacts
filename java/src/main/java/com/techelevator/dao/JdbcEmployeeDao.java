@@ -101,13 +101,6 @@ public class JdbcEmployeeDao implements EmployeeDao {
         String sql = "INSERT INTO employee_office (employee_id, office_id) " +
                 "VALUES (?, ?) " +
                 "RETURNING office_id ;";
-
-//        String sql = "INSERT INTO employee_office (employee_id, office_id) " +
-//                "VALUES (" +
-//                "(SELECT employee_id FROM employee WHERE employee_id = ?), " +
-//                "(SELECT office_id FROM office_details WHERE office_id = ?)) " +
-//                "RETURNING office_id ;";
-
         User user = userDao.getUserByUsername(principal.getName());
         int userId = user.getId();
 
@@ -116,13 +109,8 @@ public class JdbcEmployeeDao implements EmployeeDao {
             employee.setOfficeId(newOfficeId);
             return employee;
         } catch (CannotGetJdbcConnectionException ex) {
-            // add any handling code.
             throw new DaoException("Cannot connect to database. Try again later");
         }
-//        catch (
-//                DataIntegrityViolationException ex) {
-//            throw new DaoException("Data Integrity Violation", ex);
-//        }
     }
 
 
