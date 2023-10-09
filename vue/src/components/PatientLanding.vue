@@ -97,5 +97,7 @@ computed: {
 }
 .office-list, .employee-list{
   text-align: center;
+  font-family:monospace;
+
 }
 </style>

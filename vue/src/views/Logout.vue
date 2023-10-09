@@ -1,5 +1,5 @@
 <template>
-  <h1>Logout</h1>
+  <h1 class="logout">Logout</h1>
 </template>
 
 <script>
@@ -10,3 +10,4 @@ export default {
   }
 };
 </script>
+
