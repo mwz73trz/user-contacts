@@ -4,9 +4,9 @@
     <covid-list/>
   </div>
   <div class="headerPatient"><h1>Please Select one of the below to view additional information.</h1></div>
-  <div><h2>To book an appointment please select the doctores name.</h2></div>
+  <div><h2>To book an appointment please select from the lists.</h2></div>
   <div class="office-list">
-    <label for="office-list">Select an office</label>
+    <label for="office-list">Select an Office:  </label>
     <select name="offices" v-on:change="officesRoute($event)">
       <option value="0">Offices</option>
       <option v-for="office in officeList" :key="office.officeId" :value="office.officeId">
@@ -15,7 +15,7 @@
     </select>
 </div>
   <div class="employee-list">
-    <label for="employee-list">Select a Doctor</label>
+    <label for="employee-list">Select a Doctor:  </label>
     <select name="employees" v-on:change="employeesRoute($event)">
       <option value="0">Doctors</option>
       <option v-for="employee in employeeList" :key="employee.employeeId" :value="employee.employeeId">
