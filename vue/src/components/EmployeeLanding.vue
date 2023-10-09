@@ -91,11 +91,12 @@ html {
   color: purple;
 }
 button{
-  color: solid #000;
-  background: rgb(158, 157, 157);
+  /* color: solid #000; */
+  color: #fff;
+  background: #0060f0;
   margin-right: 5px;
   border-radius: 4px;
-  width: 100px;
+  width: 105px;
   height: 30px;
   border: 0.5px solid;
 }
@@ -103,7 +104,7 @@ button{
   border: 1px solid #ddd;
   border-radius: 70%;
   /* padding: 5px; */
-  width: 150px;
+  width: 130px;
 }
 h1.employee{
   display: flex;

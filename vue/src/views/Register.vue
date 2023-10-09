@@ -87,4 +87,12 @@ export default {
 label {
   margin-right: 0.5rem;
 }
+
+form {
+  border-style: none;
+  color: #414042;
+}
+#register {
+  margin-left: 480px;
+}
 </style>

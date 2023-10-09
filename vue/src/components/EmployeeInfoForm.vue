@@ -95,4 +95,8 @@ h2.updateInfo{
     justify-content: center;
     padding: 10px;
 }
+form {
+    border-style: none;
+    color: #414042;
+}
 </style>

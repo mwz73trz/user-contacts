@@ -84,6 +84,7 @@ body, html {
 
 form{
   border-style: none;
+  margin-right: 50px;
 }
 
 .form-input-group {
@@ -123,8 +124,9 @@ label {
 .logo{
    float: center;
    width: 140px;
-   height: 170px;
-   margin-top: 50px;
+   height: 150px;
+   margin-top: 70px;
+   margin-right: 350px;
 }
 
 #app{
@@ -136,6 +138,8 @@ label {
 .intro{
   font-family: sans-serif;
   font-style: italic;
+  text-align: center;
+  color: #414042;
   
 }
 
