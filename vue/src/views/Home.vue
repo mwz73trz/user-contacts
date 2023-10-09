@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <nav class="navbar">
-      <h1>
-        <img src="../assets/AppLogo.png" class="logo" />Welcome,
+       <img src="../assets/AppLogo.png" class="logo" />
+      <h1 class="welcome"> Welcome,
         {{ this.$store.state.user.username }}
       </h1>
     </nav>
@@ -44,12 +44,13 @@ html {
 } */
 
 .logo{
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   border-radius: 4px;
   padding: 5px;
-  width: 100px;
+  width: 8rem;
   display: flex;
   float: left;
+  height: 8rem;
 }
 
 .home {
@@ -57,5 +58,12 @@ html {
   font-family: monospace;
   font-size: 12px;
   display: list-item;
+}
+
+.welcome{
+  margin-left:2rem;
+  float:left;
+  margin-top:0.5rem;
+  color:darkolivegreen
 }
 </style>

@@ -2,7 +2,9 @@
 
 <div class="container">
   <div class = "row">
+      <a href="" target="_blank">
       <img src="../assets/Covid-19.png" alt = "Click me" class="logo" id ="imageToClick">
+      </a>
      <p>Covid-19 summary results</p>
       <div class="key">Below are the estimated {{covidData['Country_text']}} data</div>
       <div class="key">Total Covid Cases:{{covidData['Total Cases_text']}} </div>
@@ -44,11 +46,9 @@ created(){
     border: 1px 
     solid rgb(141, 11, 11);
     overflow: hidden;
-    float:right;
+     float:right;
     text-align: left;
     font:bold;
-  
-    
 }
 
 .key {
@@ -58,7 +58,7 @@ created(){
 }
 
 .container {
-    display: flex;
+    
     width: 30%;
     font-family: calibri;
     font-size: 80%;
@@ -66,8 +66,9 @@ created(){
     border-radius: 8px;
     text-align: center;
     float: right;
+    margin-bottom: 15rem;
     
-}
+} 
 
 .logo{
   border: 1px ;

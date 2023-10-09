@@ -3,8 +3,15 @@
   <div class="covid-list"> 
     <covid-list/>
   </div>
-  <div class="headerPatient"><h1>Please Select one of the below to view additional information.</h1></div>
-  <div><h2>To book an appointment please select from the lists.</h2></div>
+  <div class="info">
+    <p>
+      Thank you for choosing us for your care!If you are having an emergency, call 911 now—do not send a message through this portal.
+       If you are thinking of hurting yourself, call for help right away. Don’t wait, help is available to anyone. All calls are kept private and confidential 1-740-361-4729.
+       If you need to reschedule, you will be directed to call your appointment location to reschedule your appointment.  
+      </p>
+    </div>
+  <div class="headerPatient"><h2>Please select from Offices/Doctors to view additional information and to book
+    an appointment.</h2></div>
   <div class="office-list">
     <label for="office-list">Select an Office:  </label>
     <select name="offices" v-on:change="officesRoute($event)">
@@ -94,10 +101,40 @@ computed: {
 }
 .headerPatient{
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  margin-left: 11rem;
 }
 .office-list, .employee-list{
   text-align: center;
   font-family:monospace;
+  margin-left: 11rem;
+  margin-right: 2rem;
+  float:left;
+}
 
+.info > p{
+  text-align: justify;
+  font-family:monospace;
+  font-size:1rem;
+  margin-left: 11rem;
+  margin-right: 8rem;
+  margin-top: 6rem;
+  margin-right: 7rem;
+  display: flex;
+  color:blueviolet;
+  font-size:large;
+}
+
+.nav-buttons{
+  margin-top: 3rem;
+  margin-left: 12rem;
+  width:10px;
+  cursor: pointer;
+}
+
+.dropdown{
+  font-family:monospace;
 }
 </style>
