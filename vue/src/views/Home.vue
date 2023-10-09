@@ -22,13 +22,18 @@ export default
 };
 </script>
 
-<style scoped>
+<style>
+body, html {
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
 .logo{
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
   width: 100px;
-  display: felx;
+  display: flex;
   float: left;
 
 }

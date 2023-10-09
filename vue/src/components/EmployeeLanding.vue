@@ -119,6 +119,10 @@ h1.employee{
 .view-profile {
   margin-top: 6px;
 }
+nav{
+  margin-top: -5px;
+  max-width: -5px;
+}
 /* .nav-buttons {
   display: inline-block;
   padding: 10px 20px;
