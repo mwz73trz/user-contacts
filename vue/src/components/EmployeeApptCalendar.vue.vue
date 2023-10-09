@@ -106,7 +106,7 @@ export default {
       ApptService.addEmployeeAppointment(newAppointment).then(response => {
         if (response.status === 201) {
           this.$store.commit("ADD_APPOINTMENT_EMPLOYEE", response.data);
-          // this.loadEvents();
+          this.loadEvents();
           }
       });
     },

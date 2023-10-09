@@ -63,6 +63,9 @@ export default new Vuex.Store({
     },
     ADD_APPOINTMENT_EMPLOYEE(state, appointment){
       state.appointment = appointment
+    },
+    ADD_APPOINTMENT_PATIENT(state, appointment){
+      state.appointment = appointment
     }
   }
 })

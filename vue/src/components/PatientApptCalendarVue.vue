@@ -42,6 +42,15 @@ export default {
         appointmentDateEnd: "",
         appointmentTimeEnd: ""
       },
+      newAppointment:{
+        appointmentId: 0,
+        employeeId: "",
+        patientId: "",
+        appointmentDateStart: "",
+        appointmentTimeStart: "",
+        appointmentDateEnd: "",
+        appointmentTimeEnd: ""
+      },
       navigatorConfig: {
         showMonths: 3,
         skipMonths: 2,
@@ -57,28 +66,39 @@ export default {
         startDate: DayPilot.Date.today(),
         events: [],
 
-        // onTimeRangeSelected: async (args) => {
+        onTimeRangeSelected: async (args) => {
+          const modal = await DayPilot.Modal.prompt("Create a new event:", "Blocked");
+          const dp = args.control;
+          dp.clearSelection();
+          if (modal.canceled) {
+            return;
+          }          
+          // Create a new appointment object to send to DB
+            const newAppointment = {
+              appointmentId: 0,
+              employeeId: this.$route.params.employeeId,
+              patientId: this.$store.state.user.id, 
+              appointmentDateStart: args.start.toDate(),
+              appointmentTimeStart: args.start.toString("HH:mm:ss"),
+              appointmentDateEnd: args.end.toDate(),
+              appointmentTimeEnd: args.end.toString("HH:mm:ss"),
+            };
 
-        //   var form = [
-        //     {name: "Enter First Name", id: "first"},
-        //     {name: "Enter Last Name", id: "last"},
-        //     {option: "doc ", id:"doc"}
-        //   ];
+          // Save the new appointment to the database
+          this.saveAppointmentToDatabase(newAppointment);
 
-        //   var data = {
-        //     first: "Jane",
-        //     last: "Doe",
-        //     id: 1204
-        //   };
-        //   const modal = await DayPilot.Modal.form(form,data).then(function(args){
-        //     if(!args.canceled){
-        //       console.log("data", args.result)
-        //     }
-        //   });
-
-       },
-     }
+          // Add the new appointment to the DayPilot calendar
+          dp.events.add({
+            start: args.start,
+            end: args.end,
+            id: DayPilot.guid(),
+            text: modal.result,
+          });  
+        },
+      }
+    }
   },
+
   components: {
     DayPilotCalendar,
     DayPilotNavigator
@@ -119,7 +139,19 @@ export default {
         })); 
       this.config.events = events;
       this.calendar.update();
-      });      
+      });
+    },
+    saveAppointmentToDatabase(newAppointment){
+      // Call your ApptService or another method to save the appointment to the database
+      ApptService.addPatientAppointment(newAppointment).then(response => {
+        if (response.status === 201) {
+          this.$store.commit("ADD_APPOINTMENT_PATIENT", response.data);
+          // this.loadEvents();
+          }
+      });
+    },
+
+      
     //   employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
     //   this.schedule = response.data;
     //   if(this.schedule.startTime && this.schedule.endTime) {
@@ -132,7 +164,7 @@ export default {
     //   }
     // })
     }, 
-  },
+
 
   //a lifecycle hook
   mounted() {

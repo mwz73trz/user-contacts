@@ -11,5 +11,7 @@ public interface AppointmentDao {
 
     List<Appointment> getAllAppointments();
     List<Appointment> getAllAppointmentsForEmployee(int employeeId);
-    Appointment createNewAppointment(Principal principal, Appointment appointment);
+    Appointment createNewAppointmentByEmployee(Principal principal, Appointment appointment);
+
+    Appointment createNewAppointmentByPatient(Principal principal, Appointment appointment);
 }

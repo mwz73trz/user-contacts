@@ -82,7 +82,7 @@ public class JdbcAppointmentDao implements AppointmentDao {
 
     //Patient creates a new appointmentposyr
     @Override
-    public Appointment createNewAppointment(Principal principal, Appointment appointment) {
+    public Appointment createNewAppointmentByEmployee(Principal principal, Appointment appointment) {
        String sql = "INSERT INTO appointment( patient_id, employee_id, appointment_date_start, appointment_time_start, appointment_date_end, appointment_time_end) " +
                     "VALUES (?, ?, ?, ?, ?, ?) RETURNING appointment_id; " ;
         User user = userDao.getUserByUsername(principal.getName());
@@ -95,6 +95,25 @@ public class JdbcAppointmentDao implements AppointmentDao {
                                                     appointment.getAppointmentTimeStart(),
                                                     appointment.getAppointmentDateEnd(),
                                                     appointment.getAppointmentTimeEnd());
+
+        appointment.setAppointmentId(newId);
+        return appointment;
+    }
+
+    @Override
+    public Appointment createNewAppointmentByPatient(Principal principal, Appointment appointment) {
+        String sql = "INSERT INTO appointment( patient_id, employee_id, appointment_date_start, appointment_time_start, appointment_date_end, appointment_time_end) " +
+                     "VALUES (?, ?, ?, ?, ?, ?) RETURNING appointment_id; " ;
+        User user = userDao.getUserByUsername(principal.getName());
+        int userId = user.getId();
+
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class,
+                                                userId,
+                                                appointment.getEmployeeId(),
+                                                appointment.getAppointmentDateStart(),
+                                                appointment.getAppointmentTimeStart(),
+                                                appointment.getAppointmentDateEnd(),
+                                                appointment.getAppointmentTimeEnd());
 
         appointment.setAppointmentId(newId);
         return appointment;
