@@ -1,9 +1,13 @@
 <template>
   <div class="home">
+     <nav class="navbar">
     <h1>
       <img src="../assets/AppLogo.png" class="logo">Welcome, {{ this.$store.state.user.username }}</h1>
+     </nav>
+     <div class="page-content">
     <patient-landing v-if="this.$store.state.user.authorities[0].name === 'ROLE_USER'" />
     <employee-landing v-else-if="this.$store.state.user.authorities[0].name === 'ROLE_ADMIN'" />    
+    </div>
   </div>
 </template>
 
@@ -23,6 +27,15 @@ export default
 </script>
 
 <style scoped>
+
+
+.navbar {
+  background: rgb(103, 147, 177); 
+  font-family: monospace;
+  font-size: 12px;
+  padding: 10px; 
+}
+
 .logo{
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -38,6 +51,8 @@ export default
   font-family: monospace;
   font-size: 12px;
   display: list-item;
-
 }
+
+
+
 </style>
