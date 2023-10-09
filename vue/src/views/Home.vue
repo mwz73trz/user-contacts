@@ -39,9 +39,9 @@ html {
   height: 100vh;
   background-color: white;
 }
-.nav{
-  background-color: white;
-}
+/* .navbar{
+  background-color: rgb(103, 147, 177);
+} */
 
 .logo{
   border: 1px solid #ddd;
