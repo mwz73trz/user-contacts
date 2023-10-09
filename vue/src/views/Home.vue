@@ -39,7 +39,8 @@ html {
   height: 100vh;
   background-color: white;
 }
-.logo {
+
+.logo{
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
