@@ -87,4 +87,22 @@ export default {
 label {
   margin-right: 0.5rem;
 }
+
+form {
+  border-style: none;
+  color: #414042;
+}
+#register {
+  margin-left: 480px;
+}
+h1 {
+   font-family: Cambria;
+   font-size: medium;
+   font-weight:bold;
+}
+.form-input-group {
+  font-family: Cambria;
+  font-weight: lighter;
+  font-size: smaller;
+}
 </style>

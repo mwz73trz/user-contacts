@@ -25,8 +25,7 @@ data(){
 },
 created(){
     patientService.getPatient(
-        this.$route.params.id,
-        this.$route.params.id).then (response => {
+   ).then (response => {
             this.patient = response.data;
         })
 },

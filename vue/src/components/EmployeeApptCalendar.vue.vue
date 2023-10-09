@@ -1,7 +1,7 @@
 <template>
     <div>
     <div id="calendar-container">
-      <h1>Your Booked Appointments</h1>
+      <h1>Your schedule for today: {{ currentDate }} </h1>
       <div class="calendar-wrapper">
         <DayPilotCalendar id="dp" :config="config" ref="calendar" />
         <DayPilotNavigator id="calNav" :config="navigatorConfig" />
@@ -13,12 +13,13 @@
 <script>
 import { DayPilot, DayPilotCalendar, DayPilotNavigator } from "@daypilot/daypilot-lite-vue";
 import ApptService from '../services/ApptService'
-// import PatientService from '../services/PatientServices'
+import PatientService from '../services/PatientService'
 
 export default {
   name: 'Calendar',
   data: function() {
     return {
+      currentDate: DayPilot.Date.today().toString("MM-dd-yyyy"),
       newAppointment:{
         appointmentId: 0,
         employeeId: "",
@@ -28,6 +29,9 @@ export default {
         appointmentDateEnd: "",
         appointmentTimeEnd: ""
       },
+      patientList: [],
+      // allAppointments: [],
+
       navigatorConfig: {
         showMonths: 3,
         skipMonths: 2,
@@ -39,7 +43,7 @@ export default {
         }
       },
       config: {
-        viewType: "WorkWeek",
+        viewType: "day",
         startDate: DayPilot.Date.today(),
         events: [],           
         onTimeRangeSelected: async (args) => {
@@ -74,6 +78,16 @@ export default {
       }
     }
   },
+
+   created(){
+         PatientService.getAllPatients().then((response) => {
+         return this.patientList = response.data; 
+      }),
+        ApptService.getAllAppointments().then((response)=> {
+          return this.allAppointments = response.data;
+        })
+   },
+
   components: {
    DayPilotCalendar,
    DayPilotNavigator
@@ -83,26 +97,25 @@ export default {
       return this.$refs.calendar.control;
     }
   },
-  created:{
-    getPatientInfo(){
-      // need to pull in patient info to get Name
-    }
-  },
-  methods: {
+   methods: {
     loadEvents(){
       ApptService.getAppointmentsByID(this.$route.params.employeeId).then((response) => {
       const events = response.data.map((appointment) => ({
         id: appointment.appointmentId,
         start: appointment.appointmentDateStart + "T" + appointment.appointmentTimeStart,
         end: appointment.appointmentDateEnd + "T" + appointment.appointmentTimeEnd,
-        text: appointment.patientId, 
-        }));
+        text: this.findPatientId(appointment), 
+        }));        
       this.config.events = events;
       this.calendar.update();
       });
     }, 
+
+    findPatientId(appointment) {
+      const patient = this.patientList.find(patient => patient.patientId === appointment.patientId);
+       return patient ? patient.firstName + " " + patient.lastName : 'Unknown';
+    },
     saveAppointmentToDatabase(newAppointment){
-      // Call your ApptService or another method to save the appointment to the database
       ApptService.addEmployeeAppointment(newAppointment).then(response => {
         if (response.status === 201) {
           this.$store.commit("ADD_APPOINTMENT_EMPLOYEE", response.data);

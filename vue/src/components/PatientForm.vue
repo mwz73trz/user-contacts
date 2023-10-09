@@ -2,7 +2,7 @@
   <div class="form">
       <div class="patientForm"> 
           <h2 class="updateInfo">Please update the information below: </h2>
-      <form v-on:submit.prevent="updateNewPatientInfo" > 
+      <form v-on:submit="updateNewPatientInfo" > 
       <div class="form-element">
           <label for="name">First Name:</label>
           <input id="firstName" type="text" v-model="patient.firstName" />

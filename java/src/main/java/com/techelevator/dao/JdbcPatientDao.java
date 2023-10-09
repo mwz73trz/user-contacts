@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class JdbcPatientDao implements PatientDao {
@@ -20,6 +22,25 @@ public class JdbcPatientDao implements PatientDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.userDao = userDao;
     }
+
+
+    @Override
+    public List<Patient> getAllPatient() {
+        List <Patient> result = new ArrayList<>();
+        String sql = "SELECT patient_id, first_name, last_name " +
+                    " FROM patient ; " ;
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        try {
+            while(rowSet.next()) {
+                Patient patient = mapRowToPatient(rowSet);
+                result.add(patient);
+            }
+        } catch (CannotGetJdbcConnectionException ex) {
+            throw new DaoException("Unable to connect to server or database", ex);
+        }
+        return result;
+    }
+
 
     @Override
     public Patient getPatientByUser(String username) {

@@ -2,6 +2,10 @@ import axios from "axios";
 
 
 export default {
+    getAllPatients(){
+        return axios.get('/patients')
+    },
+
     getEmployees(){
         return axios.get('/employees')
     },
