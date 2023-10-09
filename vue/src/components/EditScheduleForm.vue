@@ -3,11 +3,11 @@
       <h1>Edit Schedule</h1>
      <form v-on:submit.prevent="submitForm">
        <div>
-         <label for="startTime">Start Time</label>
+         <label for="startTime">Start Time: </label>
          <input type="text" v-model="schedule.startTime">
        </div>
         <div>
-         <label for="endTime">endTime Time</label>
+         <label for="endTime">End Time: </label>
          <input type="text" v-model="schedule.endTime">
        </div>
        <button>Submit</button>
