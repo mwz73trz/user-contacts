@@ -26,25 +26,14 @@ export default
 };
 </script>
 
-<<<<<<< HEAD
+
 <style>
 body, html {
   background-color: #fff;
   margin: 0;
   padding: 0;
 }
-=======
-<style scoped>
 
-
-.navbar {
-  background: rgb(103, 147, 177); 
-  font-family: monospace;
-  font-size: 12px;
-  padding: 10px; 
-}
-
->>>>>>> 67b3dc6b3c312230d094f67aa29b6339a0154554
 .logo{
   border: 1px solid #ddd;
   border-radius: 4px;
