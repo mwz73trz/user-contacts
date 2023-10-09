@@ -12,7 +12,7 @@
       <nav class = "nav-buttons">
         <router-link v-bind:to="{name: 'EmployeeReview', params: {id: $route.params.officeId}}" tag = "button"> View Review </router-link>
          
-        <router-link class="view-profile" v-bind:to="{name: 'employee', params: {id: $route.params.id}}" tag = "button"> View Profile </router-link>
+        <router-link class="view-profile" v-bind:to="{name: 'employee', params: {id: employee.employeeId}}" tag = "button"> View Profile </router-link>
 
       </nav>
       
@@ -39,7 +39,7 @@ export default {
   data(){
     return{
     employee:{
-      id:0,
+      employeeId:0,
       firstName: "",
       lastName: ""
       },
@@ -48,7 +48,7 @@ export default {
   },
 
   created() {
-    EmployeeServices.getEmployee(this.$route.params.id, this.$route.params.id).then(response => {
+    EmployeeServices.getEmployee().then(response => {
       this.employee = response.data;
     }),
     EmployeeServices.getOffices().then(response => {

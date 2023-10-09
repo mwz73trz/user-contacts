@@ -77,6 +77,33 @@ public class JdbcOfficeDao implements OfficeDao{
         return result;
     }
 
+    @Override
+    public List<Office> getOfficesByEmployeeId(int employeeId) {
+        List<Office> result = new ArrayList<>();
+        String sql="SELECT office_details.office_id, \n" +
+                        "\t\toffice_details.office_name, \n" +
+                        "\t\toffice_details.phone_number, \n" +
+                        "\t\toffice_details.open_time, \n" +
+                        "\t\toffice_details.close_time, \n" +
+                        "\t\toffice_details.address, \n" +
+                        "\t\toffice_details.city, \n" +
+                        "\t\toffice_details.state, \n" +
+                        "\t\toffice_details.zip, \n" +
+                        "\t\toffice_details.service_fee\n" +
+                        "        FROM office_details\n" +
+                        "        JOIN employee_office\n" +
+                        "        ON employee_office.office_id = office_details.office_id\n" +
+                        "        JOIN employee\n" +
+                        "        ON employee_office.employee_id = employee.employee_id\n" +
+                        "        WHERE employee.employee_id = ?; ";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, employeeId);
+        while(rowSet.next()){
+            Office office = mapRowToOffice(rowSet);
+            result.add(office);
+        }
+        return result;
+    }
+
 
     private Office mapRowToOffice(SqlRowSet rowSet) {
         Office office = new Office(

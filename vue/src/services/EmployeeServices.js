@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default {
-    getEmployee(user) {
-        return axios.get('/employee/user', user)
+    getEmployee() {
+        return axios.get('/employee/user')
     },
 
     getOffices(){
@@ -36,7 +36,7 @@ export default {
     updateSchedule(scheduleId, schedule) {
         return axios.put(`/schedules/${scheduleId}`, schedule)
     },
-
-   
-
+    getOfficesByEmployeeId(employeeId) {
+        return axios.get(`/employee-offices/${employeeId}`)
+    }
 }
