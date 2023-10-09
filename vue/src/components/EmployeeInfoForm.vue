@@ -12,12 +12,19 @@
           <input id="lastName" type="text" v-model="employee.lastName" />
       </div>
       <div class="form-element" > Primary Office Name:
-          <select name="offices" v-model="office">
+          <!-- <select name="offices" v-model="employee.officeId">
             <option value="0">Offices</option>
             <option v-for="office in officeList" :key="office.officeId" :value="office.officeId">
                 {{ office.officeName }}
             </option> 
+          </select> -->
+                    <select name="offices" v-model="employee.officeId">
+            <option value="0">Offices</option>
+            <option v-for="office in officeList" :key="office.officeId" v-bind:value="office.officeId">
+                {{ office.officeName }}
+            </option> 
           </select>
+          {{ employee.officeId }}
       </div>
       <div class="actions">
         <button type="submit"> Update </button>
@@ -38,6 +45,7 @@ data(){
             id: 0,
             firstName: "",
             lastName: "",
+            officeId: 0
             },
         officeList:[],
     };
@@ -52,6 +60,9 @@ created(){
 
 methods:{
     updateNewEmployeeInfo(){
+        if  (this.employee.employeeId != 0) {
+            this.updateEmployeeOfficeInfo();
+        }else {
     EmployeeServices.createPersonalInfo(this.employee)
     .then(response => {
         if(response.status === 201){
@@ -59,9 +70,11 @@ methods:{
             // this.$router.push({name:'Employee', params:{id: this.employee.id}});
         }
     });
+        }
     },
 
     updateEmployeeOfficeInfo(){
+        // for (const office of)
         EmployeeServices.addOfficeIdToEmployee(this.employee).then(response => {
             if(response.status === 201){
                 this.$store.commit("ADD_OFFICE_INFO", response.data)
