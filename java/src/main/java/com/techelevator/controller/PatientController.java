@@ -11,6 +11,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 import com.techelevator.dao.PatientDao;
 import java.security.Principal;
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @PreAuthorize("isAuthenticated()")
@@ -23,6 +25,18 @@ public class PatientController {
     public PatientController(PatientDao patientDao) {
         this.patientDao = patientDao;
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path="/patients", method =  RequestMethod.GET)
+    public List<Patient> getAllPatients(){
+        List <Patient> patient = patientDao.getAllPatient();
+        if (patient == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No patient found.");
+        } else {
+            return patient;
+        }
+    }
+
      @ResponseStatus(HttpStatus.OK)
      @RequestMapping(path = "patients/user", method = RequestMethod.GET)
     public Patient getPatient(Principal principal){
@@ -35,21 +49,11 @@ public class PatientController {
         }
     }
 
-
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/patient")
     public Patient postPatient(Principal principal, @RequestBody Patient newPatient) {
         return patientDao.createPatientInfo(principal, newPatient);
     }
-    
-
-//    @GetMapping("/covid")
-//    public  String getThirdPartyApi(){
-//        String apiUrl = "https://covid-19.dataflowkit.com/v1/USA";
-//        RestTemplate restTemplate = new RestTemplate();
-//        String result = restTemplate.getForObject(apiUrl, String.class);
-//        return result;
-//    }
 
     @GetMapping("/covid")
     public  String getThirdPartyApi(){

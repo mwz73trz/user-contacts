@@ -13,7 +13,7 @@
 <script>
 import { DayPilot, DayPilotCalendar, DayPilotNavigator } from "@daypilot/daypilot-lite-vue";
 import ApptService from '../services/ApptService'
-// import PatientService from '../services/PatientServices'
+import PatientService from '../services/PatientService'
 
 export default {
   name: 'Calendar',
@@ -28,6 +28,9 @@ export default {
         appointmentDateEnd: "",
         appointmentTimeEnd: ""
       },
+      patientList: [],
+      allAppointments: [],
+
       navigatorConfig: {
         showMonths: 3,
         skipMonths: 2,
@@ -74,6 +77,17 @@ export default {
       }
     }
   },
+
+   created(){
+         PatientService.getAllPatients().then((response) => {
+         return this.patientList = response.data; 
+      }),
+        ApptService.getAllAppointments().then((response)=> {
+          return this.allAppointments = response.data;
+        })
+   },
+
+
   components: {
    DayPilotCalendar,
    DayPilotNavigator
@@ -83,24 +97,34 @@ export default {
       return this.$refs.calendar.control;
     }
   },
-  created:{
-    getPatientInfo(){
-      // need to pull in patient info to get Name
-    }
-  },
-  methods: {
+   methods: {
     loadEvents(){
       ApptService.getAppointmentsByID(this.$route.params.employeeId).then((response) => {
       const events = response.data.map((appointment) => ({
         id: appointment.appointmentId,
         start: appointment.appointmentDateStart + "T" + appointment.appointmentTimeStart,
         end: appointment.appointmentDateEnd + "T" + appointment.appointmentTimeEnd,
-        text: appointment.patientId, 
-        }));
+        text: this.findPatientId(), 
+        }));        
       this.config.events = events;
       this.calendar.update();
       });
     }, 
+    findPatientId(){
+      for(this.appointment in this.allAppointments){
+        for(this.patient in this.patientList){
+          if(this.patient.patientId == this.appointment.patientId){
+            return this.patient.firstName
+          }
+        }
+        // this.patientList.filter(item => {
+        //   if(item.patientId == this.appointment.patientId){
+        //     console.log(item.firstname)
+        //       return item.firstName
+              
+        //     }})
+      }
+    },
     saveAppointmentToDatabase(newAppointment){
       // Call your ApptService or another method to save the appointment to the database
       ApptService.addEmployeeAppointment(newAppointment).then(response => {
@@ -110,6 +134,15 @@ export default {
           }
       });
     },
+
+    // findPatientId(){
+    //   for(appointment in response.data){
+    //     patientList.filter(item => {
+    //       if(item.patientId == this.appointment.patientID){
+    //           return item.firstName
+    //         }})
+    //   }
+    // }
   },
   //a lifecycle hook
   mounted() {
