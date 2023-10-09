@@ -1,13 +1,8 @@
 <template>
   <div class="home">
     <nav class="navbar">
-<<<<<<< HEAD
-       <img src="../assets/AppLogo.png" class="logo" />
+       <!-- <img src="../assets/AppLogo.png" class="logo" /> -->
       <h1 class="welcome"> Welcome,
-=======
-      <h1>
-        
->>>>>>> eb02b599a8b12a59fa92ae23c735aa36a5551268
         {{ this.$store.state.user.username }}
       </h1>
     </nav>
