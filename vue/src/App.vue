@@ -55,4 +55,7 @@
   justify-content: right;
   padding: 5px;
 }
+.home-logout {
+    text-decoration: none;
+}
 </style>
