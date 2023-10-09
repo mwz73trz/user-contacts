@@ -2,7 +2,7 @@
   <div class="home">
     <nav class="navbar">
       <h1>
-        <img src="../assets/AppLogo.png" class="logo" />Welcome,
+        
         {{ this.$store.state.user.username }}
       </h1>
     </nav>
@@ -56,6 +56,6 @@ html {
   /* background: rgb(103, 147, 177); */
   font-family: monospace;
   font-size: 12px;
-  display: list-item;
+  /* display: list-item; */
 }
 </style>

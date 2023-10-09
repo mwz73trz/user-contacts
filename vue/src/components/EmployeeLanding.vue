@@ -96,7 +96,7 @@ button{
   background: #0060f0;
   margin-right: 5px;
   border-radius: 4px;
-  width: 105px;
+  width: 110px;
   height: 30px;
   border: 0.5px solid;
 }

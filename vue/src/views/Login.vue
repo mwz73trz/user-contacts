@@ -6,7 +6,6 @@
        Sign in with your account, you can make appointments, view doctor schedules, 
        read the doctor reviews and more. </p>
        </div>
-    <img src="../assets/AppLogo.png" class="logo">
     <form @submit.prevent="login">
       <p id="app">Patient Portal/Doctor Portal Sign In To Elevate Your Health</p>
       <div role="alert" v-if="invalidCredentials">
@@ -84,7 +83,7 @@ body, html {
 
 form{
   border-style: none;
-  margin-right: 50px;
+  margin-left: 450px;
 }
 
 .form-input-group {
