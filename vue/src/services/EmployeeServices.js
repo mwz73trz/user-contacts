@@ -36,7 +36,7 @@ export default {
     updateSchedule(scheduleId, schedule) {
         return axios.put(`/schedules/${scheduleId}`, schedule)
     },
-
-   
-
+    getOfficesByEmployeeId(employeeId) {
+        return axios.get(`/employee-offices/${employeeId}`)
+    }
 }
