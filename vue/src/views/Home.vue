@@ -39,6 +39,9 @@ html {
   height: 100vh;
   background-color: white;
 }
+.nav{
+  background-color: white;
+}
 
 .logo{
   border: 1px solid #ddd;

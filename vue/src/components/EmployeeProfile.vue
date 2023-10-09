@@ -65,7 +65,7 @@ p, .officeName{
 }
 button{
   color: solid #000;
-  background: rgb(158, 157, 157);
+  /* background: rgb(158, 157, 157); */
 }
 form{
   border-style: solid;
