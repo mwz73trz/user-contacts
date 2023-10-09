@@ -12,7 +12,7 @@
       <nav class = "nav-buttons">
         <router-link v-bind:to="{name: 'EmployeeReview', params: {id: $route.params.officeId}}" tag = "button"> View Review </router-link>
          
-        <router-link v-bind:to="{name: 'employee', params: {id: $route.params.id}}" tag = "button"> View Profile </router-link>
+        <router-link class="view-profile" v-bind:to="{name: 'employee', params: {id: $route.params.id}}" tag = "button"> View Profile </router-link>
 
       </nav>
       
@@ -72,6 +72,7 @@ export default {
   border-style: solid;
 }
 .employee{
+  /* background-color: white; */
   background: rgb(103, 147, 177);
   }
 .nav-buttons{
@@ -84,6 +85,11 @@ export default {
 button{
   color: solid #000;
   background: rgb(158, 157, 157);
+  margin-right: 5px;
+  border-radius: 4px;
+  width: 100px;
+  height: 30px;
+  border: 0.5px solid;
 }
 .doc{
   border: 1px solid #ddd;
@@ -99,4 +105,36 @@ h1.employee{
 .schedule-container {
   justify-content: center;
 }
+.nav-buttons {
+  display: flex;
+  flex-direction: column;
+  column-gap: 5px;
+  /* justify-content: space-around; */
+  padding: 15px;
+  padding-left: 0px;
+  padding-bottom: 2px;
+  margin: 0px;
+  margin-top: -6px;
+}
+.view-profile {
+  margin-top: 6px;
+}
+/* .nav-buttons {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 10px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #4a90e2;
+  border: 1px solid #357abd;
+  border-radius: 4px;
+  transition: background-color 03.s ease;
+}
+.nav-buttons a:hoover {
+  background-color: #357abd;
+}
+.nav-buttons {
+  outline: none;
+  background-color: #2b6bb0;
+} */
 </style>
