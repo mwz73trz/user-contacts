@@ -89,8 +89,8 @@ public class JdbcAppointmentDao implements AppointmentDao {
         int userId = user.getId();
 
         Integer newId = jdbcTemplate.queryForObject(sql, Integer.class,
+                                                    appointment.getPatientId(),
                                                     userId,
-                                                    appointment.getEmployeeId(),
                                                     appointment.getAppointmentDateStart(),
                                                     appointment.getAppointmentTimeStart(),
                                                     appointment.getAppointmentDateEnd(),

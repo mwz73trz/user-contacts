@@ -51,9 +51,9 @@ export default {
           }          
           // Create a new appointment object to send to DB
             const newAppointment = {
-              appointmentId: DayPilot.guid(),
+              appointmentId: 0,
               employeeId: this.$store.state.user.id,
-              patientId: this.$store.state.user.id, 
+              patientId: 1, 
               appointmentDateStart: args.start.toDate(),
               appointmentTimeStart: args.start.toString("HH:mm:ss"),
               appointmentDateEnd: args.end.toDate(),
@@ -103,7 +103,7 @@ export default {
     }, 
     saveAppointmentToDatabase(newAppointment){
       // Call your ApptService or another method to save the appointment to the database
-      ApptService.addEmployeeAppointment(this.$route.params.employeeId, newAppointment).then(response => {
+      ApptService.addEmployeeAppointment(newAppointment).then(response => {
         if (response.status === 201) {
           this.$store.commit("ADD_APPOINTMENT_EMPLOYEE", response.data);
           // this.loadEvents();
