@@ -80,6 +80,10 @@ td {
   padding: 4px;
   text-decoration-style: none;
 }
+a.router-link-exact-active {
+  text-decoration: none;
+  color: blue;
+}
 /* tbody tr:nth-child(even) {
   background-color: #F2F2F2;
 } */

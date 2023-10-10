@@ -63,7 +63,6 @@ a.router-link-exact-active:hoover {
 a.router-link-exact-active {
   text-decoration: none;
   color: #42b983;
-  
 }
 a.router-link-exact {
     text-decoration: none;
