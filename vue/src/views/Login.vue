@@ -95,6 +95,7 @@ form {
 
 .form-input-group {
   margin-bottom: 0.5rem;
+  margin-left: 250px;
 }
 label {
   margin-right: 0.5rem;
@@ -168,4 +169,5 @@ label {
 .submit-btn{
   margin-right: -14px;
 }
+
 </style>

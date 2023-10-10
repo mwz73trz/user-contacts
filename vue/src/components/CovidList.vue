@@ -3,7 +3,7 @@
 <div class="container">
   <div class = "row">
       <a href="" target="_blank">
-      <img src="../assets/Covid-19.png" alt = "Click me" class="logo" id ="imageToClick">
+      <img src="../assets/Covid-19.png" alt = "Click me" class="logo">
       </a>
      <p>Covid-19 summary results</p>
       <div class="key">Below are the estimated {{covidData['Country_text']}} data</div>
@@ -40,15 +40,17 @@ created(){
 
 </script>
 
-<style>
+<style scoped>
 
 .row {
-    border: 1px 
-    solid rgb(141, 11, 11);
-    overflow: hidden;
-     float:right;
-    text-align: left;
+    /* border: 1px 
+    solid rgb(141, 11, 11); */
+    /* overflow: hidden; */
+    float:right;
+    text-align: center;
     font:bold;
+    height:120%;
+    /* font-size: 20%; */
 }
 
 .key {
@@ -59,23 +61,28 @@ created(){
 
 .container {
     
-    width: 30%;
+    width: 40%;
     font-family: calibri;
-    font-size: 80%;
+    font-size: 160%;
     font: bold;
-    border-radius: 8px;
-    text-align: center;
+  
+    text-align: left;
     float: right;
+    height:120% ;
     margin-bottom: 20rem;
-    margin-top: 20rem;
+    margin-top: 8rem; 
     
 } 
 
 .logo{
-  border: 1px ;
-  border-radius: 6px;
-  padding: 15px;
-  width: 160px;
-  float: left;
+   width: 220px;
+   float: left;
+   padding: 15px;
+ 
+}
+
+p{
+    float:center;
+    
 }
 </style>

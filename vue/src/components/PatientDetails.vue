@@ -46,4 +46,42 @@ created(){
 
 <style scoped>
 
+/* .patient{
+     display: flex;
+     justify-content:center;
+     flex-direction: row;
+     
+} */
+p{
+  color:#a56262;
+  font-size:1.3rem;
+  float:left;
+}
+
+/* button{
+  float:right;
+  margin-left:60rem;
+  margin-top:1rem;
+} */
+
+.return-home-btn{
+   margin-top:8rem;
+   /* display:flex; */
+   justify-content:center;
+   font-family: monospace;
+   font-size: large;
+   width:20%;
+   margin-right:11%;
+   
+  
+  
+}
+
+.logo{
+  float:left;
+  width: 50%;
+  height: 4in;
+ 
+}
+
 </style>
