@@ -30,7 +30,7 @@ export default {
         appointmentTimeEnd: ""
       },
       patientList: [],
-      // allAppointments: [],
+      
 
       navigatorConfig: {
         showMonths: 3,

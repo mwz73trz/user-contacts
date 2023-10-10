@@ -3,6 +3,7 @@
     <div class="imgHeader">
       <img src="../assets/doc.png" class="doc">
     <h1 class="employee">Employee</h1>
+    <div class="notification"> <employee-notification/> </div>
     </div>
     <div class="schedule-container">
       <h1>Schedule</h1>
@@ -29,12 +30,14 @@ import EmployeeServices from '../services/EmployeeServices';
 import EmployeeInfoForm from './EmployeeInfoForm.vue';
 import Schedule from '../components/Schedule.vue'
 import EmployeeApptCalendar from './EmployeeApptCalendar.vue';
+import EmployeeNotification from './EmployeeNotification.vue';
 
 export default {
   components: { 
     EmployeeInfoForm,
     Schedule,
-    EmployeeApptCalendar
+    EmployeeApptCalendar,
+    EmployeeNotification
     },
   data(){
     return{
