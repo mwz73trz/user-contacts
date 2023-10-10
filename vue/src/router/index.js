@@ -9,14 +9,15 @@ import EmployeeInformation from '../views/EmployeeInformation'
 import OfficeDetails from '../views/OfficeDetails'
 import DoctorDetails from '../views/DoctorDetails'
 import PatientInformation from '../views/PatientInformation'
-import Schedule from '../components/Schedule'
+// import Schedule from '../components/Schedule'
 import EmployeeReviewList from "../views/EmployeeReviewList"
-// import AddSchedule from '../views/AddSchedule'
-import EditSchedule from '../views/EditSchedule'
+// import EditEmployeeSchedule from '../views/EditEmployeeSchedule.vue'
+import EditEmployeeSchedule from '../views/EditEmployeeSchedule'
 import RepliesList from '../views/RepliesList'
 import ReplyForm from '../views/ReplyForm'
 import EditOfficeInfo from '../views/EditOfficeInfo'
 import EditPatientInfo from '../views/EditPatientInfo'
+import EditEmployeeInfo from '../views/EditEmployeeInfo'
 
 
 Vue.use(Router)
@@ -83,7 +84,7 @@ const router = new Router({
       }
     },
     {
-      path: '/edit-office/:officeId',
+      path: '/edit-office',
       name: 'edit-office-info',
       component: EditOfficeInfo,
       meta: {
@@ -95,6 +96,14 @@ const router = new Router({
       name: 'doctor-details',
       component: DoctorDetails,
       meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/update-personal-info',
+      name: 'update-personal-info',
+      component: EditEmployeeInfo,
+      meta:{
         requiresAuth: true
       }
     },
@@ -114,14 +123,14 @@ const router = new Router({
        requiresAuth: true
      }   
     },
-    {
-      path: '/schedules/:employeeId',
-      name: 'schedule',
-      component: Schedule,
-      meta: {
-        requiresAuth: true
-      }
-    },
+    // {
+    //   path: '/schedules/:employeeId',
+    //   name: 'schedule',
+    //   component: Schedule,
+    //   meta: {
+    //     requiresAuth: true
+    //   }
+    // },
       // {
       //   path: '/schedules',
       //   name: 'AddSchedule',
@@ -131,15 +140,16 @@ const router = new Router({
       //   }
       // },
       {
-        path: '/schedules/:employeeId',
+        // path: '/schedules/:employeeId',
+        path: '/edit-shedule',
         name: 'EditSchedule',
-        component: EditSchedule,
+        component: EditEmployeeSchedule,
         meta: {
           requiresAuth: true
         }
       },
     {
-      path: '/reviews/:officeId',
+      path: '/reviews',
       name: 'EmployeeReview',
       component: EmployeeReviewList,
       meta: {
@@ -147,7 +157,7 @@ const router = new Router({
       } 
     },
     {
-      path: '/reviews/:reviewId/replies',
+      path: '/reviews/replies',
       name: 'RepliesList',
       component: RepliesList,
       meta: {
@@ -155,7 +165,7 @@ const router = new Router({
       }
     },
     {
-      path: 'reviews/:reviewId/replies',
+      path: '/replies',
       name: 'AddReplyForm',
       component: ReplyForm,
       meta: {

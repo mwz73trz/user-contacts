@@ -12,7 +12,7 @@ import java.util.List;
 public interface EmployeeDao {
     List<Employee> getAllEmployees();
     Employee getEmployeeByUser(String username);
-//    void updateEmployeeInfo(Employee employee);
+   boolean updateEmployeePersonalInfo(Principal principal, Employee employee);
     Employee getEmployeeById(int employeeId);
     Employee createEmployeeInfo(Principal principal, Employee employee);
     Employee  createNewEmployeeOffice(Principal principal, Employee employee);

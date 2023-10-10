@@ -25,7 +25,7 @@
 
         <router-link
         class="update-personal-info"
-        v-bind:to="{name: 'Update-Personal-Info', params: { id: employee.employeeId }}" 
+        v-bind:to="{name: 'update-personal-info', params: { id: employee.employeeId }}" 
         tag="button">
         Edit Peronsal info
         </router-link>
@@ -37,15 +37,13 @@
         Edit Schedule
         </router-link>
 
-       <router-link
+      <router-link
         class="update-office-info"
-        v-for="office in officeList"
-        :key="office.officeId"
-        :to="{ name: 'edit-office-info', params: { id: office.officeId } }"
+        :to="{ name: 'edit-office-info', params: { id: officeId } }"
         tag="button">
         Update Office Info
-      </router-link>   
-     
+      </router-link>
+          
       </nav>
 
       <employee-info-form v-if="isFormVisible"></employee-info-form>

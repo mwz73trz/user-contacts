@@ -27,6 +27,9 @@ export default {
     addOfficeIdToEmployee(employee){
         return axios.put(`/employee/officeId`, employee)
     },
+    updateEmployeeInfo(updatedEmployeePersonalInfo){
+        return axios.put('employee/user', updatedEmployeePersonalInfo)
+    },
     getScheduleByEmployeeId(employeeId) {
         return axios.get(`/schedules/${employeeId}`)
     },

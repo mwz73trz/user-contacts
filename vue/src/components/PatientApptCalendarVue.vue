@@ -117,7 +117,6 @@ export default {
       ApptService.addPatientAppointment(newAppointment).then(response => {
         if (response.status === 201) {
           this.$store.commit("ADD_APPOINTMENT_PATIENT", response.data);
-          // this.loadEvents();
           }
       });
     }

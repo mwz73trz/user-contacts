@@ -41,6 +41,12 @@ public class EmployeeController {
     }
 
     @ResponseStatus(HttpStatus.OK)
+    @PutMapping("employee/user")
+    public boolean updateEmployeePersonalInfo(Principal principal, @RequestBody Employee updatedEmployeeInfo){
+        return  employeeDao.updateEmployeePersonalInfo(principal, updatedEmployeeInfo);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path= "/employee/user", method = RequestMethod.GET)
     public Employee getEmployee(Principal principal){
         Employee result = employeeDao.getEmployeeByUser(principal.getName());

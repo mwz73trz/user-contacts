@@ -11,6 +11,7 @@
          <input class="end-time" type="text" v-model="schedule.endTime">
        </div>
        <button>Submit</button>
+       <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
      </form>   
   </div>
 </template>

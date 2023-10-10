@@ -66,6 +66,22 @@ public class JdbcEmployeeDao implements EmployeeDao {
     }
 
     @Override
+    public boolean updateEmployeePersonalInfo(Principal principal, Employee employee) {
+        String sql = "UPDATE employee " +
+                    "SET first_name=?, last_name=?, email=?, mobile_phone=? " +
+                    "WHERE employee_id =?;";
+        User user = userDao.getUserByUsername(principal.getName());
+        int userId = user.getId();
+        int count = jdbcTemplate.update(sql,
+                                employee.getFirstName(),
+                                employee.getLastName(),
+                                employee.getEmail(),
+                                employee.getMobilePhone(),
+                                userId);
+        return count ==1;
+    }
+
+    @Override
     public Employee getEmployeeById(int employeeId) {
         Employee employee = null;
         String sql = "SELECT employee_id, first_name, last_name, email, mobile_phone " +

@@ -39,6 +39,7 @@
          <input type="text" v-model="office.serviceFee">
        </div>
        <button>Submit</button>
+       <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
       </form>
   </div>
 </template>
