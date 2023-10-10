@@ -11,6 +11,7 @@ public interface PatientDao {
     List<Patient> getAllPatient();
     Patient getPatientByUser(String username) ;
     Patient createPatientInfo(Principal principal, Patient patient);
+    boolean updatePatientInfo(Principal principal, Patient patient);
 
 
 

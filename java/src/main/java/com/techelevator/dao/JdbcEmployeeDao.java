@@ -31,7 +31,7 @@ public class JdbcEmployeeDao implements EmployeeDao {
     @Override
     public List<Employee> getAllEmployees() {
         List<Employee> employees = new ArrayList<>();
-        String sql = "SELECT employee_id, first_name, last_name " +
+        String sql = "SELECT employee_id, first_name, last_name, email, mobile_phone " +
                 "FROM employee;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -48,11 +48,12 @@ public class JdbcEmployeeDao implements EmployeeDao {
     @Override
     public Employee getEmployeeByUser(String username) {
         Employee employee = null;
-        String sql = "SELECT employee.employee_id, employee.first_name, employee.last_name " +
-                "FROM employee " +
-                "JOIN users " +
-                "ON users.user_id = employee.employee_id " +
-                "WHERE users.username = ?; ";
+        String sql = "SELECT employee.employee_id, employee.first_name, employee.last_name, " +
+                        "employee.email, employee.mobile_phone " +
+                        "FROM employee " +
+                        "JOIN users " +
+                        "ON users.user_id = employee.employee_id " +
+                        "WHERE users.username = ?; ";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
             if (results.next()) {
@@ -67,9 +68,9 @@ public class JdbcEmployeeDao implements EmployeeDao {
     @Override
     public Employee getEmployeeById(int employeeId) {
         Employee employee = null;
-        String sql = "SELECT employee_id, first_name, last_name" +
-                "\tFROM employee\n" +
-                "\tWHERE employee_id = ?;";
+        String sql = "SELECT employee_id, first_name, last_name, email, mobile_phone " +
+                        "FROM employee " +
+                        "WHERE employee_id = ?;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, employeeId);
             if (results.next()) {
@@ -83,14 +84,15 @@ public class JdbcEmployeeDao implements EmployeeDao {
 
     @Override
     public Employee createEmployeeInfo(Principal principal, Employee employee) {
-        String sql = "INSERT INTO employee(employee_id, first_name, last_name) " +
-                "VALUES (?, ?, ?) " +
-                "RETURNING employee_id;";
+        String sql = "INSERT INTO employee(employee_id, first_name, last_name, email, mobile_phone) " +
+                        "VALUES (?, ?, ?, ?, ?) " +
+                        "RETURNING employee_id;";
 
         User user = userDao.getUserByUsername(principal.getName());
         int userId = user.getId();
 
-        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, userId, employee.getFirstName(), employee.getLastName());
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, userId, employee.getFirstName(),
+                employee.getLastName(), employee.getEmail(), employee.getMobilePhone());
         employee.setEmployeeId(newId);
 
         return employee;
@@ -99,8 +101,8 @@ public class JdbcEmployeeDao implements EmployeeDao {
     @Override
      public Employee createNewEmployeeOffice(Principal principal, Employee employee) {
         String sql = "INSERT INTO employee_office (employee_id, office_id) " +
-                "VALUES (?, ?) " +
-                "RETURNING office_id ;";
+                        "VALUES (?, ?) " +
+                        "RETURNING office_id ;";
         User user = userDao.getUserByUsername(principal.getName());
         int userId = user.getId();
 
@@ -120,6 +122,8 @@ public class JdbcEmployeeDao implements EmployeeDao {
         employee.setEmployeeId(rs.getInt("employee_id"));
         employee.setFirstName(rs.getString("first_name"));
         employee.setLastName(rs.getString("last_name"));
+        employee.setEmail(rs.getString("email"));
+        employee.setMobilePhone(rs.getString("mobile_phone"));
         return employee;
     }
 

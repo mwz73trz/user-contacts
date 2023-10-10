@@ -22,6 +22,12 @@ CREATE TABLE  patient (
 	patient_id INT NOT NULL,
 	first_name VARCHAR(64) NOT NULL,
 	last_name VARCHAR(64) NOT NULL,
+	address VARCHAR(100) NOT NULL,
+	city VARCHAR(64) NOT NULL,
+	state VARCHAR(64) NOT NULL,
+	zip VARCHAR(64) NOT NULL,
+	phone_number VARCHAR(20),
+	email VARCHAR(50),
 	
 	CONSTRAINT PK_patient PRIMARY KEY(patient_id),
 	CONSTRAINT FK_patient_users FOREIGN KEY(patient_id) REFERENCES users(user_id)
@@ -46,6 +52,8 @@ CREATE TABLE employee (
 	employee_id INT NOT NULL,
 	first_name VARCHAR (64) NOT NULL,
 	last_name VARCHAR (64) NOT NULL,
+	email VARCHAR(50) NOT NULL,
+	mobile_phone VARCHAR(20) NOT NULL,
 	
 	CONSTRAINT PK_employee_id PRIMARY KEY (employee_id),
 	CONSTRAINT FK_employee_users FOREIGN KEY(employee_id) REFERENCES users(user_id)

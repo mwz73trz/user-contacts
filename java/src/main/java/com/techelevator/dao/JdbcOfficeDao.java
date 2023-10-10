@@ -125,7 +125,9 @@ public class JdbcOfficeDao implements OfficeDao{
         Employee employee = new Employee(
         rowSet.getInt("employee_id"),
         rowSet.getString("first_name"),
-        rowSet.getString("last_name")
+        rowSet.getString("last_name"),
+        rowSet.getString("email"),
+        rowSet.getString("mobile_phone")
         );
         return employee;
     }
