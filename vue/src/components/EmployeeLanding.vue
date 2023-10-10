@@ -103,10 +103,12 @@ button{
   border: 0.5px solid;
 }
 .doc{
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   border-radius: 70%;
+  margin-top: 15px;
+  margin-left: -120px;
   /* padding: 5px; */
-  width: 130px;
+  width: 100px;
 }
 h1.employee{
   display: flex;
