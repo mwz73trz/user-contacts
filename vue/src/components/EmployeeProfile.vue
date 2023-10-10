@@ -2,9 +2,15 @@
   <div class ="Info">
     <h1>Profile Information</h1>
     <p>Name: {{ employee.firstName }} {{ employee.lastName }}</p>
-    <div class="officeName" v-for="office in officeList" v-bind:key="office.officeId">
-     Office Name: {{ office.officeName }}
+    <div class="schedule"> 
+      <p>Your current schedule is: {{schedule.startTime}} - {{schedule.endTime}} </p>
     </div>
+    <div class="officeName" v-for="office in officeList" v-bind:key="office.officeId">
+     <p> Office Name: {{ office.officeName }} </p>
+     <p> Office Address: {{ office.address}} {{office.city}} {{office.state}}  </p>
+     <p> Office Phone Number: {{office.phoneNumber}}  </p> 
+    </div>
+ 
     <div class=home> 
       <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
     </div>
@@ -24,7 +30,11 @@ export default {
         employeeId: 0,
         firstName: "",
         lastName: "",
-      }
+      },
+      schedule: {
+        startTime: '',
+        endTime: ''
+      },
     };
   },
   created() {
@@ -37,7 +47,10 @@ export default {
   // })
    EmployeeServices.getOfficesByEmployeeId(this.$store.state.user.id).then(response => {
     this.officeList = response.data;
-  })
+  }),
+    EmployeeServices.getScheduleByEmployeeId(this.$store.state.user.id).then(response => {
+            this.schedule = response.data;
+    })
   },
   // computed: {
   //     filteredOffices() {
