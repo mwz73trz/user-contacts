@@ -14,7 +14,8 @@
         <router-link v-bind:to="{name: 'EmployeeReview', params: {id: $route.params.officeId}}" tag = "button"> View Review </router-link>
          
         <router-link class="view-profile" v-bind:to="{name: 'employee', params: {id: employee.employeeId}}" tag = "button"> View Profile </router-link>
-
+        <!-- <router-link class="update-office-info" v-bind="{name: 'office', params:{id: officeId}}" tag ="button"> Update Office Information</router-link> -->
+        <button>Update Office Information</button> 
       </nav>
       
       <employee-info-form v-if="isFormVisible"></employee-info-form>

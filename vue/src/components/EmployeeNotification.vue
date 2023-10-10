@@ -3,7 +3,9 @@
     <h2 class="alertHeader"> Please see your newest appointments below: </h2>
     <ul class="alertList">
       <li v-for="appointment in recentAppointments" :key="appointment.id">
-        {{appointment.appointmentDateStart}} Time: {{ appointment.appointmentTimeStart }} to {{appointment.appointmentTimeEnd}}
+        Patient: {{ getPatientName(appointment)}} |
+        Date: {{appointment.appointmentDateStart}} |
+        Time: {{ appointment.appointmentTimeStart }} to {{appointment.appointmentTimeEnd}}
       </li>
     </ul>
 
@@ -41,7 +43,11 @@ export default {
         updateRecentAppointments() {
         const numToShow = 5;
         this.recentAppointments = this.sortedAppointments.slice(0, numToShow);
-        }
+        },
+        getPatientName(appointment) {
+        const patient = this.patientList.find(patient => patient.patientId === appointment.patientId);
+        return patient ? patient.firstName + " " + patient.lastName : 'Unknown';
+        },
     },
     created(){
         PatientService.getAllPatients().then((response) => {
