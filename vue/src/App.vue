@@ -55,7 +55,7 @@
 .home-logout {
   display: flex;
   justify-content: right;
-  padding: 5px;
+  padding: 4px;
 }
 a.router-link-exact-active:hoover {
   background-color: yellow;
