@@ -65,7 +65,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 div.home{
   padding: 10px;
 }
