@@ -1,12 +1,22 @@
 <template>
-  <div>
-      <h1>Patient Information</h1>
-       <p>Name : {{ patient.firstName }} {{ patient.lastName }}</p>
-       <p>Address : {{ patient.address}} {{patient.city}} {{patient.state}} {{patient.zip}} </p>
-       <p> Phone Number : {{patient.phoneNumber}} </p>
-       <p> Email Address : {{patient.email}} </p>
+  <div class=patient>
+    <img src="../assets/patientintake.jpg" alt = "Click me" class="logo">
+      <h1>My Information</h1>
+      <div>
+       Name : {{ patient.firstName }} {{ patient.lastName }}
+       </div>
+       <div>
+       Address :  {{ patient.address}}
+       </div>
+       <div>
+       {{patient.city}} {{patient.state}} {{patient.zip}} .
+       </div>
+       <div>
+        Phone Number : {{patient.phoneNumber}}
+        </div>
+       Email Address : {{patient.email}}
     <div class=home> 
-      <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
+      <router-link  class="return-home-btn" :to="{ name: 'home' }" tag ="button">Return Home</router-link>
       <router-link class="update-personal-info" v-bind:to="{name: 'edit-personal-info', params:{ id: patient.id }}" tag ="button"> Update Info</router-link>
     </div>
   </div>
@@ -46,42 +56,25 @@ created(){
 
 <style scoped>
 
-/* .patient{
-     display: flex;
+.patient{
+     display:list-item;
      justify-content:center;
      flex-direction: row;
+     margin-top:1%;
      
-} */
-p{
-  color:#a56262;
-  font-size:1.3rem;
-  float:left;
 }
-
-/* button{
-  float:right;
-  margin-left:60rem;
-  margin-top:1rem;
-} */
-
-.return-home-btn{
-   margin-top:8rem;
-   /* display:flex; */
+.return-home-btn .update-personal-info{
    justify-content:center;
    font-family: monospace;
    font-size: large;
    width:20%;
    margin-right:11%;
-   
-  
-  
+   margin-top: 50%;
 }
 
 .logo{
   float:left;
-  width: 50%;
+  width: 40%;
   height: 4in;
- 
 }
-
 </style>
