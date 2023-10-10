@@ -1,16 +1,16 @@
 <template>
   <div class="personal-info">
-      <employee-details />
+      <employee-profile />
   </div>
 </template>
 
 <script>
-import EmployeeDetails from "../components/EmployeeDetails.vue";
+import EmployeeProfile from "../components/EmployeeProfile.vue";
 
 export default {
   name: "EmployeeInformation",
   components: {
-    EmployeeDetails,
+    EmployeeProfile,
   },
 };
 </script>

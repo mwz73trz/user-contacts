@@ -15,6 +15,7 @@ import AddSchedule from '../views/AddSchedule'
 import EditSchedule from '../views/EditSchedule'
 import RepliesList from '../views/RepliesList'
 import ReplyForm from '../views/ReplyForm'
+import EditOfficeInfo from '../views/EditOfficeInfo'
 
 Vue.use(Router)
 
@@ -75,6 +76,14 @@ const router = new Router({
       path: '/offices/:officeId',
       name: 'office-details',
       component: OfficeDetails,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/edit-office/:officeId',
+      name: 'edit-office-info',
+      component: EditOfficeInfo,
       meta: {
         requiresAuth: true
       }
