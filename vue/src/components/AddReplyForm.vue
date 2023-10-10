@@ -3,7 +3,7 @@
       <form v-on:submit.prevent="addReply">
         <div class="form">
           <label for="reply">Reply Response:</label>
-          <textarea id="review-reply" cols="30" rows="10" v-model="newReply.reviewReply"></textarea>
+          <textarea class="review-reply" id="review-reply" cols="30" rows="10" v-model="newReply.reviewReply"></textarea>
             <div class="actions">
               <button type="submit">Submit</button>
               <router-link :to="{ name: 'EmployeeReview' }" tag ="button">Cancel</router-link>
@@ -53,7 +53,10 @@ justify-content: center;
 .actions{
 display: flex;
 justify-content: space-around;
+}
 
+.review-reply {
+  margin-top: 4px;
 }
 
 </style>
