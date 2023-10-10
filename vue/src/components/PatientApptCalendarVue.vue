@@ -32,25 +32,6 @@ export default {
         startTime: '',
         endTime: ''
       },
-      appointmentList: [],
-      appointment:{
-        appointmentId: 0,
-        employeeId: "",
-        patientId: "",
-        appointmentDateStart: "",
-        appointmentTimeStart: "",
-        appointmentDateEnd: "",
-        appointmentTimeEnd: ""
-      },
-      newAppointment:{
-        appointmentId: 0,
-        employeeId: "",
-        patientId: "",
-        appointmentDateStart: "",
-        appointmentTimeStart: "",
-        appointmentDateEnd: "",
-        appointmentTimeEnd: ""
-      },
       navigatorConfig: {
         showMonths: 3,
         skipMonths: 2,
@@ -113,21 +94,11 @@ export default {
  created() {
     employeeServices.getEmployeeById(this.$route.params.employeeId).then(response => {
       this.employee = response.data;
-    })
-    // employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
-    //   this.schedule = response.data;
-    //   if(this.schedule.startTime && this.schedule.endTime) {
-    //     this.config.events.push({
-    //       id: 0,
-    //       start:DayPilot.Date.today().addTime(this.schedule.startTime),
-    //       end: DayPilot.Date.today().addTime(this.schedule.endTime),
-    //       text: "Available"
-    //     })
-    //   }
-    // })
- },
-    
-    
+    }),
+    employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
+      this.schedule = response.data;
+     })
+ },    
   methods: {
     loadEvents(){
       ApptService.getAppointmentsByEmployeeId(this.$route.params.employeeId).then((response) => {
@@ -149,20 +120,7 @@ export default {
           // this.loadEvents();
           }
       });
-    },
-
-      
-    //   employeeServices.getScheduleByEmployeeId(this.$route.params.employeeId).then((response) => {
-    //   this.schedule = response.data;
-    //   if(this.schedule.startTime && this.schedule.endTime) {
-    //     this.config.events.push({
-    //       id: 0,
-    //       start:DayPilot.Date.today().addTime(this.schedule.startTime),
-    //       end: DayPilot.Date.today().addTime(this.schedule.endTime),
-    //       text: "Available"
-    //     })
-    //   }
-    // })
+    }
     }, 
 
 
