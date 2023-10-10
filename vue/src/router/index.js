@@ -9,9 +9,7 @@ import EmployeeInformation from '../views/EmployeeInformation'
 import OfficeDetails from '../views/OfficeDetails'
 import DoctorDetails from '../views/DoctorDetails'
 import PatientInformation from '../views/PatientInformation'
-// import Schedule from '../components/Schedule'
 import EmployeeReviewList from "../views/EmployeeReviewList"
-// import EditEmployeeSchedule from '../views/EditEmployeeSchedule.vue'
 import EditEmployeeSchedule from '../views/EditEmployeeSchedule'
 import RepliesList from '../views/RepliesList'
 import ReplyForm from '../views/ReplyForm'
@@ -123,31 +121,14 @@ const router = new Router({
        requiresAuth: true
      }   
     },
-    // {
-    //   path: '/schedules/:employeeId',
-    //   name: 'schedule',
-    //   component: Schedule,
-    //   meta: {
-    //     requiresAuth: true
-    //   }
-    // },
-      // {
-      //   path: '/schedules',
-      //   name: 'AddSchedule',
-      //   component: AddSchedule,
-      //   meta: {
-      //     requiresAuth: true
-      //   }
-      // },
-      {
-        // path: '/schedules/:employeeId',
+    {
         path: '/edit-shedule',
         name: 'EditSchedule',
         component: EditEmployeeSchedule,
         meta: {
           requiresAuth: true
         }
-      },
+    },
     {
       path: '/reviews',
       name: 'EmployeeReview',
