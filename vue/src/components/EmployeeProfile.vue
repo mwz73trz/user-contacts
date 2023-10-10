@@ -1,21 +1,22 @@
 <template>
   <div class ="Info">
     <h1>Profile Information</h1>
-    <p>Name: {{ employee.firstName }} {{ employee.lastName }}</p>
+      <p>Name: {{ employee.firstName }} {{ employee.lastName }}</p>
     <div class="schedule"> 
       <p>Your current schedule is: {{schedule.startTime}} - {{schedule.endTime}} </p>
     </div>
     <div class="officeName" v-for="office in officeList" v-bind:key="office.officeId">
-     <p> Office Name: {{ office.officeName }} </p>
-     <p> Office Address: {{ office.address}} {{office.city}} {{office.state}}  </p>
-     <p> Office Phone Number: {{office.phoneNumber}}  </p> 
-     <p>Service Fee: ${{ office.serviceFee }}</p>
-     <div>
-    <router-link class="update-office-info" v-bind:to="{name: 'edit-office-info', params:{ id: office.officeId }}" tag ="button"> Update Office Information</router-link>
+      <p> Office Name: {{ office.officeName }} </p>
+      <p> Office Address: {{ office.address}} {{office.city}} {{office.state}}  </p>
+      <p> Office Phone Number: {{office.phoneNumber}}  </p> 
+      <p>Service Fee: ${{ office.serviceFee }}</p>
+    <div>
+    <router-link class="update-office-info" v-bind:to="{name: 'edit-office-info', params:{ id: office.officeId }}" tag ="button"> Update Office Info</router-link>
     </div>
     </div>
     <div class=home> 
       <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
+      <!-- <router-link :to="{name: 'edit-personal-info', params:{ id: employeeId.employeId }}" tag ="button"> Update Info</router-link> -->
     </div>
   </div>
 </template>

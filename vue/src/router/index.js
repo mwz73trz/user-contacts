@@ -16,6 +16,8 @@ import EditSchedule from '../views/EditSchedule'
 import RepliesList from '../views/RepliesList'
 import ReplyForm from '../views/ReplyForm'
 import EditOfficeInfo from '../views/EditOfficeInfo'
+import EditPatientInfo from '../views/EditPatientInfo'
+
 
 Vue.use(Router)
 
@@ -105,6 +107,14 @@ const router = new Router({
       }
     },
     {
+     path: '/edit-personal-info',
+     name: 'edit-personal-info',
+     component: EditPatientInfo,
+     meta:{
+       requiresAuth: true
+     }   
+    },
+    {
       path: '/schedules/:employeeId',
       name: 'schedule',
       component: Schedule,
@@ -151,7 +161,8 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
+    },
+ 
   ]
 })
 

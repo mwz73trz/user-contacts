@@ -17,6 +17,9 @@ export default {
     getPatient(user){
         return axios.get('patients/user', user)
     },
+    updatePatientInfo(updatedPersonalInfo){
+        return axios.put('patients/user', updatedPersonalInfo)
+    },
     createPersonalInfo(patient){
         return axios.post(`/patient`, patient)
     },
