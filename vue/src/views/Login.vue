@@ -73,6 +73,10 @@ export default {
 
 <style scoped>
 
+h1{
+  margin-left: 180px;
+  display:inline-flex
+}
 
 form{
   border-style: none;
@@ -81,6 +85,7 @@ form{
 
 .form-input-group {
   margin-bottom: 0.5rem;
+  margin-left: 250px;
 }
 label {
   margin-right: 0.5rem;
@@ -90,14 +95,16 @@ label {
   font-family: Cambria;
   font-weight: lighter;
   font-size: smaller;
+
+  
 }
 
 #signup{
    font-family: Cambria;
    font-size: medium;
    float:left;
-   margin-left:63px;
-    margin-top: 0.5rem;
+   margin-left:250px;
+   margin-top: 0.1rem;
 }
 
 #signin{
@@ -105,11 +112,12 @@ label {
    font-size: small;
    position:middle;
    cursor: pointer;
-   margin-left:63px;
-   width: 169px;
+   margin-left:250px;
+   width: 70px;
    border-radius: 4px;
    border: 0.5px solid;
    margin-bottom: 0.5rem;
+
  
 }
 
@@ -125,6 +133,7 @@ label {
    font-family: Cambria;
    font-size: medium;
    font-weight:bold;
+   margin-left: 250px;
 }
 
 .intro{
@@ -132,6 +141,7 @@ label {
   font-style: italic;
   text-align: center;
   color: #414042;
+  margin-left: 60px;
   
 }
 
@@ -140,4 +150,5 @@ label {
     font-size:medium;
     float:center;
 }
+
 </style>
