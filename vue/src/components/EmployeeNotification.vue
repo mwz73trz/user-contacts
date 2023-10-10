@@ -27,17 +27,24 @@ export default {
     },
     
     computed:{
-    sortedAppointments() {
-        return this.allAppointments.slice().sort(
-            (a, b) => new Date(b.created_time) - new Date(a.created_time)
-        );
+
+        filteredAppointments() {
+        return this.allAppointments.filter((item) => {
+            return item.employeeId === this.$store.state.user.id;
+            })
+       },
+        sortedAppointments() {
+            return this.filteredAppointments.slice().sort(
+             (b, a) => (a.appointmentId) - (b.appointmentId)
+            );
         },
     },
+    
     methods: {
         loadAppointments() {
         ApptService.getAllAppointments().then((response) => {
             this.allAppointments = response.data;
-            this.updateRecentAppointments();
+            this.updateRecentAppointments();                      
         });
         },
         updateRecentAppointments() {
@@ -48,6 +55,11 @@ export default {
         const patient = this.patientList.find(patient => patient.patientId === appointment.patientId);
         return patient ? patient.firstName + " " + patient.lastName : 'Unknown';
         },
+        findEmployeeId(appointment){
+            const employee = this.allAppointments.find(employee => employee.employeeId === appointment.employeeId);
+            return employee ? employee.employeeId : 'Unknown';
+        }
+        
     },
     created(){
         PatientService.getAllPatients().then((response) => {
