@@ -6,24 +6,19 @@ public class Employee {
 
     private String firstName;
     private String lastName;
+    private String email;
+    private String mobilePhone;
 
     private int officeId;
 
-    public int getOfficeId() {
-        return officeId;
-    }
+    public Employee() {};
 
-    public void setOfficeId(int officeId) {
-        this.officeId = officeId;
-    }
-
-    public Employee(){
-
-    }
-    public Employee(int employeeId, String firstName, String lastName) {
+    public Employee(int employeeId, String firstName, String lastName, String email, String mobilePhone) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
+        this.mobilePhone = mobilePhone;
     }
 
     public int getEmployeeId() {
@@ -50,4 +45,27 @@ public class Employee {
         this.lastName = lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+    }
+
+    public int getOfficeId() {
+        return officeId;
+    }
+
+    public void setOfficeId(int officeId) {
+        this.officeId = officeId;
+    }
 }
