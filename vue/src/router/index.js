@@ -11,7 +11,7 @@ import DoctorDetails from '../views/DoctorDetails'
 import PatientInformation from '../views/PatientInformation'
 import Schedule from '../components/Schedule'
 import EmployeeReviewList from "../views/EmployeeReviewList"
-import AddSchedule from '../views/AddSchedule'
+// import AddSchedule from '../views/AddSchedule'
 import EditSchedule from '../views/EditSchedule'
 import RepliesList from '../views/RepliesList'
 import ReplyForm from '../views/ReplyForm'
@@ -122,14 +122,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
-      {
-        path: '/schedules',
-        name: 'AddSchedule',
-        component: AddSchedule,
-        meta: {
-          requiresAuth: true
-        }
-      },
+      // {
+      //   path: '/schedules',
+      //   name: 'AddSchedule',
+      //   component: AddSchedule,
+      //   meta: {
+      //     requiresAuth: true
+      //   }
+      // },
       {
         path: '/schedules/:employeeId',
         name: 'EditSchedule',

@@ -15,6 +15,8 @@
     <div>
     <router-link class="update-office-info" v-bind:to="{name: 'edit-office-info', params:{ id: office.officeId }}" tag ="button"> Update Office Info</router-link>
     </div>
+    <router-link v-if="schedule.startTime" v-bind:to="{name: 'EditSchedule', params: { id: schedule.scheduleId }}" tag="button">Edit Schedule</router-link>
+    <router-link  v-bind:to="{name: 'Update-Personal-Info', params: { id: employee.employeeId }}" tag="button">Edit Peronsal info</router-link>
     </div>
     <div class=home> 
       <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>

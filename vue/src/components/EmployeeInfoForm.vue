@@ -11,16 +11,24 @@
           <label for="name">Last Name:</label>
           <input id="lastName" type="text" v-model="employee.lastName" />
       </div>
-            <div class="form-element">
+        <div class="form-element">
           <label for="email"> Email:</label>
           <input id="email" type="text" v-model="employee.email" />
       </div>
-            <div class="form-element">
+        <div class="form-element">
           <label for="mobilePhone"> Cell Phone:</label>
           <input id="mobilePhone" type="text" v-model="employee.mobilePhone" />
       </div>
+          <div class="form-element">
+            <label for="startTime">Start Time</label>
+              <input type="text" v-model="newSchedule.startTime">
+      </div>
+        <div class="form-element">
+              <label for="endTime">End Time</label>
+              <input type="text" v-model="newSchedule.endTime">
+      </div> 
       <div class="form-element" > Primary Office Name:
-                    <select name="offices" v-model="employee.officeId">
+            <select name="offices" v-model="employee.officeId">
             <option value="0">Offices</option>
             <option v-for="office in officeList" :key="office.officeId" v-bind:value="office.officeId">
                 {{ office.officeName }}
@@ -51,6 +59,11 @@ data(){
             officeId: 0
             },
         officeList:[],
+        newSchedule: {
+            employeeId: this.$store.state.user.id,
+            startTime: '',
+            endTime: ''
+        }
     };
 
 },
@@ -71,6 +84,7 @@ methods:{
         if(response.status === 201){
             this.$store.commit("ADD_EMPLOYEE_INFO", response.data);
             this.updateEmployeeOfficeInfo();
+            this.addSchedule();
         }
     });
         }
@@ -84,9 +98,14 @@ methods:{
         })
     },
 
-}
-
-
+    addSchedule() {
+        EmployeeServices.addSchedule(this.newSchedule).then(response => {
+            if (response.status === 201) {
+                // this.$router.push("/")
+            }
+        })
+    }   
+  }
 };
 </script>
 

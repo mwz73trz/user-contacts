@@ -4,28 +4,48 @@
       <img src="../assets/doc.png" class="doc" />
       <div class="notification"><employee-notification /></div>
     </div>
-    <div class="schedule-container">
+    <!-- <div class="schedule-container">
       <schedule />
-    </div>
+    </div> -->
     <div>
       <nav class="nav-buttons">
         <router-link
-          v-bind:to="{
-            name: 'EmployeeReview',
-            params: { id: $route.params.officeId },
-          }"
-          tag="button"
-        >
+        class="reviews"
+          v-bind:to="{ name: 'EmployeeReview',params: { id: $route.params.officeId }}"
+          tag="button" >
           View Review
         </router-link>
 
         <router-link
           class="view-profile"
           v-bind:to="{ name: 'employee', params: { id: employee.employeeId } }"
-          tag="button"
-        >
+          tag="button" >
           View Profile
         </router-link>
+
+        <router-link
+        class="update-personal-info"
+        v-bind:to="{name: 'Update-Personal-Info', params: { id: employee.employeeId }}" 
+        tag="button">
+        Edit Peronsal info
+        </router-link>
+
+        <router-link
+        class="update-schedule"  
+        v-bind:to="{name: 'EditSchedule', params: { id: schedule.scheduleId }}" 
+        tag="button">
+        Edit Schedule
+        </router-link>
+
+       <router-link
+        class="update-office-info"
+        v-for="office in officeList"
+        :key="office.officeId"
+        :to="{ name: 'edit-office-info', params: { id: office.officeId } }"
+        tag="button">
+        Update Office Info
+      </router-link>   
+     
       </nav>
 
       <employee-info-form v-if="isFormVisible"></employee-info-form>
@@ -39,14 +59,14 @@
 <script>
 import EmployeeServices from "../services/EmployeeServices";
 import EmployeeInfoForm from "./EmployeeInfoForm.vue";
-import Schedule from "../components/Schedule.vue";
+// import Schedule from "../components/Schedule.vue";
 import EmployeeApptCalendar from "./EmployeeApptCalendar.vue";
 import EmployeeNotification from "./EmployeeNotification.vue";
 
 export default {
   components: {
     EmployeeInfoForm,
-    Schedule,
+    // Schedule,
     EmployeeApptCalendar,
     EmployeeNotification,
   },
@@ -58,6 +78,10 @@ export default {
         lastName: "",
       },
       officeList: [],
+      schedule: {
+        startTime: '',
+        endTime: ''
+      }
     };
   },
 
@@ -65,9 +89,12 @@ export default {
     EmployeeServices.getEmployee().then((response) => {
       this.employee = response.data;
     }),
-      EmployeeServices.getOffices().then((response) => {
-        this.officeList = response.data;
-      });
+    EmployeeServices.getOffices().then((response) => {
+      this.officeList = response.data;
+    });
+    EmployeeServices.getScheduleByEmployeeId(this.$store.state.user.id).then(response => {
+        this.schedule = response.data;
+    })
   },
 
   computed: {
@@ -121,23 +148,23 @@ button:hover {
   /* border: 1px solid #ddd; */
   border-radius: 70%;
   margin-top: 15px;
-  margin-left: -120px;
+  /* margin-left: -120px; */
   /* padding: 5px; */
-  width: 100px;
+  width: 150px;
 }
 /* h1.employee{
   display: flex;
   justify-content: center;
   justify-content: space-around;
 } */
-.schedule-container {
+/* .schedule-container {
   justify-content: center;
 }
 .schedule-header {
   margin-left: 20px;
   padding-right: 6px;
   margin-bottom: 2px;
-}
+} */
 .nav-buttons {
   display: flex;
   flex-direction: column;
@@ -149,7 +176,7 @@ button:hover {
   margin: 0px;
   margin-top: -6px;
 }
-.view-profile {
+.view-profile, .update-personal-info, .update-schedule, .update-office-info {
   margin-top: 6px;
 }
 nav {
