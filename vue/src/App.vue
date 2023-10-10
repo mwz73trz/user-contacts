@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="app-content">
     <div id="nav">
       <div class="nav-content">
         <div class="home-logout">
@@ -24,6 +24,12 @@
   </div>
 </template>
 <style scoped>
+/* .app-content {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+} */
 #nav {
   font-family: Cambria;
   font-size: 90%;
@@ -41,14 +47,7 @@
 .nav-content {
   margin-left: 6px;
 }
-#app {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
+
 .logo {
   float: center;
   width: 60.3px;
