@@ -66,7 +66,8 @@ created(){
     border-radius: 8px;
     text-align: center;
     float: right;
-    margin-bottom: 15rem;
+    margin-bottom: 20rem;
+    margin-top: 20rem;
     
 } 
 

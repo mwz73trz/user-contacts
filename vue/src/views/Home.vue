@@ -61,9 +61,12 @@ html {
 }
 
 .welcome{
-  margin-left:2rem;
+  margin-left:auto;
   float:left;
   margin-top:0.5rem;
   color:darkolivegreen
 }
+
+
+
 </style>

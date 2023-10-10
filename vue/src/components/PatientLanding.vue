@@ -1,5 +1,6 @@
 <template>
 <div>
+  <div id="navbar">
   <div class="covid-list"> 
     <covid-list/>
   </div>
@@ -30,11 +31,13 @@
       </option>
     </select>
   </div>
-  <nav class = "nav-buttons">
+    <nav class = "nav-buttons">
     <router-link v-bind:to="{name: 'patient', params: {id: $route.params.id}}" tag = "button"> To view your personal info </router-link>
   </nav>
+  
   <calendar-scheduler />
   <patient-form v-if="isFormVisible"></patient-form>
+  </div>
   </div>
   
 </template>
@@ -88,6 +91,7 @@ computed: {
       return !!(this.patient.firstName === "" && this.patient.lastName === "");
     }
   },
+  
 
 }
 </script>
@@ -104,37 +108,85 @@ computed: {
   display: flex;
   flex-wrap: wrap;
   margin-top: 3rem;
-  margin-left: 11rem;
+  margin-left: 1rem;
 }
 .office-list, .employee-list{
   text-align: center;
   font-family:monospace;
-  margin-left: 11rem;
+  margin-left: 1rem;
   margin-right: 2rem;
   float:left;
 }
 
-.info > p{
-  text-align: justify;
+
+p{
+
   font-family:monospace;
+  width: 400rem;
+  margin: 0 auto;
   font-size:1rem;
-  margin-left: 11rem;
-  margin-right: 8rem;
-  margin-top: 6rem;
-  margin-right: 7rem;
-  display: flex;
+  margin-left: auto;
+  margin-top: 4rem;
+  margin-right: auto;
   color:blueviolet;
   font-size:large;
+  text-align: justify;
+  
+}
+button{
+  /* color: solid #000; */
+  
+  margin-right: 15rem;;
+  color: #fff;
+  background: #0060f0;
+  border-radius: 4px;
+  width: 210px;
+  height: 30px;
+  border: 0.5px solid;
+  font-family: monospace;
+  
 }
 
-.nav-buttons{
-  margin-top: 3rem;
-  margin-left: 12rem;
+
+/* .nav-buttons{
+  margin-left: auto;
   width:10px;
   cursor: pointer;
+  float:right;
+  cursor: pointer;
+}  */
+
+
+select {
+
+  background-color: transparent;
+  padding: justify;
+  margin: 0;
+  width: 50%;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-family:monospace;
+   z-index: 1;
+  cursor: pointer;
+  line-height: 1.1;
+  color:gray;
+  font-weight:bold;
 }
 
-.dropdown{
-  font-family:monospace;
+#navbar a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
 }
+
+
+
+
+
 </style>
