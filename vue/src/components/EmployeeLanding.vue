@@ -102,6 +102,9 @@ button{
   height: 30px;
   border: 0.5px solid;
 }
+button:hover {
+  background-color: #64B5F6;
+}
 .doc{
   /* border: 1px solid #ddd; */
   border-radius: 70%;
