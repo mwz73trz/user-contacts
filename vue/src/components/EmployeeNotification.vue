@@ -1,5 +1,5 @@
 <template>
- <div> 
+ <div class="notification-content"> 
     <h2 class="alertHeader"> Please see your newest appointments below: </h2>
     <ul class="alertList">
       <li v-for="appointment in recentAppointments" :key="appointment.id">
@@ -70,9 +70,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .alertList{
-    color: red
+    color: red;
+    list-style-type: none;
+}
+.notification-content {
+    display: flex;
+    flex-direction: column;
 }
 
 </style>

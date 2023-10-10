@@ -9,7 +9,7 @@
       </p>
     </div>
     <form @submit.prevent="login">
-      <p id="app">
+      <p class="title" id="app">
         Patient Portal/Doctor Portal Sign In To Elevate Your Health
       </p>
       <div role="alert" v-if="invalidCredentials">
@@ -46,7 +46,7 @@
   </div>
 </template>
 
-<script>
+<script scoped>
 import authService from "../services/AuthService";
 
 export default {
@@ -143,7 +143,7 @@ label {
   margin-right: 350px;
 }
 
-#app {
+.title {
   font-family: Cambria;
   font-size: medium;
   font-weight: bold;

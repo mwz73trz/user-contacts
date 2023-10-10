@@ -1,72 +1,83 @@
 <template>
   <div class="employee">
     <div class="imgHeader">
-      <img src="../assets/doc.png" class="doc">
-    <h1 class="employee">Employee</h1>
-    <div class="notification"> <employee-notification/> </div>
+      <img src="../assets/doc.png" class="doc" />
+      <div class="notification"><employee-notification /></div>
     </div>
     <div class="schedule-container">
-      <h1>Schedule</h1>
       <schedule />
-      </div>
+    </div>
     <div>
-      <nav class = "nav-buttons">
-        <router-link v-bind:to="{name: 'EmployeeReview', params: {id: $route.params.officeId}}" tag = "button"> View Review </router-link>
-         
-        <router-link class="view-profile" v-bind:to="{name: 'employee', params: {id: employee.employeeId}}" tag = "button"> View Profile </router-link> 
+      <nav class="nav-buttons">
+        <router-link
+          v-bind:to="{
+            name: 'EmployeeReview',
+            params: { id: $route.params.officeId },
+          }"
+          tag="button"
+        >
+          View Review
+        </router-link>
+
+        <router-link
+          class="view-profile"
+          v-bind:to="{ name: 'employee', params: { id: employee.employeeId } }"
+          tag="button"
+        >
+          View Profile
+        </router-link>
       </nav>
-      
+
       <employee-info-form v-if="isFormVisible"></employee-info-form>
-      <div class="agenda"><p>calendar placeholder</p>
-        <EmployeeApptCalendar/>
+      <div class="agenda">
+        <EmployeeApptCalendar />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import EmployeeServices from '../services/EmployeeServices';
-import EmployeeInfoForm from './EmployeeInfoForm.vue';
-import Schedule from '../components/Schedule.vue'
-import EmployeeApptCalendar from './EmployeeApptCalendar.vue';
-import EmployeeNotification from './EmployeeNotification.vue';
+import EmployeeServices from "../services/EmployeeServices";
+import EmployeeInfoForm from "./EmployeeInfoForm.vue";
+import Schedule from "../components/Schedule.vue";
+import EmployeeApptCalendar from "./EmployeeApptCalendar.vue";
+import EmployeeNotification from "./EmployeeNotification.vue";
 
 export default {
-  components: { 
+  components: {
     EmployeeInfoForm,
     Schedule,
     EmployeeApptCalendar,
-    EmployeeNotification
-    },
-  data(){
-    return{
-    employee:{
-      employeeId:0,
-      firstName: "",
-      lastName: ""
+    EmployeeNotification,
+  },
+  data() {
+    return {
+      employee: {
+        employeeId: 0,
+        firstName: "",
+        lastName: "",
       },
-      officeList: []
-    }
+      officeList: [],
+    };
   },
 
   created() {
-    EmployeeServices.getEmployee().then(response => {
+    EmployeeServices.getEmployee().then((response) => {
       this.employee = response.data;
     }),
-    EmployeeServices.getOffices().then(response => {
-       this.officeList = response.data;
-   }) 
+      EmployeeServices.getOffices().then((response) => {
+        this.officeList = response.data;
+      });
   },
 
   computed: {
     isFormVisible() {
-      return !!(this.employee.firstName === "" && this.employee.lastName === "" );
-    }
+      return !!(
+        this.employee.firstName === "" && this.employee.lastName === ""
+      );
+    },
   },
-
-
 };
-
 </script>
 
 <style>
@@ -81,18 +92,19 @@ html {
 .agenda {
   border-style: solid;
 }
-.employee{
+.employee {
   background-color: white;
+  margin-left: 6px;
   /* background: rgb(103, 147, 177); */
-  }
-.nav-buttons{
+}
+.nav-buttons {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
   padding: 15px;
   color: purple;
 }
-button{
+button {
   /* color: solid #000; */
   color: #fff;
   background: #0060f0;
@@ -103,9 +115,9 @@ button{
   border: 0.5px solid;
 }
 button:hover {
-  background-color: #64B5F6;
+  background-color: #64b5f6;
 }
-.doc{
+.doc {
   /* border: 1px solid #ddd; */
   border-radius: 70%;
   margin-top: 15px;
@@ -113,13 +125,18 @@ button:hover {
   /* padding: 5px; */
   width: 100px;
 }
-h1.employee{
+/* h1.employee{
   display: flex;
   justify-content: center;
   justify-content: space-around;
-}
+} */
 .schedule-container {
   justify-content: center;
+}
+.schedule-header {
+  margin-left: 20px;
+  padding-right: 6px;
+  margin-bottom: 2px;
 }
 .nav-buttons {
   display: flex;
@@ -135,9 +152,13 @@ h1.employee{
 .view-profile {
   margin-top: 6px;
 }
-nav{
+nav {
   margin-top: -5px;
   max-width: -5px;
+}
+.notification {
+  display: flex;
+  justify-content: right;
 }
 /* .nav-buttons {
   display: inline-block;

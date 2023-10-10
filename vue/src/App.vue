@@ -3,20 +3,20 @@
     <div id="nav">
       <div class="nav-content">
         <div class="home-logout">
-             <router-link
-             class="router-link-exact"
-          v-bind:to="{ name: 'home' }"
-          v-if="$store.state.token != ''"
-          >Home</router-link
-        >&nbsp;
-        <router-link
-        class="router-link-exact"
-          v-bind:to="{ name: 'logout' }"
-          v-if="$store.state.token != ''"
-          >Logout</router-link
-        >&nbsp;
+          <router-link
+            class="router-link-exact"
+            v-bind:to="{ name: 'home' }"
+            v-if="$store.state.token != ''"
+            >Home</router-link
+          >&nbsp;
+          <router-link
+            class="router-link-exact"
+            v-bind:to="{ name: 'logout' }"
+            v-if="$store.state.token != ''"
+            >Logout</router-link
+          >&nbsp;
         </div>
-        <img src="./assets/AppLogo.png" class="logo">
+        <img src="./assets/AppLogo.png" class="logo" />
         <h4 id="date">{{ new Date() }}</h4>
       </div>
     </div>
@@ -28,7 +28,7 @@
   font-family: Cambria;
   font-size: 90%;
   /* background-color: rgb(103, 147, 177); */
-  background-color: #B9D9EB;
+  background-color: #b9d9eb;
   height: 80px;
 }
 
@@ -36,20 +36,27 @@
   color: rgb(81, 79, 85);
   font-weight: lighter;
   float: right;
-  margin-top: 35px;
+  margin-top: 30px;
 }
 .nav-content {
   margin-left: 6px;
 }
-
-.logo{
-   float: center;
-   width: 60.3px;
-   height: 60.3px;
-   border-style: none;
-   margin-top: -20px;
-   /* margin-top: 70px; */
-   /* margin-right: 350px; */
+#app {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.logo {
+  float: center;
+  width: 60.3px;
+  height: 60.3px;
+  border-style: none;
+  margin-top: -20px;
+  /* margin-top: 70px; */
+  /* margin-right: 350px; */
 }
 
 .home-logout {
@@ -65,7 +72,7 @@ a.router-link-exact-active {
   color: #42b983;
 }
 a.router-link-exact {
-    text-decoration: none;
+  text-decoration: none;
 }
 a:-webkit-link {
   text-decoration: none;
