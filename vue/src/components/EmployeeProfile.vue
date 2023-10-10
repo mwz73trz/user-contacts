@@ -2,6 +2,8 @@
   <div class ="Info">
     <h1>Profile Information</h1>
       <p>Name: {{ employee.firstName }} {{ employee.lastName }}</p>
+      <p> Email: {{employee.email}} </p>
+      <p> Cell Phone: {{employee.mobilePhone}} </p>
     <div class="schedule"> 
       <p>Your current schedule is: {{schedule.startTime}} - {{schedule.endTime}} </p>
     </div>
@@ -9,14 +11,13 @@
       <p> Office Name: {{ office.officeName }} </p>
       <p> Office Address: {{ office.address}} {{office.city}} {{office.state}}  </p>
       <p> Office Phone Number: {{office.phoneNumber}}  </p> 
-      <p>Service Fee: ${{ office.serviceFee }}</p>
+      <p> Service Fee: ${{ office.serviceFee }}</p>
     <div>
     <router-link class="update-office-info" v-bind:to="{name: 'edit-office-info', params:{ id: office.officeId }}" tag ="button"> Update Office Info</router-link>
     </div>
     </div>
     <div class=home> 
       <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
-      <!-- <router-link :to="{name: 'edit-personal-info', params:{ id: employeeId.employeId }}" tag ="button"> Update Info</router-link> -->
     </div>
   </div>
 </template>
@@ -33,6 +34,8 @@ export default {
         employeeId: 0,
         firstName: "",
         lastName: "",
+        email: "",
+        mobilePhone: "",
       },
       schedule: {
         startTime: '',
@@ -41,27 +44,16 @@ export default {
     };
   },
   created() {
-    EmployeeServices.getEmployee(
-    ).then((response) => {
+    EmployeeServices.getEmployee().then((response) => {
       this.employee = response.data;
     }),
-  //    EmployeeServices.getOffices().then(response => {
-  //   this.officeList = response.data;
-  // })
    EmployeeServices.getOfficesByEmployeeId(this.$store.state.user.id).then(response => {
     this.officeList = response.data;
   }),
     EmployeeServices.getScheduleByEmployeeId(this.$store.state.user.id).then(response => {
-            this.schedule = response.data;
+      this.schedule = response.data;
     })
   },
-  // computed: {
-  //     filteredOffices() {
-  //         return this.officeList.filter((item) => {
-  //             return item.officeId === this.employee.officeId;
-  //         })
-  //     }
-  // },
 
 };
 </script>

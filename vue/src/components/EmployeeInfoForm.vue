@@ -11,6 +11,14 @@
           <label for="name">Last Name:</label>
           <input id="lastName" type="text" v-model="employee.lastName" />
       </div>
+            <div class="form-element">
+          <label for="email"> Email:</label>
+          <input id="email" type="text" v-model="employee.email" />
+      </div>
+            <div class="form-element">
+          <label for="mobilePhone"> Cell Phone:</label>
+          <input id="mobilePhone" type="text" v-model="employee.mobilePhone" />
+      </div>
       <div class="form-element" > Primary Office Name:
                     <select name="offices" v-model="employee.officeId">
             <option value="0">Offices</option>
@@ -38,6 +46,8 @@ data(){
             id: 0,
             firstName: "",
             lastName: "",
+            email: "",
+            mobilePhone: "",
             officeId: 0
             },
         officeList:[],
@@ -59,7 +69,8 @@ methods:{
     EmployeeServices.createPersonalInfo(this.employee)
     .then(response => {
         if(response.status === 201){
-            this.$store.commit("ADD_EMPLOYEE_INFO", response.data)
+            this.$store.commit("ADD_EMPLOYEE_INFO", response.data);
+            this.updateEmployeeOfficeInfo();
         }
     });
         }
