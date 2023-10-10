@@ -5,10 +5,8 @@
       Thank you for choosing us for your care! If you are having an emergency, call 911 now—do not send a message through this portal.
        If you are thinking of hurting yourself, call for help right away. Don’t wait, help is available to anyone. All calls are kept private and confidential 1-740-361-4729.
        If you need to reschedule, you will be directed to call your appointment location to reschedule your appointment.  
-      </p>
-  <div class="covid-list"> 
-    <covid-list/>
-  </div>
+     </p>
+
   <!-- <div class="info">
     </div> -->
   <div class="headerPatient"><h2>Please select from Offices/Doctors to view additional information and to book
@@ -31,15 +29,19 @@
       </option>
     </select>
   </div>
-    <nav class = "nav-buttons">
-    <router-link v-bind:to="{name: 'patient', params: {id: $route.params.id}}" tag = "button"> To view your personal info </router-link>
-  </nav>
+    <!-- <nav class = "nav-buttons"> -->
+    <router-link class = "personal-info-button" v-bind:to="{name: 'patient', params: {id: $route.params.id}}" tag = "button"> To view your personal info </router-link>
+  <!-- </nav> -->
   
   <calendar-scheduler />
   <patient-form v-if="isFormVisible"></patient-form>
+  <div class="covid-list"> 
+    <covid-list/>
+  </div>
   </div>
    <!-- <img src="../assets/PatientLanding.jpg" alt = "Click me" class="image" id ="imageToClick"> -->
   </div>
+  
   
 </template>
 <script>
@@ -98,18 +100,31 @@ computed: {
 </script>
 
 <style scoped>
+/* $banner-width: 20em;
+$banner-height: 5em; */
 
+*,
+*::before,
+*::after {
+	position: relative;
+	box-sizing: border-box;
+	transition: 1s all linear;
+}
 .logo{
   border: 1px solid rgb(176, 165, 196);
   border-radius: 6px;
   padding: 6px;
   width: 150px;
 }
+h2{
+   color:blueviolet;
+}
 .headerPatient{
   text-align: center;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 3rem;
+  margin-top: 1rem;
+ 
 }
 .office-list, .employee-list{
   text-align: center;
@@ -122,34 +137,29 @@ computed: {
 .info{
   text-shadow: length;
   white-space:pre-wrap;
-    margin-top: 3rem;
-}
+  margin-top: 4rem;
+} 
 
 p{
-
-  font-family:Raleway;
-  /* width: 400rem; */
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size:1rem;
-  margin-top: 0.5rem;
-  margin-right: 2rem;
   color:blueviolet;
   font-size:large;
-  text-align: justify;
+  /* text-align: justify;  */
   font-stretch: extra-expanded;
-  
-  
 }
-button{
-  /* color: solid #000; */
-  
+
+.personal-info-button{
+  color: solid #000; 
   margin-right: 15rem;;
   color: #fff;
   background: #0060f0;
   border-radius: 4px;
   width: 210px;
-  height: 30px;
+  height: 25px;
   border: 0.5px solid;
   font-family: monospace;
+  margin-top:-1rem;
   
 }
 
@@ -180,7 +190,7 @@ select {
   font-weight:bold;
 }
 
-#navbar a {
+/* #navbar a {
   float: left;
   color: black;
   text-align: center;
@@ -190,7 +200,7 @@ select {
   line-height: 25px;
   border-radius: 4px;
   margin-top: 5%
-}
+} */
 
 .logo{
   border: 1px ;

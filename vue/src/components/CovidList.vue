@@ -1,12 +1,11 @@
 <template>
-
-<div class="container">
+<div class="banner">
   <div class = "row">
-      <a href="" target="_blank">
-      <img src="../assets/Covid-19.png" alt = "Click me" class="logo">
-      </a>
+      <!-- <a href="" target="_blank"> -->
+      <!-- </a> -->
+          <img src="../assets/Covid-19.png" alt = "Click me" class="logo">
      <p>Covid-19 summary results</p>
-      <div class="key">Below are the estimated {{covidData['Country_text']}} data</div>
+      <div class="key">Below are the estimated {{covidData['Country_text']}} data ##</div>
       <div class="key">Total Covid Cases:{{covidData['Total Cases_text']}} </div>
       <div class="key">Total Death Cases:{{covidData['Total Deaths_text']}} </div>
       <div class="key">Total Recovered Cases:{{covidData['Total Recovered_text']}} </div>
@@ -42,47 +41,64 @@ created(){
 
 <style scoped>
 
+.banner {
+	width: 70em;
+	background: gray;
+	height: 15em;
+	overflow: hidden;
+	display: flex;
+	justify-content: flex-start;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+	cursor: pointer;
+	border-radius: 6em;
+    float: right;
+	box-shadow: 0 5px 15px 10px rgba(0, 0, 0, 0.55);
+    transform: scale(1);
+}
 .row {
-    /* border: 1px 
-    solid rgb(141, 11, 11); */
+    border-radius: 15px 20px 20px;
+    /* border:silver solid 3px; */
     /* overflow: hidden; */
     float:right;
-    text-align: center;
+    /* text-align:start; */
     font:bold;
-    height:120%;
-    /* font-size: 20%; */
+    /* display: inline-flexbox; */
+    margin-right:10px;
 }
 
 .key {
     width: 50%;
     float:left;
+    text-decoration-style: double;
     font:bold;
+    text-align: justify;
+    display: inline-flex;
 }
 
 .container {
     
-    width: 40%;
+    width: 35%;
     font-family: calibri;
     font-size: 160%;
     font: bold;
-  
     text-align: left;
     float: right;
     height:120% ;
     margin-bottom: 20rem;
-    margin-top: 8rem; 
+    margin-top: 1rem; 
+    background-color: slategrey;
     
 } 
 
 .logo{
-   width: 220px;
+   width: 180px;
+   height: 2in;
    float: left;
-   padding: 15px;
- 
+    /* border-radius: 15px 20px 20px; */
+   /* padding: 15px; */
 }
-
-p{
+/* p{
     float:center;
     
-}
+} */
 </style>

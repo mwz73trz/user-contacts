@@ -61,10 +61,11 @@ html {
 }
 
 .welcome{
+   font-family:'Gill Sans';
   margin-left:auto;
-  float:left;
+  /* float:left; */
   margin-top:0.5rem;
-  color:darkolivegreen
+  color:darkolivegreen;
 }
 
 
