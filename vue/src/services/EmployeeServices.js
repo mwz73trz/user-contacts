@@ -38,5 +38,8 @@ export default {
     },
     getOfficesByEmployeeId(employeeId) {
         return axios.get(`/employee-offices/${employeeId}`)
+    },
+    updateOfficeInfo(officeId, updatedOffice) {
+        return axios.put(`/offices/${officeId}`, updatedOffice)
     }
 }

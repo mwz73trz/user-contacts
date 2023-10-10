@@ -9,8 +9,9 @@
      <p> Office Name: {{ office.officeName }} </p>
      <p> Office Address: {{ office.address}} {{office.city}} {{office.state}}  </p>
      <p> Office Phone Number: {{office.phoneNumber}}  </p> 
+     <p>Service Fee: ${{ office.serviceFee }}</p>
      <div>
-    <router-link class="update-office-info" v-bind:to="{name: 'edit-office-info', params:{officeId: office.officeId}}" tag ="button"> Update Office Information</router-link>
+    <router-link class="update-office-info" v-bind:to="{name: 'edit-office-info', params:{ id: office.officeId }}" tag ="button"> Update Office Information</router-link>
     </div>
     </div>
     <div class=home> 
