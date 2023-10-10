@@ -9,8 +9,11 @@
      <p> Office Name: {{ office.officeName }} </p>
      <p> Office Address: {{ office.address}} {{office.city}} {{office.state}}  </p>
      <p> Office Phone Number: {{office.phoneNumber}}  </p> 
+     <p>Service Fee: ${{ office.serviceFee }}</p>
+     <div>
+    <router-link class="update-office-info" v-bind:to="{name: 'edit-office-info', params:{ id: office.officeId }}" tag ="button"> Update Office Information</router-link>
     </div>
- 
+    </div>
     <div class=home> 
       <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
     </div>
@@ -22,7 +25,6 @@ import EmployeeServices from "../services/EmployeeServices";
 
 export default {
   name: "employee-details",
-  components: {},
   data() {
     return {
     officeList: [],
@@ -63,7 +65,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 div.home{
   padding: 10px;
 }
@@ -86,5 +88,13 @@ form{
 }
 body{
    background: rgb(103, 147, 177);
+}
+body,
+html {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
 }
 </style>

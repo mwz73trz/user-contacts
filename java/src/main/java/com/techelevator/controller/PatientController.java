@@ -55,6 +55,11 @@ public class PatientController {
         return patientDao.createPatientInfo(principal, newPatient);
     }
 
+    @PutMapping("patients/user")
+    public boolean updatePatientInfo(Principal principal, @RequestBody Patient updatedPatient) {
+        return patientDao.updatePatientInfo(principal, updatedPatient);
+    }
+
     @GetMapping("/covid")
     public  String getThirdPartyApi(){
         String apiUrl = "https://covid-19.dataflowkit.com/v1/WORLD";

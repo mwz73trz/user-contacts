@@ -27,8 +27,9 @@ public class JdbcPatientDao implements PatientDao {
     @Override
     public List<Patient> getAllPatient() {
         List <Patient> result = new ArrayList<>();
-        String sql = "SELECT patient_id, first_name, last_name " +
-                    " FROM patient ; " ;
+        String sql = "SELECT patient_id, first_name, last_name, " +
+                        "address, city, state, zip, phone_number, email " +
+                        " FROM patient ; " ;
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
         try {
             while(rowSet.next()) {
@@ -45,10 +46,12 @@ public class JdbcPatientDao implements PatientDao {
     @Override
     public Patient getPatientByUser(String username) {
         Patient patient = null;
-        String sql = "SELECT patient.patient_id, patient.first_name, patient.last_name\n" +
-                "\tFROM patient \n" +
-                "\tJOIN users ON users.user_id = patient.patient_id\n" +
-                "\tWHERE users.username = ? ;";
+        String sql = "SELECT patient.patient_id, patient.first_name, patient.last_name, " +
+                        "patient.address, patient.city, patient.state, patient.zip, " +
+                        "patient.phone_number, patient.email " +
+                        "FROM patient " +
+                        "JOIN users ON users.user_id = patient.patient_id " +
+                        "WHERE users.username = ? ;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
             if (results.next()) {
@@ -62,17 +65,32 @@ public class JdbcPatientDao implements PatientDao {
 
     @Override
     public Patient createPatientInfo(Principal principal, Patient patient) {
-        String sql = "INSERT INTO patient(\n" +
-                "\tpatient_id, first_name, last_name)\n" +
-                "\tVALUES (?, ?, ?) RETURNING patient_id;";
+        String sql = "INSERT INTO patient(" +
+                "patient_id, first_name, last_name, address, city, state, zip, phone_number, email) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING patient_id;";
 
         User user = userDao.getUserByUsername(principal.getName());
         int userId = user.getId();
 
-        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, userId, patient.getFirstName(), patient.getLastName());
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class,
+                userId, patient.getFirstName(), patient.getLastName(), patient.getAddress(), patient.getCity(),
+                patient.getState(), patient.getZip(), patient.getPhoneNumber(), patient.getEmail());
         patient.setPatientId(newId);
 
         return patient;
+    }
+
+    @Override
+    public boolean updatePatientInfo(Principal principal, Patient patient) {
+        String sql = "UPDATE patient " +
+                        "SET first_name=?, last_name=?, address=?, " +
+                        "city=?, state=?, zip=?, phone_number=?, email=? " +
+                        "WHERE patient_id = ?;";
+        User user = userDao.getUserByUsername(principal.getName());
+        int userId = user.getId();
+        int count = jdbcTemplate.update(sql, patient.getFirstName(), patient.getLastName(), patient.getAddress(),
+                patient.getCity(), patient.getState(), patient.getZip(), patient.getPhoneNumber(), patient.getEmail(), userId);
+        return count == 1;
     }
 
 
@@ -81,7 +99,13 @@ public class JdbcPatientDao implements PatientDao {
         Patient patient = new Patient(
                 rowSet.getInt("patient_id") ,
                 rowSet.getString("first_name"),
-                rowSet.getString("last_name")
+                rowSet.getString("last_name"),
+                rowSet.getString("address"),
+                rowSet.getString("city"),
+                rowSet.getString("state"),
+                rowSet.getString("zip"),
+                rowSet.getString("phone_number"),
+                rowSet.getString("email")
                 );
                 return patient;
     }

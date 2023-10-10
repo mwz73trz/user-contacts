@@ -7,19 +7,19 @@ INSERT INTO users (username,password_hash,role) VALUES ('admin1','$2a$08$UkVvwpU
 INSERT INTO users (username,password_hash,role) VALUES ('admin2','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 INSERT INTO users (username,password_hash,role) VALUES ('user3','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 
-INSERT INTO patient(patient_id, first_name, last_name)
-	VALUES (1, 'User', 'One' ),
-		   (3, 'Chase', 'Test'),
-		   (6, 'Harry', 'Potter');
+INSERT INTO patient(patient_id, first_name, last_name, address, city, state, zip, phone_number, email)
+	VALUES (1, 'User', 'One', '123 Main St', 'Cleveland', 'OH', '55412', '519-321-0987', 'helpme@patient.com'),
+		   (3, 'Chase', 'Test', '13 Tom St', 'Lewistown', 'OH', '43333', '419-668-4333', 'iamsick@patient.com'),
+		   (6, 'Harry', 'Potter', '1 Ache St', 'Dover', 'DE', '19904', '302-697-3813', 'sos911@patient.com');
 
 INSERT INTO office_details(office_name, phone_number, open_time, close_time, address, city, state, zip, service_fee )
 	VALUES  ('Mediwizard Clinc', '1-740-361-4729', '08:00:00', '17:00:00', '234 Diagon Ally', 'Orlando', 'Florida', '34287', 85.00),
 			('Chase Clinic', '1-908-862-0280', '07:00:00', '18:00:00', '0972 Chase Place', 'Dalas', 'Texas', '10824', 90.00);
 
-INSERT INTO employee(employee_id, first_name, last_name)
-	VALUES  (2, 'Abby', 'Admin'),
-		    (5, 'Paul', 'Cross'),
-		    (4, 'Ginny', 'Weasley');
+INSERT INTO employee(employee_id, first_name, last_name, email, mobile_phone)
+	VALUES  (2, 'Abby', 'Admin', 'abby.admin@email.com', '302-123-4567'),
+		    (5, 'Paul', 'Cross', 'paul.cross@email.com', '817-223-5678'),
+		    (4, 'Ginny', 'Weasley', 'ginny.weasley@email.com', '513-663-7658');
 			
 INSERT INTO employee_office(employee_id, office_id)
 	VALUES  (2, 2),

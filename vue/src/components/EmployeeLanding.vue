@@ -13,9 +13,7 @@
       <nav class = "nav-buttons">
         <router-link v-bind:to="{name: 'EmployeeReview', params: {id: $route.params.officeId}}" tag = "button"> View Review </router-link>
          
-        <router-link class="view-profile" v-bind:to="{name: 'employee', params: {id: employee.employeeId}}" tag = "button"> View Profile </router-link>
-        <!-- <router-link class="update-office-info" v-bind="{name: 'office', params:{id: officeId}}" tag ="button"> Update Office Information</router-link> -->
-        <button>Update Office Information</button> 
+        <router-link class="view-profile" v-bind:to="{name: 'employee', params: {id: employee.employeeId}}" tag = "button"> View Profile </router-link> 
       </nav>
       
       <employee-info-form v-if="isFormVisible"></employee-info-form>
@@ -104,11 +102,16 @@ button{
   height: 30px;
   border: 0.5px solid;
 }
+button:hover {
+  background-color: #64B5F6;
+}
 .doc{
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   border-radius: 70%;
+  margin-top: 15px;
+  margin-left: -120px;
   /* padding: 5px; */
-  width: 130px;
+  width: 100px;
 }
 h1.employee{
   display: flex;

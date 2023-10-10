@@ -55,6 +55,7 @@ export default {
 <style>
 h2 {
   text-align: center;
+  color: #414042;
 }
 .reviews-list {
   margin: 0 auto;
@@ -73,9 +74,15 @@ table {
   text-align: left;
   width: 800px;
   border-collapse: collapse;
+  color: #414042;
 }
 td {
   padding: 4px;
+  text-decoration-style: none;
+}
+a.router-link-exact-active {
+  text-decoration: none;
+  color: blue;
 }
 /* tbody tr:nth-child(even) {
   background-color: #F2F2F2;

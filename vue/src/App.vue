@@ -4,11 +4,13 @@
       <div class="nav-content">
         <div class="home-logout">
              <router-link
+             class="router-link-exact"
           v-bind:to="{ name: 'home' }"
           v-if="$store.state.token != ''"
           >Home</router-link
         >&nbsp;
         <router-link
+        class="router-link-exact"
           v-bind:to="{ name: 'logout' }"
           v-if="$store.state.token != ''"
           >Logout</router-link
@@ -55,7 +57,17 @@
   justify-content: right;
   padding: 5px;
 }
-.home-logout {
+a.router-link-exact-active:hoover {
+  background-color: yellow;
+}
+a.router-link-exact-active {
+  text-decoration: none;
+  color: #42b983;
+}
+a.router-link-exact {
     text-decoration: none;
+}
+a:-webkit-link {
+  text-decoration: none;
 }
 </style>

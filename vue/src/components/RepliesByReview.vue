@@ -4,8 +4,8 @@
       <h2>Replies</h2>
         <div class="navButtons">
           <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
-          |
-          <router-link :to="{ name: 'EmployeeReview' }" tag ="button">Return To Reviews</router-link>
+          
+          <router-link :to="{ name: 'EmployeeReview' }" tag ="button">All Reviews</router-link>
         </div>
       </div>
     <div class="replies-list">

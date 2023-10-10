@@ -1,13 +1,14 @@
 <template>
-  <div class="patient">
-     <img src="../assets/patientintake.jpg" alt = "Click me" class="logo">
-      <h1>My Information</h1>
-         <p>Name:{{ patient.firstName }} {{ patient.lastName }}</p>
-          <router-link class="return-home-btn" :to="{ name: 'home' }" tag ="button">Return Home</router-link>
-    <!-- <div class=home> 
-     
-    </div> -->
-   
+  <div>
+      <h1>Patient Information</h1>
+       <p>Name : {{ patient.firstName }} {{ patient.lastName }}</p>
+       <p>Address : {{ patient.address}} {{patient.city}} {{patient.state}} {{patient.zip}} </p>
+       <p> Phone Number : {{patient.phoneNumber}} </p>
+       <p> Email Address : {{patient.email}} </p>
+    <div class=home> 
+      <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
+      <router-link class="update-personal-info" v-bind:to="{name: 'edit-personal-info', params:{ id: patient.id }}" tag ="button"> Update Info</router-link>
+    </div>
   </div>
 </template>
 
@@ -23,6 +24,13 @@ data(){
             id:0,
             firstName: "",
             lastName:"",
+            address: "",
+            city: "",
+            state: "",
+            zip: "",
+            phoneNumber: "",
+            email: "",
+            
         }
     }
 },
