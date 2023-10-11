@@ -132,8 +132,9 @@ $banner-height: 5em; */
 }
 h2{
    color:blueviolet;
-   margin-left: 8rem;
-   font-size: 1.8rem;
+   margin-left: 1rem;
+   font-size: 1.4rem;
+   
 }
 .headerPatient{
   text-align: center;
@@ -250,8 +251,8 @@ select {
   width:520px;
   position: relative;
   margin-right: 0.5px;
-  height: 2in;
-  margin-top:-10rem;
+  height: 3.5in;
+  margin-top:-14rem;
   display:inline-flex;
   padding-right: 10px;;
   }
@@ -262,7 +263,7 @@ select {
     color: red;
     list-style-type: none;
     font-size: 17px;
-    padding-left: 530px;
+    padding-left: 300px;
 }
 .notification-content {
     display: flex;
