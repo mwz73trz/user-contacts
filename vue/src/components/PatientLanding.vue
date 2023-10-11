@@ -32,14 +32,14 @@
     <!-- <nav class = "nav-buttons"> -->
     <router-link class = "personal-info-button" v-bind:to="{name: 'patient', params: {id: $route.params.id}}" tag = "button"> To view your personal info </router-link>
   <!-- </nav> -->
-  
+   <img src="../assets/PatientLanding.jpg" alt = "Click me" class="image" id ="imageToClick">
   <calendar-scheduler />
   <patient-form v-if="isFormVisible"></patient-form>
   <div class="covid-list"> 
     <covid-list/>
   </div>
   </div>
-   <!-- <img src="../assets/PatientLanding.jpg" alt = "Click me" class="image" id ="imageToClick"> -->
+  
   </div>
   
   
@@ -118,6 +118,7 @@ $banner-height: 5em; */
 }
 h2{
    color:blueviolet;
+   margin-left: 8rem;
 }
 .headerPatient{
   text-align: center;
@@ -129,15 +130,19 @@ h2{
 .office-list, .employee-list{
   text-align: center;
   font-family:monospace;
-  margin-left: .1rem;
-  margin-right: 2rem;
+  margin-left: 2rem;
+  margin-right: 11rem;
   float:left;
+  font-size: 188%;
+  position: relative;
+  color:rgb(32, 94, 32);       
 }
 
 .info{
   text-shadow: length;
   white-space:pre-wrap;
   margin-top: 4rem;
+  
 } 
 
 p{
@@ -145,22 +150,28 @@ p{
   font-size:1rem;
   color:blueviolet;
   font-size:large;
-  /* text-align: justify;  */
-  font-stretch: extra-expanded;
+  /* text-align:left;  */
+  margin-left: 0.5%;
+  font-style: oblique;
+  /* font-stretch: extra-expanded; */
 }
+
 
 .personal-info-button{
   color: solid #000; 
-  margin-right: 15rem;;
+  margin-left: -55rem; 
   color: #fff;
   background: #0060f0;
   border-radius: 4px;
-  width: 210px;
-  height: 25px;
+  width: 300px;
+  height: 40px;
   border: 0.5px solid;
   font-family: monospace;
-  margin-top:-1rem;
-  
+  margin-top:8rem; 
+  display:flexbox;
+  font-size: 20px;
+  /* position:relative; */
+  /* flex:left;  */
 }
 
 
@@ -210,9 +221,22 @@ select {
   float: left;
 }
 
-.image{
+/* .image{
   width:50rem;
   height: 35rem;
+} */
+#info{
+  background:seashell;
 }
+
+.image{
+  float:right;
+  width:580px;
+  position: relative;
+  margin-right: 0.5px;
+  height: 2.8in;
+  margin-top:-03rem;
+  display:inline-flex
+  }
 
 </style>

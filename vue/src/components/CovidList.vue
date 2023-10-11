@@ -42,7 +42,7 @@ created(){
 <style scoped>
 
 .banner {
-	width: 70em;
+	width: 150em;
 	background: gray;
 	height: 15em;
 	overflow: hidden;
@@ -51,9 +51,12 @@ created(){
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 	cursor: pointer;
 	border-radius: 6em;
-    float: right;
+    float: center;
 	box-shadow: 0 5px 15px 10px rgba(0, 0, 0, 0.55);
-    transform: scale(1);
+    transform: scale(0.8);
+    margin-top:15rem;
+    /* margin-lef: 19rem; */
+    display: flex;
 }
 .row {
     border-radius: 15px 20px 20px;
@@ -63,7 +66,7 @@ created(){
     /* text-align:start; */
     font:bold;
     /* display: inline-flexbox; */
-    margin-right:10px;
+    margin-right:5px;
 }
 
 .key {
@@ -71,8 +74,11 @@ created(){
     float:left;
     text-decoration-style: double;
     font:bold;
-    text-align: justify;
+    /* text-align: justify; */
     display: inline-flex;
+    font-size: 170%;
+    /* line-height: 1.5; */
+    margin-top: 1rem;
 }
 
 .container {
@@ -85,7 +91,7 @@ created(){
     float: right;
     height:120% ;
     margin-bottom: 20rem;
-    margin-top: 1rem; 
+    margin-top: -25rem; 
     background-color: slategrey;
     
 } 
@@ -97,8 +103,9 @@ created(){
     /* border-radius: 15px 20px 20px; */
    /* padding: 15px; */
 }
-/* p{
+p{
     float:center;
+    font-size: 6%;
     
-} */
+}
 </style>
