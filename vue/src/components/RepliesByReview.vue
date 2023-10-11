@@ -64,31 +64,25 @@ export default {
   text-align: center;
   padding-left: 50px;
 }
-.officeDetailEdits{
-  width: 300px;
+.reviewsImg{
+  width: 450px;
+  text-align: left;
 }
 .replyH1{
   text-align:left;
   font-size: 40px;
 }
-.reviews-list{
-  max-width: 800px;
-  margin: 0;
-  align-items: center;
-}
-th{
-  width: 100px;
-  height: 10px; 
+table {
+  text-align: left;
+  width: 800px;
+  border-collapse: collapse;
 }
 .headers {
   background-color: lightgrey;
   font-size: 25px; 
 }
-td {
-  padding: 10px;
-  font-size: 20px;
-  border-bottom: 1px solid grey; 
-  text-decoration-style: none;
+tbody{
+  font-size: 18px;
 }
 button {
   color: #fff;

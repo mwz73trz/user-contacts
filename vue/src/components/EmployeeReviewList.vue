@@ -5,6 +5,7 @@
       <img class="reviewsImg" src="../assets/reviews.png" />
     <div>
       <h2 class="officeH2">Office Reviews</h2>
+      <h3 class="reviewText"> To view all replys for a review click on the review </h3>
     </div>
     <div class="reviews-list">
       <table>
@@ -73,10 +74,31 @@ export default {
   color: #414042;
   font-size: 40px;
 }
+.reviewText{
+  text-align: left;
+  color: #414042;
+  font-size: 18px;
+}
 table {
   text-align: left;
   width: 800px;
   border-collapse: collapse;
+}
+.headers {
+  background-color: lightgrey;
+  font-size: 25px; 
+}
+tbody{
+  font-size: 18px;
+}
+.homeBtn{
+  color: #fff;
+  background: #0060f0;
+  margin: 30px;
+  border-radius: 4px;
+  width: 150px;
+  height: 70px;
+  border: 0.5px solid; 
 }
 
 .topic:last-child {
