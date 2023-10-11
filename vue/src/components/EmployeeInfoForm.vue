@@ -1,5 +1,5 @@
 <template>
-  <div class="form">
+  <div class="newEmployeeForm">
       <div class="employeeForm"> 
           <h2 class="updateInfo">Please update the information below: </h2>
       <form v-on:submit="updateNewEmployeeInfo" > 
@@ -112,13 +112,18 @@ methods:{
 <style scoped>
 h2.updateInfo{
    display: flex;
+   font-size: 30px;
    justify-content: center;
    color: rgb(131, 11, 125);
 }
 .form-element{
-    display: flex;
-    justify-content: center;
-    padding: 10px;
+  color: #414042;
+  border-style: none;
+  font-size: 22px;
+  font-family: Cambria;
+  font-weight: lighter;
+  padding: 5px;
+  margin-left: 40px;
 }
 .actions{
     display: flex;
