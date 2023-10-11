@@ -1,6 +1,5 @@
 <template>
   <div class="employee">
-    <!-- <div class="side-bar"></div> -->
     <div class="imgHeader">
       <img class='doc' src="../assets/doc.png" />
       <div class="notification"><employee-notification /></div>
@@ -102,12 +101,7 @@ export default {
 </script>
 
 <style scoped>
-.employee {
-  margin-left: 220px; 
-}
-/* .home, .body{
-  margin-left: 240px;
-} */
+
 button {
   color: #fff;
   background: #0060f0;
@@ -125,40 +119,25 @@ button:hover {
   border: 1px solid #ddd;
   border-radius: 70%;
   width: 150px;
-  z-index: 2;
+  z-index: 3;
 }
 .imgHeader{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
-.profileNav{
-  height: 100%;
-  width: 12%;
-  position: absolute;
-  z-index: 0;
-  left: 0%;
-  top: 0;
-  border-right: solid lightgrey 1px;
-  background-color: darkblue;
-}
-/* .side-bar {
-  width: 20%; 
-  z-index: 0;
-  background-color: darkblue
-} */
+
 .profile-buttons {
-  text-align: center;
-  height: 100%;
-  width: 12%;
-  position: fixed;
-  z-index: 2;
-  left: 0%;
-  top: 0;
-  padding-top: 18%;
-  padding-bottom: 0px;
-  border-right: solid lightgrey 1px;
- } 
+   display: flex;
+  flex-direction: column;
+  position: absolute;
+  column-gap: 5px;
+  padding: 15px;
+  padding-left: 0px;
+  padding-bottom: 2px;
+  margin: 0px;
+  margin-top: -6px;
+}
 .content{
   display: grid;  
   grid-template-columns: 2;
