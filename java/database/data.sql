@@ -73,13 +73,21 @@ INSERT INTO review(user_id, review, office_id)
 	VALUES	(3, 'Dr. Weasley is always very nice and friendly, I recommend Weasley!', 2),
 			(6, 'Chase Clinic always has times available! Staff is always on time and knowledgable', 1 ),
 			(14, 'Very friendly staff and handled my issue well!', 3),
-			(24, 'I would not come back.  Terrible customer service.', 4 );
+			(24, 'I would not come back.  Terrible customer service.', 4 ),
+			(13, 'Great service!  Highly recommended.', 2),
+			(16, 'Chase Clinic  is clean and very friendly staffl', 1 ),
+			(17, 'Easy to schedule appointments and great doctors.', 3),
+			(23, 'Receptionist was rude and doctor was 45 minutes late.', 4 );
 			
 INSERT INTO review_reply(review_id, user_id, review_reply)
 	VALUES	(1, 2, 'Thanks for the lovely response'),
 			(2, 5, 'Thanks for the response!' ),
 			(3, 8, 'Glad we could help.'),
-			(4, 10, 'Sorry for everything. Come back and give us another chance.' );
+			(4, 10, 'Sorry for everything. Come back and give us another chance.' ),
+			(5, 2, 'Thanks for the lovely response'),
+			(6, 5, 'Thanks for the response!' ),
+			(7, 8, 'Glad we could help.'),
+			(8, 10, 'Sorry for everything. Come back and give us another chance.' );
 
 INSERT INTO employee_schedule(employee_id, start_time, end_time)
 	VALUES	(2, '07:00:00', '15:00:00'),
