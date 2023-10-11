@@ -59,7 +59,7 @@ export default {
             const newAppointment = {
               appointmentId: 0,
               employeeId: this.$store.state.user.id,
-              patientId: 1, 
+              patientId: 25, 
               appointmentDateStart: args.start.toDate(),
               appointmentTimeStart: args.start.toString("HH:mm:ss"),
               appointmentDateEnd: args.end.toDate(),
