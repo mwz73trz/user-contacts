@@ -59,7 +59,7 @@ h2 {
 }
 .reviews-list {
   margin: 0 auto;
-  max-width: 800px;
+  /* max-width: 800px; */
 }
 .review {
   font-size: 24px;

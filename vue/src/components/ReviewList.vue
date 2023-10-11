@@ -51,18 +51,26 @@ export default {
   }
 </script>
 
-<style>
-h2 {
+<style scoped>
+.reviews {
+  background-color: #f7fafc;
+  border-radius: 10px;
+  padding: 10px 20px 20px 20px;
+  align-items: center;
+}
+.reviews h2 {
   text-align: center;
+  margin: 0 0 30px 0;
 }
 .reviews-list {
-  margin: 0 auto;
+  margin: 20px 0;
   max-width: 800px;
 }
 .review {
   font-size: 24px;
-  border-bottom: 1px solid #f2f2f2;
+  /* border-bottom: 1px solid #f2f2f2; */
   padding: 10px 20px;
+  border-bottom: 1px solid rgb(180, 180, 180);
 }
 .topic:last-child {
   border: 0px;
@@ -75,6 +83,7 @@ table {
 }
 td {
   padding: 4px;
+  border-bottom: 1px solid rgb(180, 180, 180);
 }
 /* tbody tr:nth-child(even) {
   background-color: #F2F2F2;
