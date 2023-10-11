@@ -28,6 +28,16 @@
         {{ employee.lastName }}, {{ employee.firstName }}
       </option>
     </select>
+     <div class="notification-content">
+    <h2 class="alertHeader">My Upcoming Appointments</h2>
+    <ul class="alerList">
+      <li v-for="appointment in appointmentList" :key="appointment.appointmentId">
+        Doctor: {{ getDoctorName(appointment) }} |
+        Date: {{ appointment.appointmentDateStart }} |
+        Time: {{ appointment.appointmentTimeStart }} to {{ appointmentTimeEnd }}
+      </li>
+    </ul>
+  </div>
   </div>
     <!-- <nav class = "nav-buttons"> -->
     <router-link class = "personal-info-button" v-bind:to="{name: 'patient', params: {id: $route.params.id}}" tag = "button"> To view your personal info </router-link>
@@ -48,6 +58,7 @@
 import patientService from '../services/PatientService';
 import PatientForm from './PatientForm.vue';
 import CovidList from './CovidList.vue';
+import apptService from '../services/ApptService'
 
 
 export default {
@@ -59,6 +70,7 @@ export default {
     return{
       officeList: [],
       employeeList: [],
+      appointmentList: [],
       id: 0,
       patient: {
         id: 0,
@@ -75,6 +87,10 @@ export default {
     employeesRoute(e) {
       this.$router.push("/employees/" + e.target.value)
     },
+    getDoctorName(appointment) {
+      const employee = this.employeeList.find(employee => employee.employeeId === appointment.employeeId);
+      return employee ? employee.firstName + " " + employee.lastName : 'Unknown';
+    }
   },
 
   created() {
@@ -86,6 +102,9 @@ export default {
   }),
   patientService.getPatient(this.$route.params.id, this.$route.params.id).then(response => {
       this.patient = response.data;
+    }),
+    apptService.getAppointmentsByPatientUser().then(response => {
+      this.appointmentList = response.data;
     })
   },
 
