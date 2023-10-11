@@ -1,6 +1,7 @@
 <template>
   <div>
       <h1>Edit Office Info</h1>
+     Office ID: {{ office.officeId }}
       <form v-on:submit.prevent="submitForm">
         <div>
          <label for="officeName">Office Name: </label>
