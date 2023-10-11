@@ -2,7 +2,7 @@
   <form v-on:submit="addNewReview">
     <div class="form-element">
       <label for="review">Review:</label>
-      <textarea id="review" v-model="newReview.review"></textarea>
+      <textarea id="review" cols="30" rows="10" v-model="newReview.review"></textarea>
       <button type="submit">Submit Review</button>
     </div>
   </form>
@@ -41,5 +41,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+button {
+  color: #fff;
+  background-color: #0060f0;
+  margin-left: 5px;
+  border: 0.5px solid;
+}
+button:hover {
+  background-color: #64b5f6;
+}
 </style>
