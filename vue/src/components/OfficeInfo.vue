@@ -27,6 +27,7 @@
         </li>
       </ul>
     </div>
+    <img src="../assets/contact-us.png">
   </div>
 </template>
 
@@ -71,5 +72,11 @@ button {
 }
 button:hover {
   background-color: #64b5f6;
+}
+img {
+  width: 200px;
+  margin-left: 600px;
+  margin-top: -400px;
+  margin-bottom: 70px;
 }
 </style>
