@@ -66,9 +66,7 @@ export default {
   margin: 20px 0;
   max-width: 800px;
 }
-.wrap-review {
-  text-wrap: wrap;
-}
+
 .review {
   font-size: 24px;
   /* border-bottom: 1px solid #f2f2f2; */
