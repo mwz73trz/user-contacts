@@ -9,7 +9,7 @@
     </div>
      <div class="notification-content">
     <h2 class="alertHeader">My Upcoming Appointments</h2>
-    <ul class="alerList">
+    <ul class="alertList">
       <li v-for="appointment in appointmentList" :key="appointment.appointmentId">
         Doctor: {{ getDoctorName(appointment) }} |
         Date: {{ appointment.appointmentDateStart }} |
@@ -43,10 +43,8 @@
    <img src="../assets/PatientLanding.jpg" alt = "Click me" class="image" id ="imageToClick">
   <calendar-scheduler />
   <patient-form v-if="isFormVisible"></patient-form>
-  <div class="covid-list"> 
     <covid-list/>
-  </div>
-  </div>
+</div>
   
   
   
@@ -247,12 +245,28 @@ select {
 
 .image{
   float:right;
-  width:580px;
+  width:520px;
   position: relative;
   margin-right: 0.5px;
-  height: 3in;
-  margin-top:-05rem;
-  display:inline-flex
+  height: 2in;
+  margin-top:-10rem;
+  display:inline-flex;
+  padding-right: 10px;;
   }
+  .alertHeader{
+    font-size: 22px;
+}
+.alertList{
+    color: red;
+    list-style-type: none;
+    font-size: 17px;
+    padding-left: 530px;
+}
+.notification-content {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    padding-right: 500px;;
+}
 
 </style>
