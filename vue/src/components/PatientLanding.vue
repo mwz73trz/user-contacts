@@ -159,7 +159,7 @@ p{
 
 .personal-info-button{
   color: solid #000; 
-  margin-left: -55rem; 
+  margin-left: -50rem; 
   color: #fff;
   background: #0060f0;
   border-radius: 4px;
@@ -234,8 +234,8 @@ select {
   width:580px;
   position: relative;
   margin-right: 0.5px;
-  height: 2.8in;
-  margin-top:-03rem;
+  height: 3in;
+  margin-top:-05rem;
   display:inline-flex
   }
 
