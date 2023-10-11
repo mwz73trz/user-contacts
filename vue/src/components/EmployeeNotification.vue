@@ -19,6 +19,7 @@ export default {
     name: 'notification',
     data: function(){
         return{
+            isAlerted: false,
             patientList: [],
             allAppointments: [],
             recentAppointments: [],
@@ -60,7 +61,12 @@ export default {
         },
         hasNotifications() {
             if (this.recentAppointments != null) {
-                alert("You have appointments! Check your notifications please.");
+                if (sessionStorage.isAlerted) {
+                    return;
+                }else {
+                    alert("You have appointments! Check your notifications please.");
+                    sessionStorage.isAlerted = true;
+                }
             }
         }
         
