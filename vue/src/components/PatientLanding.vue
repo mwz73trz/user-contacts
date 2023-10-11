@@ -119,6 +119,7 @@ $banner-height: 5em; */
 h2{
    color:blueviolet;
    margin-left: 8rem;
+   font-size: 1.8rem;
 }
 .headerPatient{
   text-align: center;
@@ -130,18 +131,19 @@ h2{
 .office-list, .employee-list{
   text-align: center;
   font-family:monospace;
-  margin-left: 2rem;
-  margin-right: 11rem;
+  margin-left: 1rem;
+  margin-right: 2rem;
   float:left;
-  font-size: 188%;
+  font-size: 230%;
   position: relative;
-  color:rgb(32, 94, 32);       
+  color:rgb(32, 94, 32);  
+  margin-top:2rem;     
 }
 
 .info{
   text-shadow: length;
-  white-space:pre-wrap;
-  margin-top: 4rem;
+  /* white-space:pre-line; */
+  margin-top: 13rem;
   
 } 
 
@@ -159,7 +161,7 @@ p{
 
 .personal-info-button{
   color: solid #000; 
-  margin-left: -50rem; 
+  margin-left: -41rem; 
   color: #fff;
   background: #0060f0;
   border-radius: 4px;
@@ -167,7 +169,7 @@ p{
   height: 40px;
   border: 0.5px solid;
   font-family: monospace;
-  margin-top:8rem; 
+  margin-top:10rem; 
   display:flexbox;
   font-size: 20px;
   /* position:relative; */
@@ -189,7 +191,7 @@ select {
   background-color: transparent;
   padding: justify;
   margin: 0;
-  width: 50%;
+  width: 35%;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
@@ -231,7 +233,7 @@ select {
 
 .image{
   float:right;
-  width:580px;
+  width:600px;
   position: relative;
   margin-right: 0.5px;
   height: 3in;
