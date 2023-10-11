@@ -78,6 +78,7 @@ export default {
 .notification-content {
     display: flex;
     flex-direction: column;
+    height: 150px;
 }
 
 </style>

@@ -1,14 +1,11 @@
 <template>
   <div class="employee">
     <div class="imgHeader">
-      <img src="../assets/doc.png" class="doc" />
+      <img class='doc' src="../assets/doc.png" />
       <div class="notification"><employee-notification /></div>
     </div>
-    <!-- <div class="schedule-container">
-      <schedule />
-    </div> -->
-    <div>
-      <nav class="nav-buttons">
+    <div class="profileNav">
+      <nav class="profile-buttons">
         <router-link
         class="reviews"
           v-bind:to="{ name: 'EmployeeReview',params: { id: $route.params.officeId }}"
@@ -47,9 +44,9 @@
       </nav>
 
       <employee-info-form v-if="isFormVisible"></employee-info-form>
-      <div class="agenda">
-        <EmployeeApptCalendar />
-      </div>
+
+      <div class="agenda"> <h1 class="schedeuleH1">Your schedule for today: {{ currentDate }} </h1>  <EmployeeApptCalendar />   </div>
+
     </div>
   </div>
 </template>
@@ -57,14 +54,12 @@
 <script>
 import EmployeeServices from "../services/EmployeeServices";
 import EmployeeInfoForm from "./EmployeeInfoForm.vue";
-// import Schedule from "../components/Schedule.vue";
 import EmployeeApptCalendar from "./EmployeeApptCalendar.vue";
 import EmployeeNotification from "./EmployeeNotification.vue";
 
 export default {
   components: {
     EmployeeInfoForm,
-    // Schedule,
     EmployeeApptCalendar,
     EmployeeNotification,
   },
@@ -105,102 +100,83 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 body,
 html {
   padding: 0;
   margin: 0;
-  width: 100%;
-  height: 100vh;
+  /* width: 100%;
+  height: 100vh; */
   background-color: white;
 }
-.agenda {
-  border-style: solid;
+.schedeuleH1{
+  display: grid;
+  justify-content: center;
+  padding-right: 550px;
+  padding-left: 220px;
 }
 .employee {
   background-color: white;
-  margin-left: 6px;
-  /* background: rgb(103, 147, 177); */
-}
-.nav-buttons {
-  display: flex;
-  justify-content: center;
-  justify-content: space-evenly;
-  padding: 15px;
-  color: purple;
 }
 button {
-  /* color: solid #000; */
   color: #fff;
   background: #0060f0;
   margin-right: 5px;
   border-radius: 4px;
-  width: 110px;
-  height: 30px;
+  width: 200px;
+  height: 100px;
   border: 0.5px solid;
 }
 button:hover {
   background-color: #64b5f6;
 }
 .doc {
-  /* border: 1px solid #ddd; */
+  border: 1px solid #ddd;
   border-radius: 70%;
-  margin-top: 15px;
-  /* margin-left: -120px; */
-  /* padding: 5px; */
   width: 150px;
+
 }
-/* h1.employee{
-  display: flex;
-  justify-content: center;
-  justify-content: space-around;
-} */
-/* .schedule-container {
-  justify-content: center;
+.imgHeader{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;  
 }
-.schedule-header {
-  margin-left: 20px;
-  padding-right: 6px;
-  margin-bottom: 2px;
+/* .profileNav{
+  height: 100%;
+  width: 12%;
+  position: fixed;
+  z-index: 1;
+  left: 0%;
+  top: 0;
+  padding-top: 18%;
+  padding-bottom: 0px;
+  border-right: solid lightgrey 1px;
+  background-color: darkblue;
 } */
-.nav-buttons {
-  display: flex;
-  flex-direction: column;
-  column-gap: 5px;
-  /* justify-content: space-around; */
-  padding: 15px;
-  padding-left: 0px;
-  padding-bottom: 2px;
-  margin: 0px;
-  margin-top: -6px;
+.profile-buttons {
+  height: 100%;
+  width: 12%;
+  position: fixed;
+  z-index: 2;
+  left: 0%;
+  top: 0;
+  padding-top: 18%;
+  padding-bottom: 0px;
+  border-right: solid lightgrey 1px;
+
+ }
+.agenda{
+  display: grid;
+  grid-template-columns: 1;
+  gap:20px;
+  padding-bottom:200px;
+  
 }
 .view-profile, .update-personal-info, .update-schedule, .update-office-info {
-  margin-top: 6px;
-}
-nav {
-  margin-top: -5px;
-  max-width: -5px;
+  margin-top: 20px;
 }
 .notification {
-  display: flex;
-  justify-content: right;
+  display: grid;
+  justify-content: right;  
 }
-/* .nav-buttons {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 0 10px;
-  text-decoration: none;
-  color: #fff;
-  background-color: #4a90e2;
-  border: 1px solid #357abd;
-  border-radius: 4px;
-  transition: background-color 03.s ease;
-}
-.nav-buttons a:hoover {
-  background-color: #357abd;
-}
-.nav-buttons {
-  outline: none;
-  background-color: #2b6bb0;
-} */
 </style>

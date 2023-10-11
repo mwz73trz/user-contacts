@@ -1,10 +1,10 @@
 <template>
     <div>
     <div id="calendar-container">
-      <h1>Your schedule for today: {{ currentDate }} </h1>
+      <!-- <h1 class="schedeuleH1">Your schedule for today: {{ currentDate }} </h1> -->
       <div class="calendar-wrapper">
-        <DayPilotCalendar id="dp" :config="config" ref="calendar" />
-        <DayPilotNavigator id="calNav" :config="navigatorConfig" />
+       <div class="calendar"> <DayPilotCalendar id="dp" :config="config" ref="calendar" /> </div>
+       <div class="calNav"> <DayPilotNavigator id="calNav" :config="navigatorConfig" /> </div>
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@ export default {
       
 
       navigatorConfig: {
-        showMonths: 3,
+        showMonths: 2,
         skipMonths: 2,
         selectMode: "Week",
         startDate: DayPilot.Date.today(),
@@ -47,7 +47,7 @@ export default {
         startDate: DayPilot.Date.today(),
         events: [],           
         onTimeRangeSelected: async (args) => {
-          const modal = await DayPilot.Modal.prompt("Create a new event:", "Blocked");
+          const modal = await DayPilot.Modal.prompt("Create a new appointment:", "Blocked");
           const dp = args.control;
           dp.clearSelection();
           if (modal.canceled) {
@@ -132,26 +132,26 @@ export default {
 </script>
 
 <style scooped>
-#calendar-container {
-  display: flex;
-  flex-direction: column; 
-  align-items: center; 
+ #calendar-container {
+  display: grid; 
 }
-
 .calendar-wrapper {
   display: flex;
   flex-direction: row; 
-  align-items: center; 
 }
+.calendar{
+  padding-left: 10px;
+  padding-right: 150px;
+ }
 #dp{
-  flex:1
+  flex:1;
+  height: 400px;
 }
-/* .event_box {
-  background-color: #d0db34;
+.event_box {
   color: #fff;
   padding: 5px;
   border-radius: 3px;
   margin-bottom: 5px;
-} */
+}
 
 </style>
