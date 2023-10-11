@@ -7,39 +7,39 @@
       <form v-on:submit.prevent="submitForm">
         <div>
          <label for="officeName">Office Name: </label>
-         <input type="text" v-model="office.officeName">
+         <input class="name" type="text" v-model="office.officeName">
        </div>
         <div>
          <label for="phoneNumber">Phone Number: </label>
-         <input type="text" v-model="office.phoneNumber">
+         <input class="phone" type="text" v-model="office.phoneNumber">
        </div>
         <div>
          <label for="openTime">Open Time: </label>
-         <input type="text" v-model="office.openTime">
+         <input class="time" type="text" v-model="office.openTime">
        </div>
         <div>
          <label for="closeTime">Close Time: </label>
-         <input type="text" v-model="office.closeTime">
+         <input class="closeTime" type="text" v-model="office.closeTime">
        </div>
        <div>
          <label for="address">Address: </label>
-         <input type="text" v-model="office.address">
+         <input class="address" type="text" v-model="office.address">
        </div>
         <div>
          <label for="city">City: </label>
-         <input type="text" v-model="office.city">
+         <input class="city" type="text" v-model="office.city">
        </div>
         <div>
          <label for="state">State: </label>
-         <input type="text" v-model="office.state">
+         <input class="state" type="text" v-model="office.state">
        </div>
         <div>
          <label for="zip">Zip: </label>
-         <input type="text" v-model="office.zip">
+         <input class="zip" type="text" v-model="office.zip">
        </div>
        <div>
          <label for="serviceFee">Service Fee: </label>
-         <input type="text" v-model="office.serviceFee">
+         <input class="fee" type="text" v-model="office.serviceFee">
        </div>
        <div class="formButtons">
        <button>Submit</button>
@@ -101,20 +101,9 @@ export default {
 </script>
 
 <style scoped>
-
-/* body,
-html {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: white;
-} */
-
 .info {
   display: flex;
 }
-
 .side-bar {
   width: 20%; 
   background-color: darkblue
@@ -122,18 +111,29 @@ html {
 .content {
   flex: 1;
   text-align: center;
-  /* background: green; */
-}
-form {
-  font-size: 20px;
-  text-align: left;
   padding-left: 50px;
 }
 .officeDetailEdits{
-  width: 400px;
+  width: 300px;
 }
 .editH1{
-  text-align:left
+  text-align:left;
+  font-size: 40px;
+}
+form {
+  color: #414042;
+  border-style: none;
+  font-size: 22px;
+  font-family: Cambria;
+  font-weight: lighter;
+  padding: 5px;
+  margin-left: 40px;
+}
+.name, .phone, .time, .closeTime, .address, .city, .state, .zip, .fee{
+  margin-bottom: 6px;
+  border: 0.5px solid;
+  border-radius: 5px;
+  font-size: 15px;
 }
 button {
   color: #fff;
@@ -145,8 +145,7 @@ button {
   border: 0.5px solid;
 }
 .formButtons{
-  text-align: center;
-  border-right: solid lightgrey 1px;
+  text-align: left;
+  padding:50px;
 }
-
 </style>

@@ -3,8 +3,8 @@
     <div class="side-bar"></div>
     <div class="content">
     <img class="personalInfoImg" src="../assets/personal-information.png" />
+    <h1 class="profileH1">Profile Information</h1>
     <div class="mainInfo"> 
-      <h1>Profile Information</h1>
       <p>Name: {{ employee.firstName }} {{ employee.lastName }}</p>
       <p> Email: {{employee.email}} </p>
       <p> Cell Phone: {{employee.mobilePhone}} </p>
@@ -95,7 +95,6 @@ html {
 .info {
   display: flex;
 }
-
 .side-bar {
   width: 20%; 
   background-color: darkblue
@@ -103,18 +102,21 @@ html {
 .content {
   flex: 1;
   text-align: center;
-  /* background: green; */
+  padding-left: 50px;
 }
 .personalInfoImg{
   width: 350px;
 }
-h1{
+.profileH1{
   text-align:left;
 }
 .mainInfo, .schedule, .officeInfo{
-  font-size: 20px;
+  font-size: 22px;
   text-align: left;
-  padding-left: 50px;
+  color: #414042;
+  border-style: none;
+  font-family: Cambria;
+  margin-left: 40px;
 }
 button {
   color: #fff;
@@ -131,49 +133,4 @@ button {
 .profileButtons{
   text-align: center;
 }
-
-/* .info{
-  display: grid;
-  /* grid-template-columns: 4;
-  direction: column; */
-  /* justify-content: center; */
-/* } */
-/* .personalInfoImg{ */
-  /* border: 1px solid #ddd; */
-  /* border-radius: 70%; */
-  /* width: 150px; */
-/* } */ 
-/* div.home{
-  padding: 10px;
-}
-
-.personal-info{
-   display: flex;
-  justify-content: center;
-}
-p, .officeName{
-  font-family: "Times New Roman", Times, serif;
-  font-size: 20px;
-}
-button{
-  color: solid #000;
-}
-form{
-  border-style: solid;
-  padding: 50px;
-}
-body{
-   background: rgb(103, 147, 177);
-}
-body,
-html {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: white;
-}
-.update-personal-info, .update-schedule, .update-office-info {
-  margin-top: 6px;
-} */
 </style>

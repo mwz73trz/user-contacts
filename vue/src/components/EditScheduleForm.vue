@@ -1,6 +1,9 @@
 <template>
-   <div class="edit-schedule">
-      <h1>Edit Schedule</h1>
+   <div class="info">
+      <div class="side-bar"></div>
+      <div class="content"> 
+      <img class="scheduleImg" src="../assets/schedule-update.png" />
+     <div class="editH1"> <h1>Edit Schedule</h1>
      <form v-on:submit.prevent="submitForm">
        <div>
          <label for="startTime">Start Time: </label>
@@ -10,9 +13,13 @@
          <label for="endTime">End Time: </label>
          <input class="end-time" type="text" v-model="schedule.endTime">
        </div>
+       <div class="formButtons">
        <button>Submit</button>
        <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
-     </form>   
+       </div>
+     </form>
+      </div> 
+      </div>  
   </div>
 </template>
 
@@ -55,38 +62,54 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.info {
+  display: flex;
+}
+
+.side-bar {
+  width: 20%; 
+  background-color: darkblue
+}
+.content {
+  flex: 1;
+  text-align: center;
+  padding-left: 50px;
+ 
+}
+.scheduleImg{
+  width: 350px;
+}
+.editH1{
+  text-align:left
+}
 form {
   color: #414042;
   border-style: none;
+  font-size: 22px;
   font-family: Cambria;
   font-weight: lighter;
-  font-size: medium;
   padding: 5px;
   margin-left: 40px;
 }
-
-.start-time {
+.start-time, .end-time {
   margin-bottom: 6px;
   border: 0.5px solid;
   border-radius: 5px;
+   font-size: 18px;
 }
-
-.end-time {
+button {
+  color: #fff;
+  background: #0060f0;
+  margin-right: 30px;
+  border-radius: 4px;
+  width: 150px;
+  height: 70px;
   border: 0.5px solid;
-  border-radius: 5px;
-  margin-bottom: 6px;
 }
-h1 {
-   font-family: Cambria;
-   font-weight:bold;
-   margin-left: 40px;
-}
-
-.edit-schedule {
-  /* display: flex; */
-  float: center;
-  justify-content: center;
+.formButtons{
+  text-align: left;
+  padding: 50px;
 }
 
 </style>
