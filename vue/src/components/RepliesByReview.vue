@@ -1,16 +1,16 @@
 <template>
   <div class="replies">
-    <div>
-      <h2>Replies</h2>
-        <div class="navButtons">
-          <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
-          
-          <router-link :to="{ name: 'EmployeeReview' }" tag ="button">All Reviews</router-link>
-        </div>
+    <div class="side-bar"></div>
+    <div class="content">
+    <img class="reviewsImg" src="../assets/reviews.png" />
+    <h1 class="repliesH1">Replies</h1>
+      <div class="formButtons">
+        <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
+         <router-link :to="{ name: 'EmployeeReview' }" tag ="button">All Reviews</router-link>
       </div>
     <div class="replies-list">
       <table>
-        <tr>
+        <tr class="headers">
           <th>Reply Date</th>
           <th>Reply</th>
         </tr>
@@ -21,6 +21,7 @@
           </tr>
         </tbody>
       </table>
+    </div>
     </div>
   </div>
 </template>
@@ -51,32 +52,66 @@ export default {
 </script>
 
 <style>
-h2 {
+.replies {
+  display: flex;
+}
+.side-bar {
+  width: 20%; 
+  background-color: darkblue
+}
+.content {
+  flex: 1;
   text-align: center;
+  padding-left: 50px;
 }
-.navButtons{
- text-align: center;
+.officeDetailEdits{
+  width: 300px;
 }
-.replies-list {
-  padding: 40px;
-  margin: 0 auto;
+.replyH1{
+  text-align:left;
+  font-size: 40px;
+}
+.reviews-list{
   max-width: 800px;
+  margin: 0;
+  align-items: center;
 }
-.reply {
-  font-size: 24px;
-  border-bottom: 1px solid #f2f2f2;
-  padding: 10px 20px;
+th{
+  width: 100px;
+  height: 10px; 
 }
-.reply:last-child {
-  border: 0px;
-}
-
-table {
-  text-align: left;
-  width: 800px;
-  border-collapse: collapse;
+.headers {
+  background-color: lightgrey;
+  font-size: 25px; 
 }
 td {
-  padding: 4px;
+  padding: 10px;
+  font-size: 20px;
+  border-bottom: 1px solid grey; 
+  text-decoration-style: none;
 }
+button {
+  color: #fff;
+  background: #0060f0;
+  margin-right: 30px;
+  border-radius: 4px;
+  width: 150px;
+  height: 70px;
+  border: 0.5px solid;
+}
+.formButtons{
+  text-align: center;
+  padding:50px;
+}
+.topic:last-child {
+  border: 0px;
+}
+a.router-link-exact-active {
+  text-decoration: none;
+  color: blue;
+  }
+tbody tr:nth-child(even) {
+  background-color: #F2F2F2;
+} 
+
 </style>

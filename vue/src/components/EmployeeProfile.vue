@@ -17,13 +17,15 @@
       <p> Office Address: {{ office.address}} {{office.city}} {{office.state}}  </p>
       <p> Office Phone Number: {{office.phoneNumber}}  </p> 
       <p> Service Fee: ${{ office.serviceFee }}</p>
-    <div class='profileButtons'>  
+    <div class='profileButtons'> 
+       
     <router-link
       class="update-office-info"
       :to="{ name: 'edit-office-info', params: { id: office.officeId } }"
       tag="button">
       Edit Office Info
     </router-link>
+
     <router-link 
       v-if="schedule.startTime" 
       v-bind:to="{name: 'EditSchedule', params: { id: schedule.scheduleId }}" 
@@ -83,15 +85,6 @@ export default {
 </script>
 
 <style scoped>
-/* body,
-html {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: white;
-} */
-
 .info {
   display: flex;
 }
@@ -132,5 +125,8 @@ button {
 }
 .profileButtons{
   text-align: center;
+}
+button:hover {
+  background-color: #64b5f6;
 }
 </style>

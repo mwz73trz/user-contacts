@@ -109,7 +109,7 @@ methods:{
 };
 </script>
 
-<style>
+<style scoped>
 h2.updateInfo{
    display: flex;
    justify-content: center;
@@ -128,5 +128,8 @@ h2.updateInfo{
 form {
     border-style: none;
     color: #414042;
+}
+button:hover {
+  background-color: #64b5f6;
 }
 </style>
