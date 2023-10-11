@@ -6,9 +6,17 @@
        If you are thinking of hurting yourself, call for help right away. Don’t wait, help is available to anyone. All calls are kept private and confidential 1-740-361-4729.
        If you need to reschedule, you will be directed to call your appointment location to reschedule your appointment.  
      </p>
-
-  <!-- <div class="info">
-    </div> -->
+    </div>
+     <div class="notification-content">
+    <h2 class="alertHeader">My Upcoming Appointments</h2>
+    <ul class="alerList">
+      <li v-for="appointment in appointmentList" :key="appointment.appointmentId">
+        Doctor: {{ getDoctorName(appointment) }} |
+        Date: {{ appointment.appointmentDateStart }} |
+        Time: {{ appointment.appointmentTimeStart }} to {{ appointment.appointmentTimeEnd }}
+      </li>
+    </ul>
+  </div>
   <div class="headerPatient"><h2>Please select from Offices/Doctors to view additional information and to book
     an appointment.</h2></div>
   <div class="office-list">
@@ -28,16 +36,6 @@
         {{ employee.lastName }}, {{ employee.firstName }}
       </option>
     </select>
-     <div class="notification-content">
-    <h2 class="alertHeader">My Upcoming Appointments</h2>
-    <ul class="alerList">
-      <li v-for="appointment in appointmentList" :key="appointment.appointmentId">
-        Doctor: {{ getDoctorName(appointment) }} |
-        Date: {{ appointment.appointmentDateStart }} |
-        Time: {{ appointment.appointmentTimeStart }} to {{ appointmentTimeEnd }}
-      </li>
-    </ul>
-  </div>
   </div>
     <!-- <nav class = "nav-buttons"> -->
     <router-link class = "personal-info-button" v-bind:to="{name: 'patient', params: {id: $route.params.id}}" tag = "button"> To view your personal info </router-link>
@@ -50,7 +48,6 @@
   </div>
   </div>
   
-  </div>
   
   
 </template>
