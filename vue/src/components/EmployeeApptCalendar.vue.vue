@@ -133,22 +133,22 @@ export default {
 }
 </script>
 
-<style scooped>
+<style scoped>
 .calendarComponent{
-  height: 900px;
+  height: 500px;
 }
 .schedeuleH1{
   display: grid;
   justify-content: center;
-  padding-right: 550px;
-  padding-left: 220px;
+  /* padding-right: 550px;
+  padding-left: 220px; */
 }
-#calendar-container{
+/* #calendar-container{
   height: 800px;
-}
-.calendar{
+} */
+/* .calendar{
   padding-right: 100px;
-}
+} */
 .event_box {
   color: #fff;
   padding: 5px;

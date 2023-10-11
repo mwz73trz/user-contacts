@@ -34,12 +34,12 @@
         Edit Schedule
         </router-link>
 
-      <router-link
+      <!-- <router-link
         class="update-office-info"
-        :to="{ name: 'edit-office-info', params: { id: officeId } }"
+        :to="{ name: 'edit-office-info', params: { id: office.officeId } }"
         tag="button">
         Update Office Info
-      </router-link>
+      </router-link> -->
           
       </nav>
     </div>

@@ -130,7 +130,6 @@ button {
 }
 .profileButtons{
   text-align: center;
-  border-right: solid lightgrey 1px;
 }
 
 /* .info{
