@@ -12,7 +12,7 @@
         <tbody>
           <tr v-for="review in filteredReviews" v-bind:key="review.officeId">
             <td with="80%">{{ review.reviewDate }}</td>
-            <td>{{ review.review }}</td>
+            <td class="wrap-review">{{ review.review }}</td>
           </tr>
         </tbody>
       </table>
@@ -66,6 +66,7 @@ export default {
   margin: 20px 0;
   max-width: 800px;
 }
+
 .review {
   font-size: 24px;
   /* border-bottom: 1px solid #f2f2f2; */

@@ -8,6 +8,7 @@ import java.util.List;
 public interface AppointmentDao {
 
     List<Appointment> getAppointmentByUser(Principal principal);
+    List<Appointment> getAppointmentByPatientUser(Principal principal);
 
     List<Appointment> getAllAppointments();
     List<Appointment> getAllAppointmentsForEmployee(int employeeId);

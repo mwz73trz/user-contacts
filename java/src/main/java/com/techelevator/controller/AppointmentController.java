@@ -33,6 +33,17 @@ public class AppointmentController {
     }
 
     @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/appointments/user", method = RequestMethod.GET)
+    public List<Appointment> getAppointmentsForPatientUser(Principal principal) {
+        List<Appointment> appointments = appointmentDao.getAppointmentByPatientUser(principal);
+        if (appointments.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No appointments found.");
+        } else {
+            return appointments;
+        }
+    }
+
+    @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/appointments/doctor", method = RequestMethod.GET)
     public List<Appointment> getAllAppointments() {
         List<Appointment> appointments = appointmentDao.getAllAppointments();

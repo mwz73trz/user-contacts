@@ -24,6 +24,7 @@ INSERT INTO users (username,password_hash,role) VALUES ('user13','$2a$08$UkVvwpU
 INSERT INTO users (username,password_hash,role) VALUES ('user14','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('user15','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('user16','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('user17','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 
 INSERT INTO patient(patient_id, first_name, last_name, address, city, state, zip, phone_number, email)
 	VALUES (1, 'User', 'One', '123 Main St', 'Cleveland', 'OH', '55412', '519-321-0987', 'helpme@patient.com'),
@@ -41,7 +42,8 @@ INSERT INTO patient(patient_id, first_name, last_name, address, city, state, zip
 		   (21, 'Sally', 'Shesells', '234 Ocean Ave', 'Atlanta', 'GA', '45678', '453-123-0931', 'seashells@patient.com'),
 		   (22, 'John', 'Shoe', '1 Toy Box St', 'Charleston', 'SC', '65432', '217-602-0987', 'john.shoe@patient.com'),
 		   (23, 'Everson', 'Gillicutty', '19 James St', 'Gap', 'PA', '19198', '555-555-5555', 'everson@patient.com'),
-		   (24, 'Vanna', 'White', '1 Wheeler Lane', 'Los Angeles', 'CA', '11223', '456-098-1234', 'vanna.white@patient.com');
+		   (24, 'Vanna', 'White', '1 Wheeler Lane', 'Los Angeles', 'CA', '11223', '456-098-1234', 'vanna.white@patient.com'),
+		   (25, 'Employee', 'Unavailable', 'Not Available', 'Los Angeles', 'CA', '11223', '456-098-1234', 'vanna.white@patient.com');
 
 INSERT INTO office_details(office_name, phone_number, open_time, close_time, address, city, state, zip, service_fee )
 	VALUES  ('Mediwizard Clinic', '1-740-361-4729', '08:00:00', '17:00:00', '234 Diagon Ally', 'Orlando', 'FL', '34287', 85.00),

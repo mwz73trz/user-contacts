@@ -16,4 +16,7 @@ export default {
     addPatientAppointment(appointment){
         return axios.post(`/appointments/new`, appointment)
     },
+    getAppointmentsByPatientUser() {
+        return axios.get(`/appointments/user`)
+    }
 }

@@ -8,7 +8,6 @@
         Time: {{ appointment.appointmentTimeStart }} to {{appointment.appointmentTimeEnd}}
       </li>
     </ul>
-
  </div>
 </template>
 
@@ -20,6 +19,7 @@ export default {
     name: 'notification',
     data: function(){
         return{
+            isAlerted: false,
             patientList: [],
             allAppointments: [],
             recentAppointments: [],
@@ -58,6 +58,16 @@ export default {
         findEmployeeId(appointment){
             const employee = this.allAppointments.find(employee => employee.employeeId === appointment.employeeId);
             return employee ? employee.employeeId : 'Unknown';
+        },
+        hasNotifications() {
+            if (this.recentAppointments != null) {
+                if (sessionStorage.isAlerted) {
+                    return;
+                }else {
+                    alert("You have appointments! Check your notifications please.");
+                    sessionStorage.isAlerted = true;
+                }
+            }
         }
         
     },
@@ -65,7 +75,8 @@ export default {
         PatientService.getAllPatients().then((response) => {
             return this.patientList = response.data; 
         }),
-        this.loadAppointments();
+        this.loadAppointments(),
+        this.hasNotifications();
     }
 }
 </script>

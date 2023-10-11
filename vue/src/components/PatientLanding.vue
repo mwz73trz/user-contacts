@@ -6,9 +6,17 @@
        If you are thinking of hurting yourself, call for help right away. Don’t wait, help is available to anyone. All calls are kept private and confidential 1-740-361-4729.
        If you need to reschedule, you will be directed to call your appointment location to reschedule your appointment.  
      </p>
-
-  <!-- <div class="info">
-    </div> -->
+    </div>
+     <div class="notification-content">
+    <h2 class="alertHeader">My Upcoming Appointments</h2>
+    <ul class="alertList">
+      <li v-for="appointment in appointmentList" :key="appointment.appointmentId">
+        Doctor: {{ getDoctorName(appointment) }} |
+        Date: {{ appointment.appointmentDateStart }} |
+        Time: {{ appointment.appointmentTimeStart }} to {{ appointment.appointmentTimeEnd }}
+      </li>
+    </ul>
+  </div>
   <div class="headerPatient"><h2>Please select from Offices/Doctors to view additional information and to book
     an appointment.</h2></div>
   <div class="office-list">
@@ -35,12 +43,9 @@
    <img src="../assets/PatientLanding.jpg" alt = "Click me" class="image" id ="imageToClick">
   <calendar-scheduler />
   <patient-form v-if="isFormVisible"></patient-form>
-  <div class="covid-list"> 
     <covid-list/>
-  </div>
-  </div>
+</div>
   
-  </div>
   
   
 </template>
@@ -48,6 +53,7 @@
 import patientService from '../services/PatientService';
 import PatientForm from './PatientForm.vue';
 import CovidList from './CovidList.vue';
+import apptService from '../services/ApptService'
 
 
 export default {
@@ -59,6 +65,7 @@ export default {
     return{
       officeList: [],
       employeeList: [],
+      appointmentList: [],
       id: 0,
       patient: {
         id: 0,
@@ -75,6 +82,10 @@ export default {
     employeesRoute(e) {
       this.$router.push("/employees/" + e.target.value)
     },
+    getDoctorName(appointment) {
+      const employee = this.employeeList.find(employee => employee.employeeId === appointment.employeeId);
+      return employee ? employee.firstName + " " + employee.lastName : 'Unknown';
+    }
   },
 
   created() {
@@ -86,6 +97,9 @@ export default {
   }),
   patientService.getPatient(this.$route.params.id, this.$route.params.id).then(response => {
       this.patient = response.data;
+    }),
+    apptService.getAppointmentsByPatientUser().then(response => {
+      this.appointmentList = response.data;
     })
   },
 
@@ -233,12 +247,28 @@ select {
 
 .image{
   float:right;
-  width:600px;
+  width:520px;
   position: relative;
   margin-right: 0.5px;
-  height: 3in;
-  margin-top:-05rem;
-  display:inline-flex
+  height: 2in;
+  margin-top:-10rem;
+  display:inline-flex;
+  padding-right: 10px;;
   }
+  .alertHeader{
+    font-size: 22px;
+}
+.alertList{
+    color: red;
+    list-style-type: none;
+    font-size: 17px;
+    padding-left: 530px;
+}
+.notification-content {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    padding-right: 500px;;
+}
 
 </style>

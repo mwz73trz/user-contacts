@@ -34,12 +34,13 @@
         Edit Schedule
         </router-link>
 
-      <!-- <router-link
+      <router-link
+        v-for="office in officeList" v-bind:key="office.officeId"
         class="update-office-info"
         :to="{ name: 'edit-office-info', params: { id: office.officeId } }"
         tag="button">
-        Update Office Info
-      </router-link> -->
+        Edit Office Info
+      </router-link>
           
       </nav>
     </div>
@@ -82,9 +83,9 @@ export default {
     EmployeeServices.getEmployee().then((response) => {
       this.employee = response.data;
     }),
-    EmployeeServices.getOffices().then((response) => {
-      this.officeList = response.data;
-    });
+   EmployeeServices.getOfficesByEmployeeId(this.$store.state.user.id).then(response => {
+    this.officeList = response.data;
+  }),
     EmployeeServices.getScheduleByEmployeeId(this.$store.state.user.id).then(response => {
         this.schedule = response.data;
     })
@@ -158,5 +159,8 @@ button:hover {
 .notification {
   display: grid;
   justify-content: right;  
+}
+button:hover {
+  background-color: #64b5f6;
 }
 </style>

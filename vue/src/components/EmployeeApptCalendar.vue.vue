@@ -59,7 +59,7 @@ export default {
             const newAppointment = {
               appointmentId: 0,
               employeeId: this.$store.state.user.id,
-              patientId: 1, 
+              patientId: 25, 
               appointmentDateStart: args.start.toDate(),
               appointmentTimeStart: args.start.toString("HH:mm:ss"),
               appointmentDateEnd: args.end.toDate(),
@@ -133,27 +133,21 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scooped>
 .calendarComponent{
   height: 500px;
 }
 .schedeuleH1{
   display: grid;
   justify-content: center;
-  /* padding-right: 550px;
-  padding-left: 220px; */
 }
-/* #calendar-container{
-  height: 800px;
-} */
-/* .calendar{
-  padding-right: 100px;
-} */
+.calendar{
+  padding-right: 20px;
+}
 .event_box {
   color: #fff;
   padding: 5px;
   border-radius: 3px;
   margin-bottom: 5px;
 }
-
 </style>
