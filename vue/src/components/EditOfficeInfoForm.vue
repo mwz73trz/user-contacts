@@ -127,7 +127,7 @@ form {
   font-family: Cambria;
   font-weight: lighter;
   padding: 5px;
-  margin-left: 40px;
+  margin-left: -400px;
 }
 .name, .phone, .time, .closeTime, .address, .city, .state, .zip, .fee{
   margin-bottom: 6px;
@@ -147,5 +147,6 @@ button {
 .formButtons{
   text-align: left;
   padding:50px;
+  margin-left: 330px;
 }
 </style>
