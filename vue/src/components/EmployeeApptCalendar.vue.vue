@@ -1,10 +1,10 @@
 <template>
-    <div>
-    <div id="calendar-container">
-      <!-- <h1 class="schedeuleH1">Your schedule for today: {{ currentDate }} </h1> -->
-      <div class="calendar-wrapper">
-       <div class="calendar"> <DayPilotCalendar id="dp" :config="config" ref="calendar" /> </div>
-       <div class="calNav"> <DayPilotNavigator id="calNav" :config="navigatorConfig" /> </div>
+    <div class="calendarComponent">
+    <h1 class="schedeuleH1">Your schedule for today: {{ currentDate }} </h1>
+      <div id="calendar-container">      
+        <div class="calendar-wrapper">
+          <div class="calendar"> <DayPilotCalendar id="dp" :config="config" ref="calendar"  /> </div>
+          <div class="calNav"> <DayPilotNavigator id="calNav" :config="navigatorConfig" /> </div>
       </div>
     </div>
   </div>
@@ -44,6 +44,8 @@ export default {
       },
       config: {
         viewType: "day",
+         height: '600px',
+         width: '100%',
         startDate: DayPilot.Date.today(),
         events: [],           
         onTimeRangeSelected: async (args) => {
@@ -132,20 +134,20 @@ export default {
 </script>
 
 <style scooped>
- #calendar-container {
-  display: grid; 
+.calendarComponent{
+  height: 900px;
 }
-.calendar-wrapper {
-  display: flex;
-  flex-direction: row; 
+.schedeuleH1{
+  display: grid;
+  justify-content: center;
+  padding-right: 550px;
+  padding-left: 220px;
+}
+#calendar-container{
+  height: 800px;
 }
 .calendar{
-  padding-left: 10px;
-  padding-right: 150px;
- }
-#dp{
-  flex:1;
-  height: 400px;
+  padding-right: 100px;
 }
 .event_box {
   color: #fff;
