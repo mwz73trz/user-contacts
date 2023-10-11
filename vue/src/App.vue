@@ -63,6 +63,9 @@
   justify-content: right;
   padding: 4px;
 }
+.router-link-exact {
+  padding: 2px;
+}
 a.router-link-exact-active:hoover {
   background-color: yellow;
 }
