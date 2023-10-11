@@ -101,14 +101,16 @@ export default {
   width: 350px;
 }
 .profileH1{
+  font-size: 50px;
+  font-family: cursive, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   text-align:left;
 }
 .mainInfo, .schedule, .officeInfo{
-  font-size: 22px;
+  font-size: 24px;
+  font-family: cursive, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   text-align: left;
   color: #414042;
   border-style: none;
-  font-family: Cambria;
   margin-left: 40px;
 }
 button {
