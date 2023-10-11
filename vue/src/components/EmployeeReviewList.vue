@@ -78,6 +78,7 @@ table {
   width: 800px;
   border-collapse: collapse;
 }
+
 .topic:last-child {
   border: 0px;
 }
