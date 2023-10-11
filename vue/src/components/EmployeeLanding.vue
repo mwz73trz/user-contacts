@@ -1,5 +1,6 @@
 <template>
   <div class="employee">
+    <!-- <div class="side-bar"></div> -->
     <div class="imgHeader">
       <img class='doc' src="../assets/doc.png" />
       <div class="notification"><employee-notification /></div>
@@ -42,12 +43,12 @@
       </router-link>
           
       </nav>
-
-      <employee-info-form v-if="isFormVisible"></employee-info-form>
-
-      <div class="agenda"> <h1 class="schedeuleH1">Your schedule for today: {{ currentDate }} </h1>  <EmployeeApptCalendar />   </div>
-
     </div>
+    <div class="content">
+      <employee-info-form v-if="isFormVisible"></employee-info-form>
+      <div class="agenda"> <EmployeeApptCalendar />   </div>
+     </div>
+    
   </div>
 </template>
 
@@ -101,23 +102,12 @@ export default {
 </script>
 
 <style scoped>
-body,
-html {
-  padding: 0;
-  margin: 0;
-  /* width: 100%;
-  height: 100vh; */
-  background-color: white;
-}
-.schedeuleH1{
-  display: grid;
-  justify-content: center;
-  padding-right: 550px;
-  padding-left: 220px;
-}
 .employee {
-  background-color: white;
+  margin-left: 220px; 
 }
+/* .home, .body{
+  margin-left: 240px;
+} */
 button {
   color: #fff;
   background: #0060f0;
@@ -131,29 +121,34 @@ button:hover {
   background-color: #64b5f6;
 }
 .doc {
+  display: grid;
   border: 1px solid #ddd;
   border-radius: 70%;
   width: 150px;
-
+  z-index: 2;
 }
 .imgHeader{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;  
+  gap: 20px;
 }
-/* .profileNav{
+.profileNav{
   height: 100%;
   width: 12%;
-  position: fixed;
-  z-index: 1;
+  position: absolute;
+  z-index: 0;
   left: 0%;
   top: 0;
-  padding-top: 18%;
-  padding-bottom: 0px;
   border-right: solid lightgrey 1px;
   background-color: darkblue;
+}
+/* .side-bar {
+  width: 20%; 
+  z-index: 0;
+  background-color: darkblue
 } */
 .profile-buttons {
+  text-align: center;
   height: 100%;
   width: 12%;
   position: fixed;
@@ -163,14 +158,20 @@ button:hover {
   padding-top: 18%;
   padding-bottom: 0px;
   border-right: solid lightgrey 1px;
-
- }
+ } 
+.content{
+  display: grid;  
+  grid-template-columns: 2;
+  z-index: 2;
+  gap:20px;
+  margin-left: 200px;
+}
 .agenda{
-  display: grid;
-  grid-template-columns: 1;
+  display: grid;  
+  grid-template-columns: 2;
+  z-index: 2;
   gap:20px;
   padding-bottom:200px;
-  
 }
 .view-profile, .update-personal-info, .update-schedule, .update-office-info {
   margin-top: 20px;

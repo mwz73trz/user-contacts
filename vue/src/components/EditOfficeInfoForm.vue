@@ -1,6 +1,9 @@
 <template>
-  <div>
-      <h1>Edit Office Info</h1>
+  <div class="info">
+    <div class="side-bar"></div>
+    <div class="content">
+      <img class="officeDetailEdits" src="../assets/folder.png" />
+      <h1 class="editH1">Edit Office Info</h1>
       <form v-on:submit.prevent="submitForm">
         <div>
          <label for="officeName">Office Name: </label>
@@ -38,9 +41,12 @@
          <label for="serviceFee">Service Fee: </label>
          <input type="text" v-model="office.serviceFee">
        </div>
+       <div class="formButtons">
        <button>Submit</button>
        <router-link :to="{ name: 'home' }" tag ="button">Return Home</router-link>
+       </div>
       </form>
+    </div>
   </div>
 </template>
 
@@ -95,5 +101,52 @@ export default {
 </script>
 
 <style scoped>
+
+/* body,
+html {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+} */
+
+.info {
+  display: flex;
+}
+
+.side-bar {
+  width: 20%; 
+  background-color: darkblue
+}
+.content {
+  flex: 1;
+  text-align: center;
+  /* background: green; */
+}
+form {
+  font-size: 20px;
+  text-align: left;
+  padding-left: 50px;
+}
+.officeDetailEdits{
+  width: 400px;
+}
+.editH1{
+  text-align:left
+}
+button {
+  color: #fff;
+  background: #0060f0;
+  margin-right: 30px;
+  border-radius: 4px;
+  width: 150px;
+  height: 70px;
+  border: 0.5px solid;
+}
+.formButtons{
+  text-align: center;
+  border-right: solid lightgrey 1px;
+}
 
 </style>

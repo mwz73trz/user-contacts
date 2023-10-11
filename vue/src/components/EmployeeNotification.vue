@@ -71,9 +71,13 @@ export default {
 </script>
 
 <style scoped>
+.alertHeader{
+    font-size: 22px;
+}
 .alertList{
     color: red;
     list-style-type: none;
+    font-size: 17px;
 }
 .notification-content {
     display: flex;
