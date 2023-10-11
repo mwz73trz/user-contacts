@@ -54,7 +54,7 @@ created(){
     float: center;
 	box-shadow: 0 5px 15px 10px rgba(0, 0, 0, 0.55);
     transform: scale(0.8);
-    margin-top:15rem;
+    margin-top:7rem;
     /* margin-lef: 19rem; */
     display: flex;
 }
@@ -91,7 +91,7 @@ created(){
     float: right;
     height:120% ;
     margin-bottom: 20rem;
-    margin-top: -25rem; 
+    margin-top: -20rem; 
     background-color: slategrey;
     
 } 
