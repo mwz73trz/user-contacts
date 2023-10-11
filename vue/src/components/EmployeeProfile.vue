@@ -20,7 +20,7 @@
     <div class='profileButtons'>  
     <router-link
       class="update-office-info"
-      :to="{ name: 'edit-office-info', params: { id: officeId } }"
+      :to="{ name: 'edit-office-info', params: { id: office.officeId } }"
       tag="button">
       Edit Office Info
     </router-link>
