@@ -21,8 +21,8 @@
       <div>
         <label for="role">Select a Role</label>
         <select v-model="user.role" id="role">
-          <option value="user">User</option>
-          <option value="admin">Employee</option>
+          <option value="user">Patient</option>
+          <option value="admin">Doctor</option>
         </select>
       </div>
       <button type="submit">Create Account</button>

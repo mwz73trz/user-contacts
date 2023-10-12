@@ -251,7 +251,7 @@ select {
   width:520px;
   position: relative;
   margin-right: 0.5px;
-  height: 3.5in;
+  height: 2in;
   margin-top:-14rem;
   display:inline-flex;
   padding-right: 10px;;
@@ -271,5 +271,7 @@ select {
     height: 150px;
     padding-right: 500px;;
 }
+
+
 
 </style>

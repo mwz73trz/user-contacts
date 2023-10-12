@@ -5,7 +5,7 @@
       <!-- </a> -->
           <img src="../assets/Covid-19.png" alt = "Click me" class="logo">
      <p>Covid-19 summary results</p>
-      <div class="key">Below are the estimated {{covidData['Country_text']}} data ##</div>
+      <div class="key">Below are the estimated {{covidData['Country_text']}} data </div>
       <div class="key">Total Covid Cases:{{covidData['Total Cases_text']}} </div>
       <div class="key">Total Death Cases:{{covidData['Total Deaths_text']}} </div>
       <div class="key">Total Recovered Cases:{{covidData['Total Recovered_text']}} </div>

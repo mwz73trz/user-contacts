@@ -3,7 +3,7 @@
     <div class="side-bar"></div>
     <div class="content">
       <img class="reviewReplyImg" src="../assets/review-reply.png" />
-      <h1 class="replyH1">Please responde to the review below:</h1>
+      <h1 class="replyH1">Please respond to the review below:</h1>
       <form v-on:submit.prevent="addReply">
         <div class="form">
           <label for="reply"></label>
