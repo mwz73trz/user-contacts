@@ -1,17 +1,6 @@
 <template>
   <div id="login" class="login-content">
-    <div class="intro">
-      <h1>Elevate your health</h1>
-      <p class="welcome-msg">
-        Use Elevate your health portal where you can be in control of your
-        health. Sign in with your account, you can make appointments, view
-        doctor schedules, read the doctor reviews and more.
-      </p>
-    </div>
     <form @submit.prevent="login">
-      <p class="title">
-        Patient Portal/Doctor Portal Sign In To Elevate Your Health
-      </p>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -42,7 +31,6 @@
             >Need an account? Sign up.</router-link
           >
         </p>
-        <img src="../assets/login-photo.jpg">
       </div>
     </form>
   </div>
@@ -86,75 +74,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.login-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  font-family: Arial, sans-serif;
-  font-weight: normal;
-  font-size: 16px;
-  min-height: 100vh;
-}
-
-#signup {
-  font-family: Arial, sans-serif;
-  font-size: 18px;
-  text-align: left;
-  margin-top: 20px;
-}
-
-.title {
-  font-family: Arial, sans-serif;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.intro {
-  font-family: Georgia, serif;
-  font-style: italic;
-  color: #333;
-  text-align: left;
-  margin-bottom: 20px;
-}
-
-.intro > p {
-  font-family: Courier, monospace;
-  font-size: 16px;
-  text-align: center;
-  max-width: 664.12px;
-}
-
-.form-input-group {
-  margin-bottom: 10px;
-  /* padding: 2px; */
-}
-.password-input, .username-input {
-  padding-left: 2px;
-  margin: 4px;
-}
-
-button {
-  background-color: #0060f0;
-  color: white;
-  border: none;
-  /* padding: 10px 20px; */
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 16px;
-  text-align: center;
-}
-img {
-  width: 600px;
-  margin-left: 700px;
-  margin-top: -2080px;
-}
-
-button:hover {
-  background-color: #64b5f6;
-}
-
+<style>
 </style>
 

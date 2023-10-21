@@ -1,7 +1,6 @@
 <template>
   <div id="register" class="register-content">
     <form @submit.prevent="register">
-      <h1>Elevate your health</h1>
       <p class="title">Create Account</p>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
@@ -18,18 +17,9 @@
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <div>
-        <label for="role">Select a Role</label>
-        <select v-model="user.role" id="role">
-          <option value="user">Patient</option>
-          <option value="admin">Doctor</option>
-        </select>
-      </div>
       <button type="submit">Create Account</button>
-      <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
-      
+      <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>  
     </form>
-    <img src="../assets/register-icon.png">
   </div>
 </template>
 
@@ -83,66 +73,5 @@ export default {
 };
 </script>
 
-<style scoped>
-.register-content {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: left;
-  font-family: Arial, sans-serif;
-  font-weight: normal;
-  font-size: 16px;
-  min-height: 100vh;
-}
-button {
-  margin-top: 4px;
-  background-color: #0060f0;
-  color: white;
-  border: none;
-  /* padding: 10px 20px; */
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 16px;
-  text-align: center;
-}
-button:hover {
-  background-color: #64b5f6;
-}
-.form-input-group {
-  margin-bottom: 1rem;
-}
-label {
-  margin-right: 0.5rem;
-}
-
-form {
-  border-style: none;
-  color: #414042;
-  font-size: medium;
-}
-#register {
-  margin-left: 180px;
-}
-h1 {
-   font-family: Cambria;
-   font-size: 32px;
-   font-weight:bold;
-   font-style: italic;
-}
-.form-input-group {
-  font-family: Cambria;
-  font-weight: lighter;
-  font-size: smaller;
-}
-.title {
-  font-family: Arial, sans-serif;
-  font-size: 24px;
-  font-weight: bold;
-}
-img {
-  width: 250px;
-  margin-left: 600px;
-  margin-top: -250px;
-}
-
+<style>
 </style>

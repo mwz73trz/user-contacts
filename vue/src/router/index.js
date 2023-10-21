@@ -5,18 +5,6 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import EmployeeInformation from '../views/EmployeeInformation'
-import OfficeDetails from '../views/OfficeDetails'
-import DoctorDetails from '../views/DoctorDetails'
-import PatientInformation from '../views/PatientInformation'
-import EmployeeReviewList from "../views/EmployeeReviewList"
-import EditEmployeeSchedule from '../views/EditEmployeeSchedule'
-import RepliesList from '../views/RepliesList'
-import ReplyForm from '../views/ReplyForm'
-import EditOfficeInfo from '../views/EditOfficeInfo'
-import EditPatientInfo from '../views/EditPatientInfo'
-import EditEmployeeInfo from '../views/EditEmployeeInfo'
-
 
 Vue.use(Router)
 
@@ -64,96 +52,7 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    },
-    {
-      path: '/profile',
-      name: 'employee',
-      component: EmployeeInformation,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/offices/:officeId',
-      name: 'office-details',
-      component: OfficeDetails,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/edit-office',
-      name: 'edit-office-info',
-      component: EditOfficeInfo,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/employees/:employeeId',
-      name: 'doctor-details',
-      component: DoctorDetails,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/update-personal-info',
-      name: 'update-personal-info',
-      component: EditEmployeeInfo,
-      meta:{
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/patients/user',
-      name: 'patient',
-      component: PatientInformation,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-     path: '/edit-personal-info',
-     name: 'edit-personal-info',
-     component: EditPatientInfo,
-     meta:{
-       requiresAuth: true
-     }   
-    },
-    {
-        path: '/edit-shedule',
-        name: 'EditSchedule',
-        component: EditEmployeeSchedule,
-        meta: {
-          requiresAuth: true
-        }
-    },
-    {
-      path: '/reviews',
-      name: 'EmployeeReview',
-      component: EmployeeReviewList,
-      meta: {
-        requiresAuth: true
-      } 
-    },
-    {
-      path: '/reviews/replies',
-      name: 'RepliesList',
-      component: RepliesList,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/replies',
-      name: 'AddReplyForm',
-      component: ReplyForm,
-      meta: {
-        requiresAuth: true
-      }
-    },
- 
+    }
   ]
 })
 

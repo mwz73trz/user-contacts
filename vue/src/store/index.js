@@ -24,10 +24,6 @@ export default new Vuex.Store({
       firstName: '',
       lastName: ''
     },
-    patient:{
-      firstName: '',
-      lastName:''
-    }
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -45,27 +41,6 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
-    },
-    ADD_PATIENT_INFO(state, patient){
-      state.patient = patient;
-    },
-    ADD_EMPLOYEE_INFO(state, employee){
-      state.patient = employee;
-    },
-    ADD_OFFICE_INFO(state, office){
-      state.office = office
-    },
-    ADD_REVIEW(state, review) {
-      state.review = review
-    },
-    ADD_REPLY(state, reply) {
-      state.reply = reply
-    },
-    ADD_APPOINTMENT_EMPLOYEE(state, appointment){
-      state.appointment = appointment
-    },
-    ADD_APPOINTMENT_PATIENT(state, appointment){
-      state.appointment = appointment
     }
   }
 })
