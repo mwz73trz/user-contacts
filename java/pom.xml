@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.techelevator</groupId>
-    <artifactId>user-login-template</artifactId>
+    <artifactId>user-contacts</artifactId>
     <version>1.0</version>
 
     <properties>

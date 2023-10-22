@@ -5,12 +5,18 @@
         {{ this.$store.state.user.username }}
       </h1>
     </nav>
+    <test-list />
   </div>
 </template>
 
 <script>
+import TestList from '../components/TestList.vue'
+
 export default {
   name: "home",
+  components: {
+    TestList
+  }
 };
 </script>
 

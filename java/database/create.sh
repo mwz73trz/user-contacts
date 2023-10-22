@@ -1,7 +1,7 @@
 #!/bin/bash
 export PGPASSWORD='postgres1'
 BASEDIR=$(dirname $0)
-DATABASE=user_login
+DATABASE=user_contacts
 psql -U postgres -f "$BASEDIR/dropdb.sql" &&
 createdb -U postgres $DATABASE &&
 psql -U postgres -d $DATABASE -f "$BASEDIR/schema.sql" &&
