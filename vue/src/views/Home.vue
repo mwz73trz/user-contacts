@@ -5,17 +5,17 @@
         {{ this.$store.state.user.username }}
       </h1>
     </nav>
-    <test-list />
+    <grouping-list />
   </div>
 </template>
 
 <script>
-import TestList from '../components/TestList.vue'
+import GroupingList from '../components/GroupingList'
 
 export default {
   name: "home",
   components: {
-    TestList
+    GroupingList
   }
 };
 </script>

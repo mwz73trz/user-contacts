@@ -4,6 +4,12 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
+import ContactsView from "../views/ContactsView";
+import AddGrouping from "../views/AddGrouping";
+import EditGrouping from "../views/EditGrouping.vue";
+import ContactView from "../views/ContactView";
+import AddContact from "../views/AddContact";
+import EditContact from "../views/EditContact";
 import store from '../store/index'
 
 Vue.use(Router)
@@ -18,43 +24,73 @@ Vue.use(Router)
  */
 
 const router = new Router({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'home',
+      path: "/",
+      name: "home",
       component: Home,
       meta: {
-        requiresAuth: true
-      }
+        requiresAuth: true,
+      },
     },
     {
       path: "/login",
       name: "login",
       component: Login,
       meta: {
-        requiresAuth: false
-      }
+        requiresAuth: false,
+      },
     },
     {
       path: "/logout",
       name: "logout",
       component: Logout,
       meta: {
-        requiresAuth: false
-      }
+        requiresAuth: false,
+      },
     },
     {
       path: "/register",
       name: "register",
       component: Register,
       meta: {
-        requiresAuth: false
-      }
-    }
-  ]
-})
+        requiresAuth: false,
+      },
+    },
+    {
+      path: "/groupings/:groupingId/contacts",
+      name: "contacts-view",
+      component: ContactsView,
+    },
+    {
+      path: "/groupings/add",
+      name: "add-grouping",
+      component: AddGrouping,
+    },
+    {
+      path: "/groupings/:groupingId/edit",
+      name: "edit-grouping",
+      component: EditGrouping,
+    },
+    {
+      path: "/groupings/:groupingId/contacts/:contactId",
+      name: "contact-view",
+      component: ContactView,
+    },
+    {
+      path: "/contacts/add",
+      name: "add-contact",
+      component: AddContact,
+    },
+    {
+      path: "/contacts/:contactId/edit",
+      name: "edit-contact",
+      component: EditContact,
+    },
+  ],
+});
 
 router.beforeEach((to, from, next) => {
   // Determine if the route requires Authentication
